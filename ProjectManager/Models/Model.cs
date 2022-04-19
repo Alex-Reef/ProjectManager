@@ -93,9 +93,9 @@ namespace ProjectManager
             return 0;
         }
 
-        public int UpdateTask( int Category, Task task, int MarkerID)
+        public int UpdateTask( int Category, Task task, List<string> markers)
         {
-            SetMarker(task, MarkerID);
+            SetMarker(task, markers);
             AddTask(task, Category);
             SaveProject();
             return 0;
@@ -129,7 +129,7 @@ namespace ProjectManager
             SaveProject();
         }
 
-        public int SetMarker(Task task, int markerID)
+        public int SetMarker(Task task, List<string> markers)
         {
             int id = -1, category = -1;
             for (int i = 0; i < 3; i++)
@@ -143,7 +143,7 @@ namespace ProjectManager
             }
 
             var list = project.Tasks[category];
-            list[id].MarkerID = GetMarkers()[markerID].UniqleID;
+            list[id].MarkersID = markers;
             return 0;
         }
 

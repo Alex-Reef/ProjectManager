@@ -2,7 +2,10 @@
 using System.Windows;
 using System.Text;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 using System;
+using ProjectManager.View.Controls;
+using ProjectManager.Models;
 
 namespace ProjectManager
 {
@@ -10,8 +13,7 @@ namespace ProjectManager
     {
         private string taskName { get; set; }
         private string descTask { get; set; }
-        private string markerTask { get; set; }
-        private string markerID { get; set; }
+        private List<string> markersID { get; set; }
         private string uID { get; set; }
         private string Date { get; set; }
         private Model model { get; set; }
@@ -20,9 +22,12 @@ namespace ProjectManager
         {
             InitializeComponent();
             this.model = model;
+            markersID = new List<string>();
             var list = model.GetMarkers();
             foreach (var item in list)
-                markerBox.Items.Add(item.Text);
+            {
+                MarkerBox.Items.Add(item.Text);
+            }
         }
 
         public string GetTaskName()
@@ -35,16 +40,6 @@ namespace ProjectManager
             return descTask;
         }
 
-        public string GetMarkerText()
-        {
-            return markerTask;
-        }
-
-        public string GetMarkerColor()
-        {
-            return markerID;
-        }
-
         public string GetID()
         {
             return uID;
@@ -53,6 +48,31 @@ namespace ProjectManager
         public string GetDate()
         {
             return Date;
+        }
+
+        public List<string> GetMarkers()
+        {
+            return markersID;
+        }
+
+        public void AddMarker(int ID)
+        {
+            markersID.Add(model.GetMarkers()[ID].UniqleID);
+            MarkerBlock markerBlock = new MarkerBlock(model.GetMarkers()[ID]);
+            markerBlock.MouseDown += MarkerBlock_MouseDown;
+            markerPanel.Children.Add(markerBlock);
+        }
+
+        private void MarkerBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            MarkerBlock btn = sender as MarkerBlock;
+            RemoveMarker((Marker)btn.Tag);
+        }
+
+        public void RemoveMarker(Marker marker)
+        {
+            markersID.RemoveAt(model.GetMarkers().FindIndex(x=>x.UniqleID == marker.UniqleID));
+            markerPanel.Children.RemoveAt(model.GetMarkers().FindIndex(x => x.UniqleID == marker.UniqleID));
         }
 
         private string RandomString(int length)
@@ -78,10 +98,23 @@ namespace ProjectManager
         {
             taskName = taskNameBox.Text;
             descTask = descTaskBox.Text;
-            markerTask = markerBox.SelectedItem.ToString();
             uID = RandomString(10);
-            markerID = model.GetMarkers()[markerBox.SelectedIndex].UniqleID;
             this.Visibility = Visibility.Hidden;
+        }
+
+        private void ClosePopup_Click(object sender, RoutedEventArgs e)
+        {
+            Popup.IsOpen = false;
+        }
+
+        private void OpenPopup_Click(object sender, RoutedEventArgs e)
+        {
+            Popup.IsOpen = true;
+        }
+
+        private void MarkerBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            AddMarker(MarkerBox.SelectedIndex);
         }
     }
 }

@@ -6,37 +6,9 @@
         xmlns:local="clr-namespace:ProjectManager" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="TaskEdit" Height="430" Width="400" ResizeMode="NoResize">
+        Title="TaskEdit" Height="Auto" Width="400" ResizeMode="NoResize">
     <Grid Background="#F6F7FB">
         <StackPanel Grid.Column="0" Margin="10, 10, 10, 10">
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:Card
-                    Background="#FF3E4153" 
-                    x:Name="MarkerCard"
-                    Width="50" Height="20" 
-                    HorizontalAlignment="Left" 
-                    Margin="5, 0, 0, 0" 
-                    MouseDown="MarkerCard_MouseDown"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth0">
-                    <Label
-                        Content="Text" Foreground="{StaticResource MaterialDesignDarkForeground}" 
-                        x:Name="MarkerText"
-                        FontSize="10" FontFamily="Idea" FontWeight="Medium"
-                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </materialDesign:Card>
-                <Label 
-                    Margin="10, 0, 0, 0"
-                    Content="in column"
-                    FontFamily="Idea" FontWeight="Regular" FontSize="10"
-                    Foreground="Gray"
-                    VerticalAlignment="Bottom"
-                    />
-                <Label Content="Name" x:Name="CtgNameLabel"
-                       MouseDown="CtgNameLabel_MouseDown"
-                    FontFamily="Idea" FontWeight="Medium" FontSize="10"
-                    Foreground="{StaticResource MaterialDesignLightForeground}"
-                    VerticalAlignment="Bottom"/>
-            </StackPanel>
             <Grid Margin="0, 10, 0, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -68,26 +40,23 @@
                 FontFamily="Idea" FontWeight="Medium" FontSize="12"
                 HorizontalAlignment="Left"
                 materialDesign:HintAssist.Hint="Task Description" Cursor="Arrow"/>
-            <Grid Margin="0, 20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0"
-                    x:Name="markerBox"
-                    IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
-                    materialDesign:HintAssist.Hint="Markers"
-                    ItemsSource="{Binding ShortStringList}"
-                    Height="30" Width="150" HorizontalAlignment="Left" SelectionChanged="markerBox_SelectionChanged"/>
-
-                <ComboBox Grid.Column="1"
-                    x:Name="categoryBox"
-                          Margin="0, 0, 20, 0"
-                    IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
-                    materialDesign:HintAssist.Hint="Move to"
-                    ItemsSource="{Binding ShortStringList}"
-                    Height="30" Width="150" HorizontalAlignment="Right"/>
-            </Grid>
+            <ComboBox
+                 x:Name="categoryBox"
+                 Margin="0, 0, 20, 0"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
+                 materialDesign:HintAssist.Hint="Move to"
+                 ItemsSource="{Binding ShortStringList}"
+                 Height="30" Width="150" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" x:Name="markerPanel"/>
+                <Button x:Name="AddMarkerBtn" Click="OpenPopup_Click" Cursor="Hand"/>
+                <Popup x:Name="Popup" StaysOpen="True">
+                    <StackPanel Orientation="Vertical">
+                        <ComboBox x:Name="MarkerBox" SelectionChanged="MarkerBox_SelectionChanged"/>
+                        <Button x:Name="ClosePopup" Click="ClosePopup_Click"/>
+                    </StackPanel>
+                </Popup>
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button 
                     Width="100" HorizontalAlignment="Left"

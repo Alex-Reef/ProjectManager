@@ -14,16 +14,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <md:Card Grid.Row="0" x:Name="MarkerCard"
-                     Background="#FF3E4153" 
-                     Width="50" Height="20" 
-                     HorizontalAlignment="Left" 
-                     Margin="5, 0, 0, 0" md:ShadowAssist.ShadowDepth="Depth0">
-                <Label 
-                    Content="Text" Foreground="{StaticResource MaterialDesignDarkForeground}" x:Name="MarkerText"
-                    FontSize="10" FontFamily="Idea" FontWeight="Medium"
-                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </md:Card>
+            <StackPanel Grid.Row="0" x:Name="MarkerPanel" Orientation="Horizontal"/>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="28"/>

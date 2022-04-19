@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManager"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="CreateTaskForm" Height="450" Width="400">
     <Grid>
@@ -21,7 +22,16 @@
         <Label Grid.Row="0" Content="Add Task"  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16"/>
         <TextBox x:Name="taskNameBox" Grid.Row ="1" HorizontalAlignment="Left" Height="23" Margin="40,0,0,0" TextWrapping="Wrap" Text="Task name" VerticalAlignment="Center" Width="200" MaxLength="30" MaxLines="1"/>
         <TextBox x:Name="descTaskBox" Grid.Row ="2" HorizontalAlignment="Left" Height="60" Margin="40,0,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Center" Width="300" MaxLength="240" MaxLines="15"/>
-        <ComboBox x:Name="markerBox" Grid.Row="3" Width="120" HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" x:Name="markerPanel"/>
+            <Button x:Name="AddMarkerBtn" Click="OpenPopup_Click" Cursor="Hand"/>
+            <Popup x:Name="Popup" StaysOpen="True">
+                <StackPanel Orientation="Vertical">
+                    <ComboBox x:Name="MarkerBox" SelectionChanged="MarkerBox_SelectionChanged"/>
+                    <Button x:Name="ClosePopup" Click="ClosePopup_Click"/>
+                </StackPanel>
+            </Popup>
+        </StackPanel>
         <DatePicker Grid.Row="4" Width="120" HorizontalAlignment="Left" x:Name="DatePicker"/>
         <Button x:Name="addTaskBtn" Content="Add" Grid.Row="5" Height="30" Width="120" HorizontalAlignment="Left" Margin="40, 0, 0, 0" Click="addTaskBtn_Click"></Button>
     </Grid>

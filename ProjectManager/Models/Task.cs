@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace ProjectManager.Models
 {
@@ -6,7 +6,7 @@ namespace ProjectManager.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string MarkerID { get; set; }
+        public List<string> MarkersID { get; set; }
         public string UniqleID { get; set; }
         public string EndTime { get; set; }
     }

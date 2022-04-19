@@ -50,15 +50,12 @@ namespace ProjectManager
                 createTaskForm = new CreateTaskForm(model);
                 createTaskForm.ShowDialog();
 
-                var id = model.GetMarkers().FindIndex(x => x.UniqleID == createTaskForm.GetMarkerColor());
-                Color taskColor = model.GetMarkers()[id].Color;
-
                 Task task = new Task()
                 {
                     Name = createTaskForm.GetTaskName(),
                     Description = createTaskForm.GetDesc(),
-                    MarkerID = createTaskForm.GetMarkerColor(),
                     UniqleID = createTaskForm.GetID(),
+                    MarkersID = createTaskForm.GetMarkers(),
                     EndTime = DateTime.Now.ToString("d MMMM")
                 };
 
@@ -134,28 +131,14 @@ namespace ProjectManager
                 Name = ts.Name,
                 Description = ts.Description,
                 UniqleID = ts.UniqleID,
-                MarkerID = ts.MarkerID,
+                MarkersID = ts.MarkersID,
                 EndTime = ts.EndTime
             };
 
-            string content;
-            Brush brush;
-            if(model.GetMarkers().Find(x => x.UniqleID == ts.MarkerID) != null)
-            {
-                content = model.GetMarkers().Find(x => x.UniqleID == ts.MarkerID).Text;
-                brush = new SolidColorBrush(model.GetMarkers().Find(x => x.UniqleID == ts.MarkerID).Color);
-            }
-            else
-            {
-                content = "Undefined";
-                brush = new SolidColorBrush(Colors.DodgerBlue);
-            }
-
-          
             if (ts.Description.Length > 70)
                 ts.Description = ts.Description.Substring(0, 70) + "...";
 
-            TaskBlock taskBlock = new TaskBlock(task, content, brush);
+            TaskBlock taskBlock = new TaskBlock(task, model);
 
             Button button = new Button()
             {

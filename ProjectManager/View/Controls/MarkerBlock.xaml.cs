@@ -14,6 +14,7 @@ namespace ProjectManager.View.Controls
             MarkerCard.Background = new SolidColorBrush(marker.Color);
             MarkerText.Content = marker.Text;
             ID = marker.UniqleID;
+            Tag = marker;
         }
 
         public string GetID() => ID;
