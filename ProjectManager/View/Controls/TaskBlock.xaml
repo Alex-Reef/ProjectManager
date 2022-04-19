@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="ProjectManager.View.Controls.TaskBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectManager.View.Controls"
+             mc:Ignorable="d" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="150" d:DesignWidth="260">
+    <md:Card Background="{StaticResource MaterialDesignCardBackground}" UniformCornerRadius="10" x:Name="TaskCard" md:ShadowAssist.ShadowDepth="Depth1">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <md:Card Grid.Row="0" x:Name="MarkerCard"
+                     Background="#FF3E4153" 
+                     Width="50" Height="20" 
+                     HorizontalAlignment="Left" 
+                     Margin="5, 0, 0, 0" md:ShadowAssist.ShadowDepth="Depth0">
+                <Label 
+                    Content="Text" Foreground="{StaticResource MaterialDesignDarkForeground}" x:Name="MarkerText"
+                    FontSize="10" FontFamily="Idea" FontWeight="Medium"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </md:Card>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Width="230" Grid.Row="0" x:Name="TaskName"
+                       Content="Task name" Foreground="{StaticResource MaterialDesignBody}" 
+                       FontSize="16" FontFamily="Idea" FontWeight="Medium"
+                       VerticalAlignment="Bottom"/>
+                <TextBlock Grid.Row="1" Width="230" x:Name="TaskDescription"
+                       Text="Description" Foreground="{StaticResource MaterialDesignBody}" 
+                       FontSize="10" FontFamily="Idea" FontWeight="Medium"
+                       VerticalAlignment="Top" Margin="10, 0, 0, 0" TextWrapping="Wrap"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <md:PackIcon Kind="Flag" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                    <Label Content="Null" x:Name="TaskDate" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                </StackPanel>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <md:PackIcon Kind="Subtasks" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                        <Label Content="0" x:Name="TaskSubtaskCount" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <md:PackIcon Kind="Comments" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                        <Label Content="0" x:Name="TaskCommentsCount" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </md:Card>
+</UserControl>

@@ -1,0 +1,123 @@
+﻿<Window x:Class="ProjectManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectManager" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1080" MinWidth="1080" MinHeight="720"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip" 
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        UseLayoutRounding="True">
+
+    <Grid Background="{DynamicResource MaterialDesignBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:Card Grid.Column="0"
+                materialDesign:ShadowAssist.ShadowDepth="Depth1" Background="{DynamicResource MaterialDesignBackground}">
+            <Grid>
+                <StackPanel Margin="0, 10, 0, 0">
+                    <Image Source="{StaticResource Icon}" Height="30"/>
+                    <StackPanel
+                          HorizontalAlignment="Center"
+                          Margin="0, 10, 0, 0">
+                        <Button
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="45"
+                                ToolTip="Dashboard"
+                                HorizontalAlignment="Center" BorderThickness="0" Cursor="Hand">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Height="20"/>
+                        </Button>
+                        <Button
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="45"
+                                ToolTip="Task"
+                                HorizontalAlignment="Center" BorderThickness="0" Click="tasksBtn_Click">
+                            <materialDesign:PackIcon Kind="CalendarTask" Height="20"/>
+                        </Button>
+                        <Button
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="45"
+                                ToolTip="Code"
+                                HorizontalAlignment="Center" BorderThickness="0">
+                            <materialDesign:PackIcon Kind="Xml" Height="20"/>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Margin="0, 20, 0, 0">
+                        <Button
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="45"
+                                ToolTip="Projects"
+                                HorizontalAlignment="Center" BorderThickness="0">
+                            <materialDesign:PackIcon Kind="BriefcaseEye" Height="20"/>
+                        </Button>
+                        <Button
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="45"
+                                ToolTip="Archive"
+                                HorizontalAlignment="Center" BorderThickness="0">
+                            <materialDesign:PackIcon Kind="PackageDown" Height="20"/>
+                        </Button>
+                        <Button
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="45"
+                                ToolTip="Settings"
+                                HorizontalAlignment="Center" BorderThickness="0" Click="settingsBtn_Click">
+                            <materialDesign:PackIcon Kind="Settings" Height="20"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom" Height="60">
+                    <Button Width="40" Height="40" Style="{DynamicResource MaterialDesignIconButton}"
+                            Content="{materialDesign:PackIcon Kind=Logout}"
+                            ToolTip="Logout"
+                            HorizontalAlignment="Center"
+                            BorderThickness="0"
+                            Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <Grid Grid.Column="1" Margin="0, 0, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card
+                    materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                Background="{DynamicResource MaterialDesignBackground}">
+                <Menu HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0">
+                    <MenuItem 
+                            Height="30" 
+                            Header="{materialDesign:PackIcon Kind=WindowMinimize}"
+                            Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                            Click="Minimized_Click"/>
+                    <MenuItem 
+                            Height="30" 
+                            Header="{materialDesign:PackIcon Kind=WindowMaximize}"
+                            Click="Maximized_Click"
+                            Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                    <MenuItem 
+                            Height="30" 
+                            Header="{materialDesign:PackIcon Kind=Close}"
+                            Click="CloseBtn_Click"
+                            Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                </Menu>
+            </materialDesign:Card>
+
+            <Frame x:Name="frame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>

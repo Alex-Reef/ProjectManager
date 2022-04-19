@@ -1,0 +1,276 @@
+﻿<Page x:Class="ProjectManager.TaskPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectManager"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="680" d:DesignWidth="1020"
+      Title="TaskPage">
+
+    <Grid Background="{DynamicResource MaterialDesignLightBackground}">
+        <Grid Margin="0, 0, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Height="170" VerticalAlignment="Top">
+                <Grid Grid.Column="1" Margin="30, 20, 30, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label
+                                Content="ProjectName"
+                                FontSize="17"
+                                Grid.Row="0" 
+                                FontFamily="Inter" 
+                                FontWeight="Medium" 
+                                Foreground="{DynamicResource MaterialDesignLightForeground}"/>
+                            <materialDesign:Badged Grid.Row="1" 
+                                Badge="3 tasks"
+                                BadgeColorZoneMode="SecondaryMid">
+                                <Label
+                                    Content="Daily Task"
+                                    FontSize="35"
+                                    FontWeight="Medium" 
+                                    HorizontalAlignment="Left" 
+                                    FontFamily="Inter"/>
+                            </materialDesign:Badged>
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal" 
+                                    Grid.Column="1" 
+                                    HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <Button
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Margin="0, 0, 15, 0"
+                                Width="35" Height="35"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="Search" Height="20"/>
+                            </Button>
+                            <Button
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Margin="0, 0, 15, 0"
+                                Width="35" Height="35"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="BellOutline" Height="20"/>
+                            </Button>
+                            <materialDesign:Chip 
+                                Content="UserName" 
+                                Style="{StaticResource MaterialDesignOutlineChip}"
+                                FontFamily="Idea" FontWeight="Medium" FontSize="13">
+                                <materialDesign:Chip.Icon>
+                                    <Image Width="40" Height="40" Source="/Resources/prjImage/ProjectImage1.png"/>
+                                </materialDesign:Chip.Icon>
+                            </materialDesign:Chip>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button 
+                            Grid.Column="0"
+                            Width="110"
+                            Height="35"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            x:Name="addTaskBtn" 
+                            Content="Add Task" 
+                            Click="addTaskBtn_Click" BorderThickness="0"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>
+                        <Button 
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            x:Name="settingBtn" 
+                            Width="40" Height="40"
+                            Style="{StaticResource MaterialDesignIconButton}"
+                            Foreground="{StaticResource MaterialDesignLightForeground}"
+                            Background="{StaticResource MaterialDesignTextFieldBoxBackground}"
+                            Click="settingBtn_Click">
+                            <materialDesign:PackIcon Kind="Paintbrush" Height="20"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Margin="30, 0, 30, 0">
+                <StackPanel Orientation="Horizontal" 
+                    Grid.Row="0" Height="30" 
+                    VerticalAlignment="Center">
+                    <materialDesign:Card 
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Background="{StaticResource SilverColorButton}"
+                        Width="280" Margin="0, 0, 40, 0">
+                        <Grid Margin="10, 0, 10, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Next Up"
+                                FontFamily="Inter"
+                                FontWeight="Medium" 
+                                Foreground="#FF313753"
+                                VerticalAlignment="Center" Grid.Column="0"/>
+                            <materialDesign:Card 
+                                Grid.Column="1" HorizontalAlignment="Right"
+                                Width="25"
+                                Height="20"
+                                VerticalAlignment="Center" UniformCornerRadius="6"
+                                Background="#313753" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                                <TextBlock 
+                                    x:Name="nextCount"
+                                    Text="0"
+                                    Foreground="White"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card 
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Background="{StaticResource SilverColorButton}"
+                        Width="280" Margin="0, 0, 40, 0">
+                        <Grid Margin="10, 0, 10, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="In Procces"
+                                FontFamily="Inter"
+                                FontWeight="Medium" 
+                                Foreground="#FF313753"
+                                VerticalAlignment="Center" Grid.Column="0"/>
+                            <materialDesign:Card 
+                                Grid.Column="1" HorizontalAlignment="Right"
+                                Width="25"
+                                Height="20"
+                                VerticalAlignment="Center" UniformCornerRadius="6"
+                                Background="#313753" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                                <TextBlock 
+                                    x:Name="procCount"
+                                    Text="0"
+                                    Foreground="White"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card 
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Background="{StaticResource SilverColorButton}"
+                        Width="280" Margin="0, 0, 40, 0">
+                        <Grid Margin="10, 0, 10, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Complete"
+                                FontFamily="Inter"
+                                FontWeight="Medium" 
+                                Foreground="#FF313753"
+                                VerticalAlignment="Center" Grid.Column="0"/>
+                            <materialDesign:Card 
+                                Grid.Column="1" HorizontalAlignment="Right"
+                                Width="25"
+                                Height="20"
+                                VerticalAlignment="Center" UniformCornerRadius="6"
+                                Background="#313753" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                                <TextBlock 
+                                    x:Name="complCount"
+                                    Text="0"
+                                    Foreground="White"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                        </Grid>
+                    </materialDesign:Card>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3" VerticalAlignment="Stretch" Margin="30, 0, 30, 0">
+                <ScrollViewer 
+                        VerticalScrollBarVisibility="Auto" 
+                        HorizontalScrollBarVisibility="Hidden" 
+                        VerticalContentAlignment="Stretch" 
+                        HorizontalAlignment="Stretch"
+                        Grid.Row="1">
+                    <StackPanel 
+                            Orientation="Horizontal" 
+                            x:Name="categoryBlock">
+
+                        <StackPanel 
+                                x:Name="nextBlock"  
+                                Width="280"
+                                Margin="0, 0, 40, 0">
+                        </StackPanel>
+
+                        <StackPanel 
+                                x:Name="processBlock" 
+                                Width="280"
+                                Margin="0, 0, 40, 0"/>
+
+                        <StackPanel 
+                                x:Name="competeBlock" 
+                                Width="280"/>
+                    </StackPanel>
+                </ScrollViewer>
+                <materialDesign:Snackbar 
+                    x:Name="MySnackbar"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    IsActive="False"
+                    MessageQueue="{materialDesign:MessageQueue}">
+                    <materialDesign:SnackbarMessage>
+                        <Grid HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon 
+                                Kind="CheckCircle" 
+                                Grid.Column="0"
+                                Width="30" Height="30"
+                                Foreground="DodgerBlue"
+                                VerticalAlignment="Center"/>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
+                                    x:Name="SnackBarText" 
+                                    VerticalAlignment="Center"
+                                    Text="Задача создана!" 
+                                    FontFamily="Idea" FontWeight="Medium"
+                                    Grid.Row="0"/>
+                                <TextBlock 
+                                    VerticalAlignment="Center"
+                                    Text="Нажмите, чтобы скрыть" 
+                                    FontFamily="Idea" FontWeight="Normal"
+                                    FontSize="10"
+                                    Grid.Row="1"/>
+                            </Grid>
+                        </Grid>
+                    </materialDesign:SnackbarMessage>
+                </materialDesign:Snackbar>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,71 @@
+﻿<Window x:Class="ProjectManager.SelectProjectForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectManager"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="SelectProjectForm" Height="720" Width="920" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowStyle="None" AllowsTransparency="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card
+            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+            Background="White">
+            <Grid Margin="10, 0, 0, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Image 
+                        Source="{StaticResource Icon}" Height="30" 
+                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label 
+                        Content="Idea Studio" 
+                        VerticalAlignment="Center"
+                        FontFamily="Idea" FontWeight="Medium" FontSize="14"/>
+                </StackPanel>
+                <Menu HorizontalAlignment="Right" Grid.Column="1"
+                      VerticalAlignment="Center" Margin="0, 0, 10, 0">
+                    <MenuItem 
+                    Height="30" 
+                    Header="{materialDesign:PackIcon Kind=WindowMinimize}"
+                    Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                    Click="Minimized_Click"/>
+                    <MenuItem 
+                    Height="30" 
+                    Header="{materialDesign:PackIcon Kind=WindowMaximize}"
+                    Click="Maximized_Click"
+                    Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                    <MenuItem 
+                    Height="30" 
+                    Header="{materialDesign:PackIcon Kind=Close}"
+                    Click="CloseBtn_Click"
+                    Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                </Menu>
+            </Grid>
+        </materialDesign:Card>
+        <StackPanel Grid.Row="1" Margin="30">
+            <Grid>
+                <Label 
+                    FontFamily="Idea" FontSize="25" FontWeight="Medium" 
+                    Content="My Project"/>
+                <Button 
+                    HorizontalAlignment="Right" 
+                    Content="Create New Project"
+                    Height="35"
+                    Click="NewProjectBtn_Click"
+                    FontFamily="Idea" FontSize="14" FontWeight="Medium" Cursor="Hand"/>
+            </Grid>
+        </StackPanel>
+        <StackPanel 
+            x:Name="prjList" Background="#f6f7fb" Grid.Row="2"
+            Margin="20, 0, 20, 20"
+            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+    </Grid>
+</Window>
