@@ -23,6 +23,7 @@ namespace ProjectManager
         public List<List<Task>> GetTasks() => project.Tasks;
         public List<Marker> GetMarkers() => project.Markers;
 
+        // Remove Task
         public void RemoveTask(Task task)
         {
             var list = project.Tasks;
@@ -31,13 +32,13 @@ namespace ProjectManager
             SaveProject();
         }
 
+        // Move task to select column
         public void MoveTask(Task task, int to)
         {
-            RemoveTask(task);
-            project.Tasks[to].Add(task);
-            SaveProject();
+            AddTask(task, to);
         }
 
+        // Get task by key (Task Uniqle ID)
         public Task GetTaskByKey(string key)
         {
             Task task = null;
@@ -50,6 +51,7 @@ namespace ProjectManager
             return task;
         }
 
+        // Parse directory witch projects and return list from projects
         public List<Project> GetProjectsList()
         {
             string[] projectArray = Directory.GetFiles(Environment.CurrentDirectory + "\\Projects\\", "*.json");

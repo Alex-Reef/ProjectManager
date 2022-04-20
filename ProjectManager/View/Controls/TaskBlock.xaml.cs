@@ -10,7 +10,7 @@ namespace ProjectManager.View.Controls
         public TaskBlock(Task task, Model model)
         {
             InitializeComponent();
-            TaskName.Content = task.Name;
+            TaskName.Text = task.Name;
             TaskDescription.Text = task.Description;
             DateTime date = new DateTime();
             date = DateTime.Parse(task.EndTime.ToString());

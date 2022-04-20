@@ -32,6 +32,11 @@ namespace ProjectManager.Controllers
             return PagesNavigator.Open(PageName, model, this);
         }
 
+        public void SetTheme()
+        {
+            SettingsController.SetTheme();
+        }
+
         public Tuple<int, int> GetTaskPosition(Model model, Task task)
         {
             int PositionID = -1, CategoryID = -1;

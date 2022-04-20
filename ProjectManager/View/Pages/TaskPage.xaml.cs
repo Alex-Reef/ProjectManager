@@ -126,14 +126,7 @@ namespace ProjectManager
 
         private Tuple<Button, Task> CreateTask(Task ts)
         {
-            Task task = new Task()
-            {
-                Name = ts.Name,
-                Description = ts.Description,
-                UniqleID = ts.UniqleID,
-                MarkersID = ts.MarkersID,
-                EndTime = ts.EndTime
-            };
+            Task task = ts;
 
             if (ts.Description.Length > 70)
                 ts.Description = ts.Description.Substring(0, 70) + "...";

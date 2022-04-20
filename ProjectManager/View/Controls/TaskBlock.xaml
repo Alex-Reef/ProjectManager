@@ -6,13 +6,14 @@
              xmlns:local="clr-namespace:ProjectManager.View.Controls"
              mc:Ignorable="d" 
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="150" d:DesignWidth="260">
-    <md:Card Background="{StaticResource MaterialDesignCardBackground}" UniformCornerRadius="10" x:Name="TaskCard" md:ShadowAssist.ShadowDepth="Depth1">
-        <Grid Margin="10">
+             Height="Auto" d:DesignWidth="260">
+    <md:Card Background="{StaticResource MaterialDesignCardBackground}" UniformCornerRadius="5" x:Name="TaskCard" md:ShadowAssist.ShadowDepth="Depth1">
+        <Grid Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
                 <RowDefinition/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" x:Name="MarkerPanel" Orientation="Horizontal"/>
             <Grid Grid.Row="1">
@@ -21,32 +22,54 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Width="230" Grid.Row="0" x:Name="TaskName"
-                       Content="Task name" Foreground="{StaticResource MaterialDesignBody}" 
+                <TextBlock Width="230" Grid.Row="0" x:Name="TaskName"
+                       Text="Task name" 
+                       Foreground="{StaticResource MaterialDesignBody}" 
                        FontSize="16" FontFamily="Idea" FontWeight="Medium"
-                       VerticalAlignment="Bottom"/>
-                <TextBlock Grid.Row="1" Width="230" x:Name="TaskDescription"
-                       Text="Description" Foreground="{StaticResource MaterialDesignBody}" 
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Left"/>
+                <TextBlock Grid.Row="1" Width="240" x:Name="TaskDescription"
+                       Text="Description"
+                       Foreground="{StaticResource MaterialDesignBody}" 
                        FontSize="10" FontFamily="Idea" FontWeight="Medium"
-                       VerticalAlignment="Top" Margin="10, 0, 0, 0" TextWrapping="Wrap"/>
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top" TextWrapping="Wrap"/>
             </Grid>
-            <Grid Grid.Row="2">
+            <Separator Grid.Row="2" Margin="0, 10, 0, 0" VerticalAlignment="Top"/>
+            <Grid Grid.Row="3" Margin="0, 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <md:PackIcon Kind="Flag" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
-                    <Label Content="Null" x:Name="TaskDate" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                    <md:PackIcon 
+                        Kind="Calendar" 
+                        VerticalAlignment="Center" 
+                        Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                    <Label 
+                        Content="Null"
+                        FontFamily="Idea" FontWeight="SemiBold" FontSize="12"
+                        x:Name="TaskDate" 
+                        VerticalAlignment="Center" 
+                        Foreground="{StaticResource MaterialDesignBodyLight}"/>
                 </StackPanel>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <md:PackIcon Kind="Subtasks" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
-                        <Label Content="0" x:Name="TaskSubtaskCount" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                    <StackPanel 
+                        Grid.Column="0" 
+                        Orientation="Horizontal" HorizontalAlignment="Right">
+                        <md:PackIcon 
+                            Kind="Subtasks" 
+                            VerticalAlignment="Center" 
+                            Foreground="{StaticResource MaterialDesignBodyLight}"/>
+                        <Label 
+                            Content="0" 
+                            x:Name="TaskSubtaskCount" 
+                            VerticalAlignment="Center" 
+                            Foreground="{StaticResource MaterialDesignBodyLight}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                         <md:PackIcon Kind="Comments" VerticalAlignment="Center" Foreground="{StaticResource MaterialDesignBodyLight}"/>

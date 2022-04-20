@@ -9,7 +9,7 @@
       d:DesignHeight="680" d:DesignWidth="1020" MinWidth="1020" MinHeight="680"
       Title="SettingsPage">
 
-    <Grid Background="#F8FAFB">
+    <Grid Background="{DynamicResource Background}">
         <Grid Margin="30, 30, 30, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>

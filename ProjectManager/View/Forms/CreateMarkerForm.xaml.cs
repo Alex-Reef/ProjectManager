@@ -84,6 +84,7 @@ namespace ProjectManager
             LoadMarkers();
         }
 
+        // Generator of Random String for marker ID
         private string RandomString(int length)
         {
             const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";

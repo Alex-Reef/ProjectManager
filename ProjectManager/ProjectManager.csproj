@@ -69,6 +69,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\Message.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="View\Controls\MarkerBlock.xaml.cs">
       <DependentUpon>MarkerBlock.xaml</DependentUpon>
     </Compile>
@@ -106,6 +107,14 @@
     <Compile Include="View\Pages\TaskPage.xaml.cs">
       <DependentUpon>TaskPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Styles\Themes\DarkTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\Themes\LightTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\MarkerBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
