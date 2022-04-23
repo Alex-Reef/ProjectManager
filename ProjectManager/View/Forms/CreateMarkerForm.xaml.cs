@@ -6,17 +6,20 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using ProjectManager.Models;
+using ProjectManager.Controllers;
 
 namespace ProjectManager
 {
     public partial class CreateMarkerForm : Window
     {
         private Model model;
+        private Controller controller { get; set; }
         private Marker marker { get; set; }
-        public CreateMarkerForm(Model model)
+        public CreateMarkerForm(Model model, Controller controller)
         {
             InitializeComponent();
             this.model = model;
+            this.controller = controller;
             if(model.GetMarkers().Count != 0)
                 marker = model.GetMarkers()[0];
             else
@@ -118,7 +121,7 @@ namespace ProjectManager
         {
             marker.Color = ColorPicker.Color;
             marker.Text = MarkerName.Text;
-            model.UpdateMarker(marker);
+            controller.markerController.Update(marker);
             LoadMarkers();
         }
 
@@ -137,7 +140,7 @@ namespace ProjectManager
         {
             if (model.GetMarkers().Count > 1)
             {
-                model.DeleteMarker(marker);
+                controller.markerController.Delete(marker);
                 LoadMarkers();
             }
         }

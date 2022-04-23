@@ -24,7 +24,7 @@ namespace ProjectManager.Controllers
 
         public int SaveProject(string name, string desc)
         {
-            model.SaveProject();
+            model.Save();
             return 0;
         }
 

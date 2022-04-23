@@ -52,7 +52,7 @@ namespace ProjectManager
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            model.RemoveTask(task);
+            controller.taskController.Delete(task);
             this.Visibility = Visibility.Hidden;
         }
 
@@ -61,7 +61,9 @@ namespace ProjectManager
             task.Name = TaskNameBox.Text;
             task.Description = DescriptionBox.Text;
             task.EndTime = DataPicker.Text.ToString();
-            model.UpdateTask(categoryBox.SelectedIndex, task, markersID);
+            task.MarkersID = markersID;
+            controller.taskController.Move(task, categoryBox.SelectedIndex);
+            controller.taskController.Update(task);
             this.Visibility = Visibility.Hidden;
         }
 

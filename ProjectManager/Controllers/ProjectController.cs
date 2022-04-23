@@ -10,8 +10,8 @@ namespace ProjectManager.Controllers
             this.Model = model;
         }
 
-        public void Create() { 
-            Project project = new Project();
+        public void Create(Project _project) { 
+            Project project = _project;
         }
 
         public void Update(Project value) {

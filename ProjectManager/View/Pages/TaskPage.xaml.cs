@@ -73,8 +73,8 @@ namespace ProjectManager
                 };
 
                 Button taskPanel = CreateTask(task).Item1;
-                if (model.AddTask(task, 0) == 0)
-                    Panels[0].Children.Add(taskPanel);
+                controller.taskController.Create(task);
+                Panels[0].Children.Add(taskPanel);
 
                 MySnackbar.IsActive = true;
                 MySnackbar.MouseDown += MySnackbar_MouseDown;
@@ -99,7 +99,7 @@ namespace ProjectManager
 
         private void OpenMarkerSettings()
         {
-            CreateMarkerForm createMarkerForm = new CreateMarkerForm(model);
+            CreateMarkerForm createMarkerForm = new CreateMarkerForm(model, controller);
             createMarkerForm.ShowDialog();
             if (createMarkerForm.DialogResult == true)
                 Update();
@@ -133,7 +133,7 @@ namespace ProjectManager
 
         private void DeleteTask(Task task)
         {
-            model.RemoveTask(task);
+            controller.taskController.Delete(task);
             Update();
         }
 

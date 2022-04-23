@@ -23,7 +23,7 @@ namespace ProjectManager
             model = new Model();
             controller = new Controller(model);
             projectList = new List<Project>();
-            projectList = model.GetProjectsList();
+            projectList = model.GetProjects();
             LoadListProject(projectList);
         }
 
