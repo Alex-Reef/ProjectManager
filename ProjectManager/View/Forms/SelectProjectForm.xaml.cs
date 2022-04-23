@@ -8,7 +8,6 @@ using System.Windows.Input;
 using ProjectManager.Controllers;
 using ProjectManager.View.Controls;
 using ProjectManager.Models;
-using MaterialDesignThemes.Wpf;
 
 namespace ProjectManager
 {

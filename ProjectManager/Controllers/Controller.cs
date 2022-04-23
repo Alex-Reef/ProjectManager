@@ -8,11 +8,18 @@ namespace ProjectManager.Controllers
     {
         private Model model { get; set; }
 
+        public MarkerController markerController { get; set; }
+        public ProjectController projectController { get; set; }
+        public TaskController taskController { get; set; }
+
         public Controller() { }
 
         public Controller(Model model)
         {
             this.model = model;
+            markerController = new MarkerController(model);
+            taskController = new TaskController(model);
+            projectController = new ProjectController(model);
         }
 
         public int SaveProject(string name, string desc)

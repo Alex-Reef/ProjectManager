@@ -94,7 +94,7 @@ namespace ProjectManager
             return 0;
         }
 
-        public int UpdateTask( int Category, Task task, List<string> markers)
+        public int UpdateTask(int Category, Task task, List<string> markers)
         {
             SetMarker(task, markers);
             AddTask(task, Category);
@@ -162,5 +162,12 @@ namespace ProjectManager
             }
             return 0;
         }
+
+        #region NEW MODEL
+        public void GetData() { }
+        public void Update() { }
+        public void Save() { }
+        public void Load() { }
+        #endregion
     }
 }

@@ -68,8 +68,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Controllers\MarkerController.cs" />
     <Compile Include="Controllers\Message.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="View\Controls\HeaderColumn.xaml.cs">
       <DependentUpon>HeaderColumn.xaml</DependentUpon>
     </Compile>
