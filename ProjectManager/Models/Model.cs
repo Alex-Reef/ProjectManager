@@ -22,6 +22,7 @@ namespace ProjectManager
         public Project GetProject() => project;
         public List<List<Task>> GetTasks() => project.Tasks;
         public List<Marker> GetMarkers() => project.Markers;
+        public List<string> GetHeaders() => project.Headers;
 
         // Remove Task
         public void RemoveTask(Task task)
@@ -66,21 +67,19 @@ namespace ProjectManager
 
         public int CreateProject(string name)
         {
-            List<Task> NextUp, InProcess, Complete;
-            NextUp = new List<Task>();
-            InProcess = new List<Task>();
-            Complete = new List<Task>();
-            List<List<Task>> list = new List<List<Task>>();
-            list.Add(NextUp);
-            list.Add(InProcess);
-            list.Add(Complete);
+            List<List<Task>> list = new List<List<Task>>() { new List<Task>(), new List<Task>(), new List<Task>()};
+            List<string> headerColumns = new List<string>() { 
+                "Next Up", "In Process","Complete"
+            };
 
             List<Marker> markers = new List<Marker>();
+
             project = new Project()
             {
                 Name = name,
                 Tasks = list,
-                Markers = markers
+                Markers = markers,
+                Headers = headerColumns
             };
 
             DirectoryInfo dir = Directory.CreateDirectory("Projects");

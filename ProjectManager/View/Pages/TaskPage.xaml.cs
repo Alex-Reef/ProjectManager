@@ -13,7 +13,7 @@ namespace ProjectManager
     {
         private List<List<Task>> Tasks { get; set; }
         private List<StackPanel> Panels { get; set; }
-        private List<TextBlock> Counters { get; set; }
+        private List<HeaderColumn> Headers { get; set; }
         private CreateTaskForm createTaskForm;
         private Model model { get; set; }
         private Controller controller { get; set; }
@@ -24,14 +24,27 @@ namespace ProjectManager
 
             model = Model;
             this.controller = controller;
+
             Tasks = model.GetTasks();
-            Panels = new List<StackPanel>() { nextBlock, processBlock, competeBlock };
-            Counters = new List<TextBlock>() { nextCount, procCount, complCount };
-            for (int i = 0; i < 3; i++)
-                LoadTask(Tasks[i], Panels[i], Counters[i]);
+            Panels = new List<StackPanel>();
+            Headers = new List<HeaderColumn>();
+
+            var list = model.GetHeaders();
+            for (int i = 0; i < model.GetHeaders().Count; i++)
+            {
+                Panels.Add(new StackPanel() { Width = 280, Margin = new Thickness(0, 0, 40, 0) });
+                Headers.Add(new HeaderColumn(list[i], 0));
+                ColumnPanel.Children.Add(Panels[i]);
+                HeaderPanel.Children.Add(Headers[i]);
+            }
+
+            for(int i = 0; i < model.GetHeaders().Count; i++)
+            {
+               LoadTask(Tasks[i], Panels[i], Headers[i]);
+            }
         }
 
-        private int LoadTask(List<Task> taskList, StackPanel panel, TextBlock textBlock)
+        private int LoadTask(List<Task> taskList, StackPanel panel, HeaderColumn headers)
         {
             Button task;
             foreach (Task ts in taskList)
@@ -39,7 +52,7 @@ namespace ProjectManager
                 task = CreateTask(ts).Item1;
                 panel.Children.Add(task);
             }
-            textBlock.Text = taskList.Count.ToString();
+            headers.SetCount(taskList.Count);
             return 0;
         }
 
@@ -61,7 +74,7 @@ namespace ProjectManager
 
                 Button taskPanel = CreateTask(task).Item1;
                 if (model.AddTask(task, 0) == 0)
-                    nextBlock.Children.Add(taskPanel);
+                    Panels[0].Children.Add(taskPanel);
 
                 MySnackbar.IsActive = true;
                 MySnackbar.MouseDown += MySnackbar_MouseDown;
@@ -115,7 +128,7 @@ namespace ProjectManager
                 Panels[i].Children.Clear();
             Tasks = model.GetTasks();
             for (int i = 0; i < 3; i++)
-                LoadTask(Tasks[i], Panels[i], Counters[i]);
+                LoadTask(Tasks[i], Panels[i], Headers[i]);
         }
 
         private void DeleteTask(Task task)
@@ -136,9 +149,9 @@ namespace ProjectManager
             Button button = new Button()
             {
                 Background = new SolidColorBrush(Colors.Transparent),
-                Width = 260,
+                Width = 280,
                 Height = 150,
-                Margin = new Thickness(10, 20, 10, 0),
+                Margin = new Thickness(0, 20, 0, 0),
                 BorderThickness = new Thickness(0),
                 Content = taskBlock,
                 Tag = task,

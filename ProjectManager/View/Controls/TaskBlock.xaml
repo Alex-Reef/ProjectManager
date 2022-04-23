@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ProjectManager.View.Controls"
              mc:Ignorable="d" 
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Height="Auto" d:DesignWidth="260">
+             Height="Auto" d:DesignWidth="280">
     <md:Card Background="{StaticResource MaterialDesignCardBackground}" UniformCornerRadius="5" x:Name="TaskCard" md:ShadowAssist.ShadowDepth="Depth1">
         <Grid Margin="5">
             <Grid.RowDefinitions>

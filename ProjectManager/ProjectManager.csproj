@@ -70,6 +70,9 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\Message.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="View\Controls\HeaderColumn.xaml.cs">
+      <DependentUpon>HeaderColumn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\MarkerBlock.xaml.cs">
       <DependentUpon>MarkerBlock.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Controls\HeaderColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\MarkerBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,10 +162,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\Styles\Colors.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\Styles\Images.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
