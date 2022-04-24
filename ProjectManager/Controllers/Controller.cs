@@ -22,18 +22,6 @@ namespace ProjectManager.Controllers
             projectController = new ProjectController(model);
         }
 
-        public int SaveProject(string name, string desc)
-        {
-            model.Save();
-            return 0;
-        }
-
-        public int CreateProject(string name)
-        {
-            model.CreateProject(name);
-            return 0;
-        }
-
         public Page OpenPage(string PageName)
         {
             return PagesNavigator.Open(PageName, model, this);

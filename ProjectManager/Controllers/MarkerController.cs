@@ -5,6 +5,7 @@ namespace ProjectManager.Controllers
     public class MarkerController : IController<Marker>
     {
         private Model Model { get; set; }
+
         public MarkerController(Model model)
         {
             this.Model = model;
@@ -12,6 +13,9 @@ namespace ProjectManager.Controllers
 
         public void Create(Marker _marker) { 
             Marker marker = _marker;
+            var list = Model.GetCurentProject().Markers;
+            list.Add(marker);
+            Model.Save();
         }
 
         public void Update(Marker value) {

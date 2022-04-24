@@ -6,20 +6,18 @@ namespace ProjectManager
 {
     public partial class CreateProjectForm : Window
     {
-        private Model model;
-        private Controller presenter;
+        private Controller controller;
 
-        public CreateProjectForm()
+        public CreateProjectForm(Controller _controller)
         {
             InitializeComponent();
-
-            model = new Model();
-            presenter = new Controller(model);
+            controller = _controller;
         }
 
         private void createProjectBtn_Click(object sender, RoutedEventArgs e)
         {
-            presenter.CreateProject(prjNameBox.Text);
+            Project project = new Project() { Name = prjNameBox.Text };
+            controller.projectController.Create(project);
             SelectProjectForm mw = new SelectProjectForm();
             mw.Show();
             this.Close();

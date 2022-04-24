@@ -38,42 +38,6 @@ namespace ProjectManager
             return task;
         }
 
-        public int CreateProject(string name)
-        {
-            List<List<Task>> list = new List<List<Task>>() { new List<Task>(), new List<Task>(), new List<Task>()};
-            List<string> headerColumns = new List<string>() { 
-                "Next Up", "In Process","Complete"
-            };
-
-            List<Marker> markers = new List<Marker>();
-
-            project = new Project()
-            {
-                Name = name,
-                Tasks = list,
-                Markers = markers,
-                Headers = headerColumns
-            };
-
-            DirectoryInfo dir = Directory.CreateDirectory("Projects");
-
-            using (StreamWriter file = File.CreateText(Environment.CurrentDirectory + "\\Projects\\"+ project.Name + ".json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, project);
-            }
-
-            projects.Add(project);
-            return 0;
-        }
-
-        public int AddMarker(Marker marker)
-        {
-            project.Markers.Add(marker);
-            Save();
-            return 0;
-        }
-
         #region NEW MODEL
 
         public void GetCurentUser() { }

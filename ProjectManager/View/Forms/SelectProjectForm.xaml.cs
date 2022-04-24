@@ -1,9 +1,5 @@
 ﻿using System.Windows;
 using System.Collections.Generic;
-using System;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Effects;
 using System.Windows.Input;
 using ProjectManager.Controllers;
 using ProjectManager.View.Controls;
@@ -66,7 +62,7 @@ namespace ProjectManager
 
         private void NewProjectBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreateProjectForm create = new CreateProjectForm();
+            CreateProjectForm create = new CreateProjectForm(controller);
             create.Show();
             this.Hide();
         }

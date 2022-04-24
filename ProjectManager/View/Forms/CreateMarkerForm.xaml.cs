@@ -83,7 +83,7 @@ namespace ProjectManager
                 Text = "New Marker",
                 UniqleID = RandomString(10)
             };
-            model.AddMarker(marker);
+            controller.markerController.Create(marker);
             LoadMarkers();
         }
 
