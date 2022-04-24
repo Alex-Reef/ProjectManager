@@ -7,13 +7,14 @@
              mc:Ignorable="d" 
              Height="20" Width="Auto">
     <materialDesign:Card 
+        Margin="0, 0, 10, 0"
         x:Name="MarkerCard"
         Background="#FF3E4153" 
         UniformCornerRadius="10"
         materialDesign:ShadowAssist.ShadowDepth="Depth0">
         <Label 
             Margin="5, 0"
-            Content="Text" Foreground="{StaticResource MaterialDesignDarkForeground}" x:Name="MarkerText"
+            Content="Text" Foreground="White" x:Name="MarkerText"
             FontSize="10" FontFamily="Idea" FontWeight="Medium"
             HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </materialDesign:Card>

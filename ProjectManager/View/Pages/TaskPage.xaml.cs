@@ -25,12 +25,12 @@ namespace ProjectManager
             model = Model;
             this.controller = controller;
 
-            Tasks = model.GetTasks();
+            Tasks = model.GetCurentProject().Tasks;
             Panels = new List<StackPanel>();
             Headers = new List<HeaderColumn>();
 
-            var list = model.GetHeaders();
-            for (int i = 0; i < model.GetHeaders().Count; i++)
+            var list = model.GetCurentProject().Headers;
+            for (int i = 0; i < list.Count; i++)
             {
                 Panels.Add(new StackPanel() { Width = 280, Margin = new Thickness(0, 0, 40, 0) });
                 Headers.Add(new HeaderColumn(list[i], 0));
@@ -38,7 +38,7 @@ namespace ProjectManager
                 HeaderPanel.Children.Add(Headers[i]);
             }
 
-            for(int i = 0; i < model.GetHeaders().Count; i++)
+            for(int i = 0; i < list.Count; i++)
             {
                LoadTask(Tasks[i], Panels[i], Headers[i]);
             }
@@ -58,7 +58,7 @@ namespace ProjectManager
 
         private void addTaskBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (model.GetMarkers().Count != 0)
+            if (model.GetCurentProject().Markers.Count != 0)
             {
                 createTaskForm = new CreateTaskForm(model);
                 createTaskForm.ShowDialog();
@@ -69,7 +69,7 @@ namespace ProjectManager
                     Description = createTaskForm.GetDesc(),
                     UniqleID = createTaskForm.GetID(),
                     MarkersID = createTaskForm.GetMarkers(),
-                    EndTime = DateTime.Now.ToString("d MMMM")
+                    EndTime = createTaskForm.GetDate()
                 };
 
                 Button taskPanel = CreateTask(task).Item1;
@@ -78,6 +78,7 @@ namespace ProjectManager
 
                 MySnackbar.IsActive = true;
                 MySnackbar.MouseDown += MySnackbar_MouseDown;
+                Update();
             }
             else
             {
@@ -126,7 +127,7 @@ namespace ProjectManager
         {
             for (int i = 0; i < 3; i++)
                 Panels[i].Children.Clear();
-            Tasks = model.GetTasks();
+            Tasks = model.GetCurentProject().Tasks;
             for (int i = 0; i < 3; i++)
                 LoadTask(Tasks[i], Panels[i], Headers[i]);
         }

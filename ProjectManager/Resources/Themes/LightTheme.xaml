@@ -5,6 +5,7 @@
     <SolidColorBrush x:Key="Primary" Color="#6838F2"/>
     <SolidColorBrush x:Key="Text" Color="#222222"/>
     <SolidColorBrush x:Key="Bar" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="Gray" Color="#F2F3F5"/>
     <SolidColorBrush x:Key="CardBackground" Color="#FFFFFF"/>
 
 </ResourceDictionary>

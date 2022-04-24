@@ -12,12 +12,10 @@ namespace ProjectManager.View.Controls
             InitializeComponent();
             TaskName.Text = task.Name;
             TaskDescription.Text = task.Description;
-            DateTime date = new DateTime();
-            date = DateTime.Parse(task.EndTime.ToString());
-            TaskDate.Content = date.ToString("d MMMM");
+            TaskDate.Content = task.EndTime.ToString();
             foreach(var marker in task.MarkersID)
             {
-                MarkerBlock markerBlock = new MarkerBlock(model.GetMarkers().Find(x => x.UniqleID == marker));
+                MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers.Find(x => x.UniqleID == marker));
                 MarkerPanel.Children.Add(markerBlock);
             }
         }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 
 namespace ProjectManager.Controllers
@@ -9,7 +7,12 @@ namespace ProjectManager.Controllers
     {
         public static void SetTheme()
         {
-            Application.Current.Resources.MergedDictionaries[0].Source = new Uri("/Resources/Styles/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+            Application.Current.Resources.MergedDictionaries[0].Source = new Uri("/Resources/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+        }
+
+        public static void SetLanguage()
+        {
+
         }
     }
 }

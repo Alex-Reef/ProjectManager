@@ -23,7 +23,7 @@ namespace ProjectManager
             InitializeComponent();
             this.model = model;
             markersID = new List<string>();
-            var list = model.GetMarkers();
+            var list = model.GetCurentProject().Markers;
             foreach (var item in list)
             {
                 MarkerBox.Items.Add(item.Text);
@@ -57,8 +57,8 @@ namespace ProjectManager
 
         public void AddMarker(int ID)
         {
-            markersID.Add(model.GetMarkers()[ID].UniqleID);
-            MarkerBlock markerBlock = new MarkerBlock(model.GetMarkers()[ID]);
+            markersID.Add(model.GetCurentProject().Markers[ID].UniqleID);
+            MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers[ID]);
             markerBlock.MouseDown += MarkerBlock_MouseDown;
             markerPanel.Children.Add(markerBlock);
         }
@@ -71,8 +71,8 @@ namespace ProjectManager
 
         public void RemoveMarker(Marker marker)
         {
-            markersID.RemoveAt(model.GetMarkers().FindIndex(x=>x.UniqleID == marker.UniqleID));
-            markerPanel.Children.RemoveAt(model.GetMarkers().FindIndex(x => x.UniqleID == marker.UniqleID));
+            markersID.RemoveAt(model.GetCurentProject().Markers.FindIndex(x=>x.UniqleID == marker.UniqleID));
+            markerPanel.Children.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
         }
 
         private string RandomString(int length)
@@ -99,6 +99,7 @@ namespace ProjectManager
             taskName = taskNameBox.Text;
             descTask = descTaskBox.Text;
             uID = RandomString(10);
+            Date = DatePicker.SelectedDate.Value.ToString("d MMMM");
             this.Visibility = Visibility.Hidden;
         }
 

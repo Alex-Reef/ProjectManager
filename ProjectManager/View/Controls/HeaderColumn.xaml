@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="35">
     <Border BorderThickness="0, 0, 0, 1" BorderBrush="{DynamicResource Primary}" Width="280" Margin="0, 0, 40, 0">
-        <materialDesign:Card>
+        <materialDesign:Card Background="{DynamicResource CardBackground}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

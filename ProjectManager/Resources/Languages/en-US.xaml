@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="NewTaskBtn">New Task</system:String>
+    <system:String x:Key="LetsStartLabel">Let's Start, </system:String>
+    <system:String x:Key="ProjectLabel">Projects / </system:String>
+    <system:String x:Key="MarkersBtn">Markers</system:String>
+    <system:String x:Key="YouHaveTaskCount">You have COUNT tasks</system:String>
+</ResourceDictionary>

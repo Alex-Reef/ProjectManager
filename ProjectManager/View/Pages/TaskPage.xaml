@@ -9,7 +9,7 @@
       d:DesignHeight="680" d:DesignWidth="1020"
       Title="TaskPage">
 
-    <Grid Background="{DynamicResource MaterialDesignLightBackground}">
+    <Grid Background="{DynamicResource Background}">
         <Grid Margin="0, 0, 0, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="170"></RowDefinition>
@@ -35,21 +35,21 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Label
-                                Content="Project / "
+                                Content="{DynamicResource ProjectLabel}"
                                 FontSize="10"
                                 Grid.Row="0" 
                                 FontFamily="Inter" 
                                 FontWeight="SemiBold" 
                                 Foreground="{DynamicResource Text}"/>
                             <Label
-                                Content="Let's Start, "
+                                Content="{DynamicResource LetsStartLabel}"
                                 FontSize="25"
                                 Grid.Row="1" 
                                 FontFamily="Inter" 
                                 FontWeight="SemiBold" 
                                 Foreground="{DynamicResource Text}"/>
                             <Label
-                                Content="You have 3 tasks"
+                                Content="{DynamicResource YouHaveTaskCount}"
                                 FontSize="10"
                                 Grid.Row="2" 
                                 FontFamily="Inter" 
@@ -67,8 +67,8 @@
                                 Margin="0, 0, 15, 0"
                                 Width="35" Height="35"
                                 BorderThickness="0"
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
-                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                Foreground="{DynamicResource Text}"
+                                Background="{DynamicResource Gray}" Cursor="Hand">
                                 <materialDesign:PackIcon Kind="Search" Height="20"/>
                             </Button>
                             <Button
@@ -76,8 +76,9 @@
                                 Margin="0, 0, 15, 0"
                                 Width="35" Height="35"
                                 BorderThickness="0"
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
-                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                Foreground="{DynamicResource Text}"
+                                Background="{DynamicResource Gray}"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth2">
                                 <materialDesign:PackIcon Kind="BellOutline" Height="20"/>
                             </Button>
                             <materialDesign:Chip 
@@ -109,7 +110,7 @@
                             Style="{StaticResource MaterialDesignFlatAccentBgButton}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
-                                    Text="New Task"
+                                    Text="{DynamicResource NewTaskBtn}"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"/>
                                 <materialDesign:PackIcon 
@@ -132,7 +133,7 @@
                             Style="{StaticResource MaterialDesignFlatAccentBgButton}" Cursor="Hand">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
-                                    Text="Markers"
+                                    Text="{DynamicResource MarkersBtn}"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"/>
                                 <materialDesign:PackIcon 

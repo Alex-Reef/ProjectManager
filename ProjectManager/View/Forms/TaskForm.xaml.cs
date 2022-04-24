@@ -20,14 +20,19 @@ namespace ProjectManager
             InitializeComponent();
             model = md;
             controller = contr;
-            task = model.GetTaskByKey(ts.UniqleID);
+            foreach(var col in model.GetCurentProject().Tasks)
+            {
+                task = col.Find(x => x.UniqleID == ts.UniqleID);
+                if (task != null)
+                    break;
+            }
             markersID = new List<string>();
             TaskNameBox.Text = task.Name;
             DescriptionBox.Text = task.Description;
             PositionID = -1;
             CategoryID = -1;
 
-            var list = model.GetMarkers();
+            var list = model.GetCurentProject().Markers;
             foreach (var item in list)
             {
                 MarkerBox.Items.Add(item.Text);
@@ -37,7 +42,7 @@ namespace ProjectManager
             foreach (var item in lst)
             {
                 markersID.Add(item);
-                MarkerBlock markerBlock = new MarkerBlock(model.GetMarkers().Find(x => x.UniqleID == item));
+                MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers.Find(x => x.UniqleID == item));
                 markerBlock.MouseDown += MarkerBlock_MouseDown;
                 markerPanel.Children.Add(markerBlock);
             }
@@ -85,8 +90,8 @@ namespace ProjectManager
 
         public void AddMarker(int ID)
         {
-            markersID.Add(model.GetMarkers()[ID].UniqleID);
-            MarkerBlock markerBlock = new MarkerBlock(model.GetMarkers()[ID]);
+            markersID.Add(model.GetCurentProject().Markers[ID].UniqleID);
+            MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers[ID]);
             markerBlock.MouseDown += MarkerBlock_MouseDown;
             markerPanel.Children.Add(markerBlock);
         }
@@ -99,8 +104,8 @@ namespace ProjectManager
 
         public void RemoveMarker(Marker marker)
         {
-            markersID.RemoveAt(model.GetMarkers().FindIndex(x => x.UniqleID == marker.UniqleID));
-            markerPanel.Children.RemoveAt(model.GetMarkers().FindIndex(x => x.UniqleID == marker.UniqleID));
+            markersID.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
+            markerPanel.Children.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
         }
     }
 }

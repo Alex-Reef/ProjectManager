@@ -20,11 +20,11 @@ namespace ProjectManager
             InitializeComponent();
             this.model = model;
             this.controller = controller;
-            if(model.GetMarkers().Count != 0)
-                marker = model.GetMarkers()[0];
+            if(model.GetCurentProject().Markers.Count != 0)
+                marker = model.GetCurentProject().Markers[0];
             else
                 NewMarker();
-            marker = model.GetMarkers()[0];
+            marker = model.GetCurentProject().Markers[0];
             SetMarker(marker);
             LoadMarkers();
         }
@@ -41,7 +41,7 @@ namespace ProjectManager
         private void LoadMarkers()
         {
             markerBox.Children.Clear();
-            var list = model.GetMarkers();
+            var list = model.GetCurentProject().Markers;
             foreach (var item in list)
             {
                 MaterialDesignThemes.Wpf.Card card = new MaterialDesignThemes.Wpf.Card()
@@ -138,7 +138,7 @@ namespace ProjectManager
 
         private void DeveleMarkerBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (model.GetMarkers().Count > 1)
+            if (model.GetCurentProject().Markers.Count > 1)
             {
                 controller.markerController.Delete(marker);
                 LoadMarkers();

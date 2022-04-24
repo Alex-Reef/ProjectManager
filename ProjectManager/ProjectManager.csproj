@@ -74,6 +74,7 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Models\AppSettings.cs" />
     <Compile Include="View\Controls\HeaderColumn.xaml.cs">
       <DependentUpon>HeaderColumn.xaml</DependentUpon>
     </Compile>
@@ -114,11 +115,19 @@
     <Compile Include="View\Pages\TaskPage.xaml.cs">
       <DependentUpon>TaskPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\Styles\Themes\DarkTheme.xaml">
+    <Page Include="Resources\Languages\ua-UA.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Styles\Themes\LightTheme.xaml">
+    <Page Include="Resources\Languages\en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\DarkTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\LightTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

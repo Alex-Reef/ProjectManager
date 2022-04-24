@@ -35,7 +35,7 @@ namespace ProjectManager.Controllers
         public Tuple<int, int> GetTaskPosition(Model model, Task task)
         {
             int PositionID = -1, CategoryID = -1;
-            var list = model.GetTasks();
+            var list = model.GetCurentProject().Tasks;
             for (int i = 0; i < 3; i++)
             {
                 PositionID = list[i].FindIndex(s => s.UniqleID == task.UniqleID);

@@ -29,7 +29,7 @@ namespace ProjectManager.Controllers
                 }
             };
 
-            using (StreamWriter file = File.CreateText(Environment.CurrentDirectory + "\\Projects\\" + project.Name + ".json"))
+            using (StreamWriter file = File.CreateText(Environment.CurrentDirectory + @"\Data\Projects\" + project.Name + ".json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, project);

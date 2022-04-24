@@ -13,30 +13,32 @@
         AllowsTransparency="True"
         UseLayoutRounding="True">
 
-    <Grid Background="{DynamicResource MaterialDesignBackground}">
+    <Grid Background="{DynamicResource Background}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <materialDesign:Card Grid.Column="0"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1" Background="{DynamicResource MaterialDesignBackground}">
+        <materialDesign:Card 
+            Grid.Column="0"
+            materialDesign:ShadowAssist.ShadowDepth="Depth1" 
+            Background="{DynamicResource Bar}">
             <Grid>
                 <StackPanel Margin="0, 10, 0, 0">
                     <Image Source="{StaticResource Icon}" Height="30"/>
                     <StackPanel
-                          HorizontalAlignment="Center"
-                          Margin="0, 10, 0, 0">
+                        HorizontalAlignment="Center"
+                        Margin="0, 10, 0, 0">
                         <Button
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Height="45"
-                                ToolTip="Dashboard"
-                                HorizontalAlignment="Center" BorderThickness="0" Cursor="Hand">
+                            Foreground="{DynamicResource Text}"
+                            Style="{StaticResource MaterialDesignIconButton}"
+                            Height="45"
+                            ToolTip="Dashboard"
+                            HorizontalAlignment="Center" BorderThickness="0" Cursor="Hand">
                             <materialDesign:PackIcon Kind="ViewDashboard" Height="20"/>
                         </Button>
                         <Button
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Foreground="{DynamicResource Text}"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 Height="45"
                                 ToolTip="Task"
@@ -44,7 +46,7 @@
                             <materialDesign:PackIcon Kind="CalendarTask" Height="20"/>
                         </Button>
                         <Button
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Foreground="{DynamicResource Text}"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 Height="45"
                                 ToolTip="Code"
@@ -54,7 +56,7 @@
                     </StackPanel>
                     <StackPanel Margin="0, 20, 0, 0">
                         <Button
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Foreground="{DynamicResource Text}"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 Height="45"
                                 ToolTip="Projects"
@@ -62,7 +64,7 @@
                             <materialDesign:PackIcon Kind="BriefcaseEye" Height="20"/>
                         </Button>
                         <Button
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Foreground="{DynamicResource Text}"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 Height="45"
                                 ToolTip="Archive"
@@ -70,7 +72,7 @@
                             <materialDesign:PackIcon Kind="PackageDown" Height="20"/>
                         </Button>
                         <Button
-                                Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                                Foreground="{DynamicResource Text}"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 Height="45"
                                 ToolTip="Settings"
@@ -80,12 +82,13 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom" Height="60">
-                    <Button Width="40" Height="40" Style="{DynamicResource MaterialDesignIconButton}"
+                    <Button Width="40" Height="40" 
+                            Style="{DynamicResource MaterialDesignIconButton}"
                             Content="{materialDesign:PackIcon Kind=Logout}"
                             ToolTip="Logout"
                             HorizontalAlignment="Center"
                             BorderThickness="0"
-                            Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                            Foreground="{DynamicResource Text}"/>
                 </StackPanel>
             </Grid>
         </materialDesign:Card>
@@ -97,23 +100,23 @@
 
             <materialDesign:Card
                     materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                Background="{DynamicResource MaterialDesignBackground}">
+                Background="{DynamicResource Bar}">
                 <Menu HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 10, 0">
                     <MenuItem 
                             Height="30" 
                             Header="{materialDesign:PackIcon Kind=WindowMinimize}"
-                            Foreground="{DynamicResource MaterialDesignDarkBackground}"
+                            Foreground="{DynamicResource Text}"
                             Click="Minimized_Click"/>
                     <MenuItem 
                             Height="30" 
                             Header="{materialDesign:PackIcon Kind=WindowMaximize}"
                             Click="Maximized_Click"
-                            Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                            Foreground="{DynamicResource Text}"/>
                     <MenuItem 
                             Height="30" 
                             Header="{materialDesign:PackIcon Kind=Close}"
                             Click="CloseBtn_Click"
-                            Foreground="{DynamicResource MaterialDesignDarkBackground}"/>
+                            Foreground="{DynamicResource Text}"/>
                 </Menu>
             </materialDesign:Card>
 

@@ -11,6 +11,7 @@ namespace ProjectManager
     {
         private Project project { get; set; }
         private List<Project> projects { get; set; }
+        private AppSettings appSettings { get; set; }
 
         public Model()
         {
@@ -18,27 +19,7 @@ namespace ProjectManager
             Load();
         }
 
-        public void SetProject(Project _project) => project = projects.Find(x=>x.Equals(project));
-
-        public List<List<Task>> GetTasks() => project.Tasks;
-        public List<Marker> GetMarkers() => project.Markers;
-        public List<string> GetHeaders() => project.Headers;
-
-
-        // Get task by key (Task Uniqle ID)
-        public Task GetTaskByKey(string key)
-        {
-            Task task = null;
-            for (int i = 0; i < 3; i++)
-            {
-                task = GetTasks()[i].FirstOrDefault(x => x.UniqleID == key);
-                if (task != null)
-                    break;
-            }
-            return task;
-        }
-
-        #region NEW MODEL
+        public void SetProject(Project _project) => project = projects.Find(x=>x.Equals(_project));
 
         public void GetCurentUser() { }
         public void GetUsers() { }
@@ -46,14 +27,9 @@ namespace ProjectManager
         public Project GetCurentProject() => project;
         public List<Project> GetProjects() => projects;
 
-        public void Update(Project project) {
-            this.project = project;
-            Save();
-        }
-
         public void Save() {
             var serializer = new JsonSerializer();
-            using (StreamWriter fs = new StreamWriter(Environment.CurrentDirectory + @"\Projects\" + project.Name + ".json"))
+            using (StreamWriter fs = new StreamWriter(Environment.CurrentDirectory + @"\Data\Projects\" + project.Name + ".json"))
             {
                 using (var jsonTextWriter = new JsonTextWriter(fs))
                 {
@@ -66,12 +42,12 @@ namespace ProjectManager
 
         public void Load() 
         {
-            if (!Directory.Exists(Environment.CurrentDirectory + @"\Projects"))
+            if (!Directory.Exists(Environment.CurrentDirectory + @"\Data\Projects"))
             {
-                DirectoryInfo directoryInfo = Directory.CreateDirectory("Projects");
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(@"Data\Projects\");
             }
 
-            string[] projectArray = Directory.GetFiles(Environment.CurrentDirectory + @"\Projects\", "*.json");
+            string[] projectArray = Directory.GetFiles(Environment.CurrentDirectory + @"\Data\Projects\", "*.json");
             foreach (string file in projectArray)
             {
                 string data = File.ReadAllText(file);
@@ -80,6 +56,27 @@ namespace ProjectManager
             }
         }
 
-        #endregion
+        public void LoadAppData()
+        {
+            if (Directory.Exists(Environment.CurrentDirectory + @"\AppSettings.json"))
+            {
+                string data = File.ReadAllText(Environment.CurrentDirectory + @"\AppSettings.json");
+                appSettings = JsonConvert.DeserializeObject<AppSettings>(data);
+            }
+        }
+
+        public void SaveAppData()
+        {
+            var serializer = new JsonSerializer();
+            using (StreamWriter fs = new StreamWriter(Environment.CurrentDirectory + @"\AppSettings.json"))
+            {
+                using (var jsonTextWriter = new JsonTextWriter(fs))
+                {
+                    jsonTextWriter.Formatting = Formatting.Indented;
+                    serializer.Serialize(fs, project);
+                }
+                fs.Close();
+            }
+        }
     }
 }
