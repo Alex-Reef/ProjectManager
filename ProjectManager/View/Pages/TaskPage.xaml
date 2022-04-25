@@ -68,7 +68,7 @@
                                 Width="35" Height="35"
                                 BorderThickness="0"
                                 Foreground="{DynamicResource Text}"
-                                Background="{DynamicResource Gray}" Cursor="Hand">
+                                Background="{DynamicResource Gray}">
                                 <materialDesign:PackIcon Kind="Search" Height="20"/>
                             </Button>
                             <Button

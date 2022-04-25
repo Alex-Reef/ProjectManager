@@ -11,10 +11,9 @@ namespace ProjectManager.Controllers
             this.Model = model;
         }
 
-        public void Create(Marker _marker) { 
-            Marker marker = _marker;
+        public void Create(Marker value) { 
             var list = Model.GetCurentProject().Markers;
-            list.Add(marker);
+            list.Add(value);
             Model.Save();
         }
 

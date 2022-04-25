@@ -62,7 +62,14 @@
                         Orientation="Vertical"
                         TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                         Margin="24,8,24,16">
-                        <CheckBox Content="Theme" x:Name="ThemeSelect" Checked="ThemeSelect_Checked"/>
+                        <ComboBox
+                            Width="150"
+                            HorizontalAlignment="Left"
+                            x:Name="ThemeSelect" 
+                            SelectionChanged="ThemeSelect_Selected">
+                            <ComboBoxItem Content="Dark"/>
+                            <ComboBoxItem Content="Light"/>
+                        </ComboBox>
                     </StackPanel>
                 </Expander>
             </StackPanel>

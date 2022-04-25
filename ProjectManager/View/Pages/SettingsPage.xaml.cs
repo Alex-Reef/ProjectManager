@@ -8,25 +8,16 @@ namespace ProjectManager
     public partial class SettingsPage : Page
     {
         private Controller Controller { get; set; }
-        public SettingsPage(Controller controller)
+        public SettingsPage(Controller controller, Model model)
         {
             InitializeComponent();
             this.Controller = controller;
+            ThemeSelect.SelectedIndex = model.GetAppSettings().Theme;
         }
 
-        private void LangSettings_Click(object sender, RoutedEventArgs e)
+        private void ThemeSelect_Selected(object sender, RoutedEventArgs e)
         {
-            
-        }
-
-        private void ThemeSettings_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void ThemeSelect_Checked(object sender, RoutedEventArgs e)
-        {
-            Controller.SetTheme();
+            Controller.settingsController.SetTheme(ThemeSelect.SelectedIndex);
         }
     }
 }

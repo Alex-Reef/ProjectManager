@@ -11,6 +11,8 @@ namespace ProjectManager.Controllers
         public MarkerController markerController { get; set; }
         public ProjectController projectController { get; set; }
         public TaskController taskController { get; set; }
+        public SettingsController settingsController { get; set; }
+        public UserController userController { get; set; }
 
         public Controller() { }
 
@@ -20,16 +22,13 @@ namespace ProjectManager.Controllers
             markerController = new MarkerController(model);
             taskController = new TaskController(model);
             projectController = new ProjectController(model);
+            settingsController = new SettingsController(model);
+            userController = new UserController(model);
         }
 
         public Page OpenPage(string PageName)
         {
             return PagesNavigator.Open(PageName, model, this);
-        }
-
-        public void SetTheme()
-        {
-            SettingsController.SetTheme();
         }
 
         public Tuple<int, int> GetTaskPosition(Model model, Task task)

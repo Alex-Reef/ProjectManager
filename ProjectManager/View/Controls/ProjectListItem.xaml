@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:ProjectManager.View.Controls"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="800">
-    <md:Card md:ShadowAssist.ShadowDepth="Depth1" UniformCornerRadius="5">
+             d:DesignHeight="50" d:DesignWidth="800">
+    <md:Card
+        md:ShadowAssist.ShadowDepth="Depth1" 
+        UniformCornerRadius="5"
+        Background="{DynamicResource CardBackground}">
         <Grid Margin="20, 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -23,10 +26,15 @@
                 <TextBlock 
                     Grid.Row="0" x:Name="NameBlock"
                     Text="ProjectName"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Foreground="{DynamicResource Text}"
                     FontFamily="Idea" FontSize="13" FontWeight="Medium"/>
                 <TextBlock
                     Grid.Row="1" x:Name="DescrBlock"
+                    VerticalAlignment="Top"
+                    Opacity="0.6"
+                    Foreground="{DynamicResource Text}"
+                    FontFamily="Idea" FontSize="11" FontWeight="Medium"
                     Text="Description"/>
             </Grid>
 
@@ -38,11 +46,16 @@
                 <TextBlock 
                     Grid.Row="0"
                     Text="Last opened"
-                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Foreground="{DynamicResource Text}"
+                    VerticalAlignment="Bottom" HorizontalAlignment="Center"
                     FontFamily="Idea" FontSize="13" FontWeight="Medium"/>
                 <TextBlock
                     HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Foreground="{DynamicResource Text}"
                     Grid.Row="1" x:Name="DateBlock"
+                    Opacity="0.7"
+                    FontFamily="Idea" FontSize="13" FontWeight="Medium"
                     Text="12.12.1221"/>
             </Grid>
 
@@ -51,10 +64,21 @@
                 HorizontalAlignment="Right">
                 <Button 
                     Content="Open Project" 
-                    Margin="10, 0" x:Name="OpenPrj" Click="OpenPrj_Click" Cursor="Hand"/>
+                    Margin="10, 0" 
+                    x:Name="OpenPrj" 
+                    Click="OpenPrj_Click"
+                    Foreground="White"
+                    BorderThickness="0"
+                    FontFamily="Idea" FontSize="13" FontWeight="Medium"
+                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                    Background="{DynamicResource Primary}"/>
                 <Button 
                     Content="{md:PackIcon Kind=TrashOutline}"
-                    x:Name="DeletePrj" Click="DeletePrj_Click"/>
+                    x:Name="DeletePrj" Click="DeletePrj_Click"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                    Background="{DynamicResource Primary}"/>
             </StackPanel>
         </Grid>
     </md:Card>

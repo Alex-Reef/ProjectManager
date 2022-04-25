@@ -15,7 +15,7 @@ namespace ProjectManager.Controllers
             pages = new List<Tuple<string, Page>>()
             {
                 new Tuple<string, Page>("Tasks", new TaskPage(model, controller)),
-                new Tuple<string, Page>("Settings", new SettingsPage(controller))
+                new Tuple<string, Page>("Settings", new SettingsPage(controller, model))
             };
 
             return pages.FirstOrDefault(x => x.Item1 == name).Item2;

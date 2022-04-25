@@ -21,6 +21,13 @@ namespace ProjectManager
             projectList = new List<Project>();
             projectList = model.GetProjects();
             LoadListProject(projectList);
+            controller.settingsController.SetTheme(model.GetAppSettings().Theme);
+            controller.userController.Create(new User() { 
+                Email = "email", 
+                Password = "pass", 
+                UserName = "Nick", 
+                UniqleID = "01" 
+            });
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)

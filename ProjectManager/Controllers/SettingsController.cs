@@ -3,16 +3,34 @@ using System.Windows;
 
 namespace ProjectManager.Controllers
 {
-    public static class SettingsController
+    public class SettingsController
     {
-        public static void SetTheme()
+        private Model Model { get; set; }
+
+        public SettingsController(Model model)
         {
-            Application.Current.Resources.MergedDictionaries[0].Source = new Uri("/Resources/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+            this.Model = model;
         }
 
-        public static void SetLanguage()
+        public void SetTheme(int theme)
         {
+            Model.GetAppSettings().Theme = theme;
+            switch(theme)
+            {
+                case 0:
+                    Application.Current.Resources.MergedDictionaries[0].Source = new Uri("/Resources/Themes/DarkTheme.xaml", UriKind.RelativeOrAbsolute);
+                    break;
 
+                case 1:
+                    Application.Current.Resources.MergedDictionaries[0].Source = new Uri("/Resources/Themes/LightTheme.xaml", UriKind.RelativeOrAbsolute);
+                    break;
+            }
+            Model.SaveAppData();
+        }
+
+        public void SetLanguage()
+        {
+            Application.Current.Resources.MergedDictionaries[1].Source = new Uri("/Resources/Localization/en-US.xaml", UriKind.RelativeOrAbsolute);
         }
     }
 }

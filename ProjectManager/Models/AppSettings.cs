@@ -4,11 +4,11 @@
     {
         public AppSettings()
         {
-            Language = "en-US";
-            Theme = "Light";
+            Language = 0;
+            Theme = 0;
         }
 
-        public string Language;
-        public string Theme;
+        public int Language;
+        public int Theme;
     }
 }

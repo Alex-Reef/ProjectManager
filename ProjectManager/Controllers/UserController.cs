@@ -1,34 +1,32 @@
-﻿using ProjectManager.Models;
-using ProjectManager.Utilites;
+﻿using Newtonsoft.Json;
+using ProjectManager.Models;
+using System;
+using System.IO;
 
 namespace ProjectManager.Controllers
 {
-    public class UserController
+    public class UserController : IController<User>
     {
-        public UserController() { }
-
-        public void DeleteUser(string UserID)
-        {
-
+        private Model Model { get; set; }
+        public UserController(Model model) {
+            Model = model;
         }
 
-        public void CreateUser(string Username, string Password, string Email)
-        {
-            Model model = new Model();
-            model.CreateUser(Username, Password, Email, KeyGenerator.Generate(10));
+        public void Create(User user) {
+            Model.GetUsers().Add(user);
+            Model.SaveUserData();
         }
 
-        public User Authentication(string Username, string Password)
-        {
-            Model model = new Model();
-            foreach (var user in model.GetUsersList())
-            {
-                if (user.UserName == Username && user.Password == Password)
-                {
-                    return user;
-                }
-            }
-            return null;
+        public void Update(User user) {
+            var list = Model.GetUsers();
+            var index = list.FindIndex(x => x.UniqleID == user.UniqleID);
+            list[index] = user;
+            Model.SaveUserData();
+        }
+        public void Delete(User user) {
+            var list = Model.GetUsers();
+            list.RemoveAll(x => x.UniqleID == user.UniqleID);
+            Model.SaveUserData();
         }
     }
 }
