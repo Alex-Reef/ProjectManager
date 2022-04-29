@@ -16,6 +16,7 @@ namespace ProjectManager
         private List<string> markersID { get; set; }
         private string uID { get; set; }
         private string Date { get; set; }
+        private List<Subtask> subtasks { get; set; }
         private Model model { get; set; }
 
         public CreateTaskForm(Model model)

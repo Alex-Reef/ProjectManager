@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using ProjectManager.Controllers;
 using ProjectManager.Models;
 using ProjectManager.View.Controls;
+using ProjectManager.Utilites;
 
 namespace ProjectManager
 {
@@ -48,9 +49,11 @@ namespace ProjectManager
                 markerPanel.Children.Add(markerBlock);
             }
 
-            categoryBox.Items.Add("Next Up");
-            categoryBox.Items.Add("In Process");
-            categoryBox.Items.Add("Complete");
+            foreach (var item in task.Subtasks)
+                SubtaskPanel.Children.Add(new SubtaskListItem(item));
+
+            foreach(var item in model.GetCurentProject().Headers)
+                categoryBox.Items.Add(item);
 
             categoryBox.SelectedIndex = controller.GetTaskPosition(model, task).Item2;
             DataPicker.Text = task.EndTime;
@@ -107,6 +110,18 @@ namespace ProjectManager
         {
             markersID.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
             markerPanel.Children.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
+        }
+
+        private void AddSubtask_Click(object sender, RoutedEventArgs e)
+        {
+            controller.taskController.Subtask_Create(new Subtask("Test", true, KeyGenerator.Generate(10)), task);
+            Update();
+        }
+
+        private void Update()
+        {
+            foreach (var item in task.Subtasks)
+                SubtaskPanel.Children.Add(new SubtaskListItem(item));
         }
     }
 }

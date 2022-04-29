@@ -10,10 +10,13 @@ namespace ProjectManager.Models
     {
         public string Name { get; set; }
         public bool Complete { get; set; }
-        public Subtask(string name, bool complete)
+        public string UniqleID { get; set; }
+
+        public Subtask(string name, bool complete, string ID)
         {
             Name = name;
             Complete = complete;
+            UniqleID = ID;
         }
     }
 }

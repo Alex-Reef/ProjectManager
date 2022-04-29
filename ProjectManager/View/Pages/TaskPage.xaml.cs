@@ -70,7 +70,8 @@ namespace ProjectManager
                     Description = createTaskForm.GetDesc(),
                     UniqleID = createTaskForm.GetID(),
                     MarkersID = createTaskForm.GetMarkers(),
-                    EndTime = createTaskForm.GetDate()
+                    EndTime = createTaskForm.GetDate(),
+                    Subtasks = new List<Subtask>()
                 };
 
                 Button taskPanel = CreateTask(task).Item1;

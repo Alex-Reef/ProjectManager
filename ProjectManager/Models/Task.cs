@@ -9,5 +9,6 @@ namespace ProjectManager.Models
         public List<string> MarkersID { get; set; }
         public string UniqleID { get; set; }
         public string EndTime { get; set; }
+        public List<Subtask> Subtasks { get; set; }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjectManager" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="TaskEdit" Height="Auto" Width="600" ResizeMode="NoResize">
+        Title="TaskEdit" Height="480" Width="600" ResizeMode="NoResize">
     <Grid Background="{DynamicResource Background}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -132,7 +132,7 @@
             </Grid>
             <Grid 
                 HorizontalAlignment="Center"
-                Margin="20, 20"
+                Margin="20,30, 20, 0"
                 Width="290">
                 <Button 
                     Width="100"
@@ -162,18 +162,28 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <Grid Margin="10, 20"
+        <Grid Margin="10, 10, 10, 0"
             Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <StackPanel
+                Grid.Row="0"
                 x:Name="SubtaskPanel"
+                Margin="0, 0, 0, 10"
                 Height="Auto"/>
             <Button
+                Grid.Row="1"
+                Margin="0, 0, 0, 30"
+                x:Name="AddSubtask"
+                Click="AddSubtask_Click"
                 Background="{DynamicResource Primary}"
                 Foreground="White"
                 Width="150"
                 BorderThickness="0"
                 materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                VerticalAlignment="Bottom">
+                VerticalAlignment="Bottom" Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon 
                         Kind="AddBox"

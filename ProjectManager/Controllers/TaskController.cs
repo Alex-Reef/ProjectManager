@@ -45,5 +45,27 @@ namespace ProjectManager.Controllers
             project.Tasks = list;
             Model.Save();
         }
+
+        #region Subtask
+        public void Subtask_Create(Subtask subtask, Task task)
+        {
+            task.Subtasks.Add(subtask);
+            Model.Save();
+        }
+
+        public void Subtask_Update(Subtask subtask, Task task)
+        {
+            var list = task.Subtasks;
+            int index = list.FindIndex(x => x.UniqleID == subtask.UniqleID);
+            list[index] = subtask;
+            Model.Save();
+        }
+
+        public void Subtask_Delete(Subtask subtask, Task task)
+        {
+            task.Subtasks.RemoveAll(x => x.UniqleID == subtask.UniqleID);
+            Model.Save();
+        }
+        #endregion
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectManager.View.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="40" d:DesignWidth="280">
+             d:DesignHeight="50" d:DesignWidth="280">
     <materialDesign:Card 
         Margin="10, 0"
         Background="{DynamicResource CardBackground}">
@@ -20,13 +20,13 @@
                 FontFamily="Idea" FontWeight="SemiBold" FontSize="12"/>
             <Button
                 x:Name="CheckBtn"
-                Width="25" Height="25"
+                Width="30" Height="30"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Style="{StaticResource MaterialDesignIconButton}">
+                Style="{StaticResource MaterialDesignIconButton}" Cursor="Hand">
                 <materialDesign:PackIcon 
                     Kind="CheckCircle"
-                    Height="15" Width="15"/>
+                    Height="20" Width="20"/>
             </Button>
         </Grid>
     </materialDesign:Card>
