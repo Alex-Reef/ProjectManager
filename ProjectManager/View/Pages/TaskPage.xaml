@@ -34,28 +34,50 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label
-                                Content="{DynamicResource ProjectLabel}"
-                                FontSize="10"
-                                Grid.Row="0" 
-                                FontFamily="Inter" 
-                                FontWeight="SemiBold" 
-                                Foreground="{DynamicResource Text}"/>
-                            <Label
-                                Content="{DynamicResource LetsStartLabel}"
-                                FontSize="25"
-                                Grid.Row="1" 
-                                FontFamily="Inter" 
-                                FontWeight="SemiBold" 
-                                Foreground="{DynamicResource Text}"/>
-                            <Label
-                                Content="{DynamicResource YouHaveTaskCount}"
-                                FontSize="10"
-                                Grid.Row="2" 
-                                FontFamily="Inter" 
-                                FontWeight="SemiBold" 
-                                Foreground="{DynamicResource Text}"
-                                Opacity="0.5"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                <Label
+                                    Content="{DynamicResource ProjectLabel}"
+                                    FontSize="10"
+                                    FontFamily="Inter" 
+                                    FontWeight="SemiBold" 
+                                    Foreground="{DynamicResource Text}"/>
+                                <Label
+                                    FontSize="10"
+                                    x:Name="ProjectNameLabel"
+                                    FontFamily="Inter" 
+                                    FontWeight="SemiBold" 
+                                    Foreground="{DynamicResource Text}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                <Label
+                                    Content="{DynamicResource LetsStartLabel}"
+                                    FontSize="25"
+                                    FontFamily="Inter" 
+                                    FontWeight="SemiBold" 
+                                    Foreground="{DynamicResource Text}"/>
+                                <Label
+                                    x:Name="ltsUserName"
+                                    FontSize="25"
+                                    FontFamily="Inter" 
+                                    FontWeight="SemiBold" 
+                                    Foreground="{DynamicResource Text}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <Label
+                                    Content="{DynamicResource YouHaveTaskCount}"
+                                    FontSize="10"
+                                    FontFamily="Inter" 
+                                    FontWeight="SemiBold" 
+                                    Foreground="{DynamicResource Text}"
+                                    Opacity="0.5"/>
+                                <Label
+                                    FontSize="10"
+                                    x:Name="CountTaskLabel"
+                                    FontFamily="Inter" 
+                                    FontWeight="SemiBold" 
+                                    Foreground="{DynamicResource Text}"
+                                    Opacity="0.5"/>
+                            </StackPanel>
                         </Grid>
 
                         <StackPanel 
@@ -78,15 +100,19 @@
                                 BorderThickness="0"
                                 Foreground="{DynamicResource Text}"
                                 Background="{DynamicResource Gray}"
-                                materialDesign:ShadowAssist.ShadowDepth="Depth2">
+                                materialDesign:ShadowAssist.ShadowDepth="Depth2" Cursor="Hand">
                                 <materialDesign:PackIcon Kind="BellOutline" Height="20"/>
                             </Button>
                             <materialDesign:Chip 
+                                x:Name="UserChip"
                                 Content="UserName" 
                                 Style="{StaticResource MaterialDesignOutlineChip}"
+                                Foreground="{DynamicResource Text}"
                                 FontFamily="Idea" FontWeight="Medium" FontSize="13">
                                 <materialDesign:Chip.Icon>
-                                    <Image Width="40" Height="40" Source="/Resources/prjImage/ProjectImage1.png"/>
+                                    <Image 
+                                        Width="40" Height="40" 
+                                        Source="/Resources/prjImage/ProjectImage1.png"/>
                                 </materialDesign:Chip.Icon>
                             </materialDesign:Chip>
                         </StackPanel>

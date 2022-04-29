@@ -1,69 +1,53 @@
-﻿using System.Windows;
-using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using ProjectManager.Controllers;
+using ProjectManager.Models;
 
 namespace ProjectManager.View.Forms
 {
     public partial class LoginForm : Window
     {
+        private Model model { get; set; }
+        private Controller controller { get; set; }
+
         public LoginForm()
         {
             InitializeComponent();
+            model = new Model();
+            controller = new Controller(model);
+            controller.settingsController.SetTheme(model.GetAppSettings().Theme);
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        public LoginForm(Model model, Controller controller)
         {
-            base.OnMouseLeftButtonDown(e);
-            this.DragMove();
-        }
-
-        private void ThemeSelector_Click(object sender, RoutedEventArgs e)
-        {
-            Controller controller = new Controller();
-            controller.SetTheme(ThemeSelector.IsChecked.Value);
-        }
-
-
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void Maximized_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Normal)
-                this.WindowState = WindowState.Maximized;
-            else
-                this.WindowState = WindowState.Normal;
-        }
-
-        private void Minimized_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
-        {
-            Model model = new Model();
-            Controller controller = new Controller(model);
-            //controller.UserController.CreateUser(LoginBox.Text, PasswordBox.Password, "TestEmail");
+            InitializeComponent();
+            this.model = model;
+            this.controller = controller;
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            /*Model model = new Model();
-            Controller controller = new Controller(model);
-
-            if (controller.UserController.Authentication(LoginBox.Text, PasswordBox.Password) != null)
+            SelectProjectForm spf;
+            User user = controller.userController.Authorization(LoginBox.Text, PasswordBox.Password);
+            if (user != null)
             {
-                model.SetUser(controller.UserController.Authentication(LoginBox.Text, PasswordBox.Password));
-
-                SelectProjectForm selectProjectForm = new SelectProjectForm(model, controller);
-                selectProjectForm.Show();
+                spf = new SelectProjectForm(controller, model);
+                spf.Show();
                 this.Hide();
             }
-            else
-                MessageBox.Show("error", "info", MessageBoxButton.OK);*/
+        }
+
+        private void CreateAccBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationForm regForm = new RegistrationForm(model, controller);
+            regForm.Show();
+            this.Hide();
+        }
+
+        private void ForgotPass_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

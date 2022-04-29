@@ -10,11 +10,11 @@ namespace ProjectManager
 {
     public class Model
     {
-        private Project project { get; set; }
-        private User user { get; set; } 
-        private List<User> users { get; set; }  
-        private List<Project> projects { get; set; }
-        private AppSettings appSettings { get; set; }
+        public Project project { get; set; }
+        public User user { get; set; }
+        public List<User> users { get; set; }
+        public List<Project> projects { get; set; }
+        public AppSettings appSettings { get; set; }
 
         public Model()
         {
@@ -27,7 +27,7 @@ namespace ProjectManager
         }
 
         public void SetProject(Project _project) => project = projects.Find(x=>x.Equals(_project));
-        public void SetUser(User _user) => user = users.Find(x=>x.Equals(_user));
+        public void SetUser(User _user) => user = users.Find(x=>x.UniqleID == _user.UniqleID);
 
         public User GetCurentUser() => user;
         public List<User> GetUsers() => users;
@@ -81,16 +81,10 @@ namespace ProjectManager
 
         public void LoadUserData()
         {
-            if (Directory.Exists(Environment.CurrentDirectory + @"\Data\") && Directory.Exists(Environment.CurrentDirectory + @"\Data\Users.json"))
+            if (File.Exists(Environment.CurrentDirectory + @"\Data\Users.json"))
             {
                 string data = File.ReadAllText(Environment.CurrentDirectory + @"\Data\Users.json");
                 users = JsonConvert.DeserializeObject<List<User>>(data);
-            }
-            else
-            {
-                user = new User();
-                users.Add(user);
-                SaveUserData();
             }
         }
 

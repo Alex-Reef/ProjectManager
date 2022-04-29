@@ -15,6 +15,7 @@ namespace ProjectManager
         private Model model;
         private Controller controller { get; set; }
         private Marker marker { get; set; }
+
         public CreateMarkerForm(Model model, Controller controller)
         {
             InitializeComponent();

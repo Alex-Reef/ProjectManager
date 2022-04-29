@@ -7,5 +7,5 @@
     <SolidColorBrush x:Key="Bar" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Gray" Color="#F2F3F5"/>
     <SolidColorBrush x:Key="CardBackground" Color="#FFFFFF"/>
-
+    <SolidColorBrush x:Key="TextFieldBackground" Color="#e8eef3"/>
 </ResourceDictionary>

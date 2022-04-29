@@ -26,70 +26,73 @@
             <Grid>
                 <StackPanel Margin="0, 10, 0, 0">
                     <Image Source="{StaticResource Icon}" Height="30"/>
-                    <StackPanel
+                    <ListBox
                         HorizontalAlignment="Center"
-                        Margin="0, 10, 0, 0">
-                        <Button
+                        Margin="0, 10, 0, 0"
+                        SelectionMode="Extended">
+                        <ListBoxItem
                             Foreground="{DynamicResource Text}"
-                            Style="{StaticResource MaterialDesignIconButton}"
-                            Height="45"
+                            Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
+                            Height="45" Width="45"
+                            HorizontalContentAlignment="Center"
                             ToolTip="Dashboard"
                             HorizontalAlignment="Center" BorderThickness="0" Cursor="Hand">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="20"/>
-                        </Button>
-                        <Button
-                                Foreground="{DynamicResource Text}"
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Height="45"
-                                ToolTip="Task"
-                                HorizontalAlignment="Center" BorderThickness="0" Click="tasksBtn_Click">
-                            <materialDesign:PackIcon Kind="CalendarTask" Height="20"/>
-                        </Button>
-                        <Button
-                                Foreground="{DynamicResource Text}"
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Height="45"
-                                ToolTip="Code"
-                                HorizontalAlignment="Center" BorderThickness="0">
-                            <materialDesign:PackIcon Kind="Xml" Height="20"/>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Margin="0, 20, 0, 0">
-                        <Button
-                                Foreground="{DynamicResource Text}"
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Height="45"
-                                ToolTip="Projects"
-                                HorizontalAlignment="Center" BorderThickness="0">
-                            <materialDesign:PackIcon Kind="BriefcaseEye" Height="20"/>
-                        </Button>
-                        <Button
-                                Foreground="{DynamicResource Text}"
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Height="45"
-                                ToolTip="Archive"
-                                HorizontalAlignment="Center" BorderThickness="0">
-                            <materialDesign:PackIcon Kind="PackageDown" Height="20"/>
-                        </Button>
-                        <Button
-                                Foreground="{DynamicResource Text}"
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Height="45"
-                                ToolTip="Settings"
-                                HorizontalAlignment="Center" BorderThickness="0" Click="settingsBtn_Click">
-                            <materialDesign:PackIcon Kind="Settings" Height="20"/>
-                        </Button>
-                    </StackPanel>
+                            <materialDesign:PackIcon Kind="ViewDashboard" Height="20" Width="20"/>
+                        </ListBoxItem>
+                        <ListBoxItem
+                            Foreground="{DynamicResource Text}"
+                            Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
+                            Height="45" Width="45"
+                            HorizontalContentAlignment="Center"
+                            ToolTip="Task"
+                            HorizontalAlignment="Center" BorderThickness="0" 
+                            Selected="tasksBtn_Click">
+                            <materialDesign:PackIcon 
+                                Kind="CalendarTask" Height="20" Width="20"/>
+                        </ListBoxItem>
+                        <ListBoxItem
+                            Foreground="{DynamicResource Text}"
+                            Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
+                            Height="45" Width="45"
+                            HorizontalContentAlignment="Center"
+                            ToolTip="Code"
+                            HorizontalAlignment="Center" BorderThickness="0">
+                            <materialDesign:PackIcon 
+                                Kind="Xml" Height="20" Width="20"/>
+                        </ListBoxItem>
+                        <ListBoxItem
+                            Foreground="{DynamicResource Text}"
+                            Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
+                            Height="45" Width="45"
+                            HorizontalContentAlignment="Center"
+                            ToolTip="Archive"
+                            HorizontalAlignment="Center" BorderThickness="0">
+                            <materialDesign:PackIcon 
+                                Kind="PackageDown" Height="20" Width="20"/>
+                        </ListBoxItem>
+                        <ListBoxItem
+                            Foreground="{DynamicResource Text}"
+                            Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
+                            Height="45" Width="45"
+                            HorizontalContentAlignment="Center"
+                            ToolTip="Settings"
+                            HorizontalAlignment="Center" BorderThickness="0" 
+                            Selected="settingsBtn_Click">
+                            <materialDesign:PackIcon 
+                                Kind="Settings" Height="20" Width="20"/>
+                        </ListBoxItem>
+                    </ListBox>
                 </StackPanel>
-                <StackPanel VerticalAlignment="Bottom" Height="60">
-                    <Button Width="40" Height="40" 
-                            Style="{DynamicResource MaterialDesignIconButton}"
-                            Content="{materialDesign:PackIcon Kind=Logout}"
-                            ToolTip="Logout"
-                            HorizontalAlignment="Center"
-                            BorderThickness="0"
-                            Foreground="{DynamicResource Text}"/>
-                </StackPanel>
+
+                <Button 
+                    Width="40" Height="40" 
+                    Style="{DynamicResource MaterialDesignIconButton}"
+                    Content="{materialDesign:PackIcon Kind=Logout}"
+                    ToolTip="Logout"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    BorderThickness="0"
+                    Foreground="{DynamicResource Text}"/>
             </Grid>
         </materialDesign:Card>
         <Grid Grid.Column="1" Margin="0, 0, 0, 0">

@@ -4,75 +4,279 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProjectManager"
-      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="680" d:DesignWidth="1020" MinWidth="1020" MinHeight="680"
       Title="SettingsPage">
 
     <Grid Background="{DynamicResource Background}">
-        <Grid Margin="30, 30, 30, 0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                
-                <Label
-                    Content="Settings"
-                    FontSize="40"
-                    FontFamily="Inter" FontWeight="Medium" Foreground="#FF313753"
-                    Grid.Column="0"/>
-                
-                <Grid Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="80"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="UserName" Grid.Column="0" 
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Center"
-                           FontFamily="Inter" Foreground="#FF313753"
-                           FontSize="15" Margin="0, 0, 0, 20"/>
-                    <Rectangle 
-                        RadiusX="25" 
-                        RadiusY="25" 
-                        Width="45" 
-                        Height="45"
-                        Grid.Column="1"
+        <StackPanel Orientation="Vertical" Margin="30, 0">
+            <TextBlock
+                Text="Settings"
+                FontFamily="Idea" FontSize="25" FontWeight="Bold"
+                Opacity="0.9"
+                Margin="0, 30"
+                Foreground="{DynamicResource Text}"/>
+            <Expander 
+                materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource CardBackground}">
+                <Expander.Header>
+                    <Grid Width="Auto" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon 
+                            Kind="AccountDetailsOutline"
+                            Width="25" Height="25"
+                            VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Opacity="0.8"
+                            Foreground="{DynamicResource Text}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Foreground="{DynamicResource Text}"
+                                FontFamily="Idea" FontSize="17" FontWeight="Bold"
+                                Text="User Info"/>
+                            <TextBlock
+                                Grid.Row="1"
+                                Opacity="0.7"
+                                Foreground="{DynamicResource Text}"
+                                FontFamily="Idea" FontSize="13" FontWeight="SemiBold"
+                                Text="Edit account info: email, login etc."/>
+                        </Grid>
+                    </Grid>
+                </Expander.Header>
+                <StackPanel
+                    Orientation="Vertical"
+                    TextBlock.Foreground="{DynamicResource Text}"
+                    Margin="30,0,30,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Column="0"
+                            x:Name="SelectImageBtn"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            materialDesign:ButtonAssist.CornerRadius="35"
+                            Height="70" Width="70" Cursor="Hand">
+                            <Button.Content>
+                                <materialDesign:PackIcon 
+                                    Kind="Camera"
+                                    Width="25" Height="25"/>
+                            </Button.Content>
+                        </Button>
+                        <StackPanel 
+                            Orientation="Vertical"
+                            Width="Auto"
+                            Margin="30, 10"
+                            HorizontalAlignment="Left"
+                            Grid.Column="1">
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                Width="300">
+                                <TextBox
+                                    x:Name="FirstNameBox"
+                                    Text="T"
+                                    Width="150" Padding="10"
+                                    BorderBrush="{DynamicResource TextFieldBackground}"
+                                    Background="{DynamicResource TextFieldBackground}"
+                                    materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                                    materialDesign:HintAssist.Background="Transparent"
+                                    Foreground="{DynamicResource Text}"
+                                    MaxLength="10"
+                                    FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                    Margin="0, 5, 10, 0"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                    materialDesign:HintAssist.Hint="First Name"/>
+                                <TextBox
+                                    x:Name="LastNameBox"
+                                    Width="150" Padding="10"
+                                    BorderBrush="{DynamicResource TextFieldBackground}"
+                                    Background="{DynamicResource TextFieldBackground}"
+                                    materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                                    materialDesign:HintAssist.Background="Transparent"
+                                    Foreground="{DynamicResource Text}"
+                                    MaxLength="10"
+                                    FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                    Margin="0, 5, 10, 0"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                    materialDesign:HintAssist.Hint="Last Name"/>
+                            </StackPanel>
+                            <TextBox     
+                                x:Name="EmailBox"
+                                Margin="0, 15" Padding="10"
+                                BorderBrush="{DynamicResource TextFieldBackground}"
+                                Background="{DynamicResource TextFieldBackground}"
+                                materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                                materialDesign:HintAssist.Background="Transparent"
+                                Foreground="{DynamicResource Text}"
+                                MaxLength="50"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                materialDesign:HintAssist.Hint="Email"/>
+                            <TextBox   
+                                x:Name="LoginBox"
+                                Padding="10"
+                                BorderBrush="{DynamicResource TextFieldBackground}"
+                                Background="{DynamicResource TextFieldBackground}"
+                                materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                                materialDesign:HintAssist.Background="Transparent"
+                                Foreground="{DynamicResource Text}"
+                                MaxLength="50"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                materialDesign:HintAssist.Hint="Login"/>
+                            <Button
+                                x:Name="SaveBtn"
+                                HorizontalAlignment="Right"
+                                Content="Save" Margin="0, 20"
+                                Width="Auto" Padding="30, 0"
+                                Click="SaveBtn_Click"
+                                FontSize="14" FontFamily="Idea" FontWeight="SemiBold"
+                                Foreground="White"
+                                Background="{DynamicResource Primary}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Expander>
+            <Expander
+                Margin="0, 10, 0, 0"
+                materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource CardBackground}">
+                <Expander.Header>
+                    <Grid Width="Auto" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon 
+                            Kind="ShieldAccountOutline"
+                            Width="25" Height="25"
+                            VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Opacity="0.8"
+                            Foreground="{DynamicResource Text}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Foreground="{DynamicResource Text}"
+                                FontFamily="Idea" FontSize="17" FontWeight="Bold"
+                                Text="Security"/>
+                            <TextBlock
+                                Grid.Row="1"
+                                Opacity="0.7"
+                                Foreground="{DynamicResource Text}"
+                                FontFamily="Idea" FontSize="13" FontWeight="SemiBold"
+                                Text="Change password"/>
+                            </Grid>
+                        </Grid>
+                </Expander.Header>
+                <StackPanel
+                    Orientation="Vertical"
+                    Width="Auto"
+                    Margin="30, 0"
+                    HorizontalAlignment="Left"
+                    Grid.Column="1">
+                    <TextBox 
+                        x:Name="OldPassBox"
+                        materialDesign:HintAssist.Hint="Password" 
+                        BorderBrush="{DynamicResource TextFieldBackground}"
+                        Background="{DynamicResource TextFieldBackground}"
+                        materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                        materialDesign:HintAssist.Background="Transparent"
+                        Foreground="{DynamicResource Text}"
+                        MaxLength="10"
+                        FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                        Padding="10" Width="200" HorizontalAlignment="Left"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    <TextBox 
+                        x:Name="NewPassBox"
+                        materialDesign:HintAssist.Hint="New Password" 
+                        BorderBrush="{DynamicResource TextFieldBackground}"
+                        Background="{DynamicResource TextFieldBackground}"
+                        materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                        materialDesign:HintAssist.Background="Transparent"
+                        Foreground="{DynamicResource Text}"
+                        MaxLength="10" Margin="0, 10"
+                        FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                        Padding="10" Width="200" HorizontalAlignment="Left"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    <Button
+                        Content="Save"
+                        x:Name="ChangePassBtn"
+                        Click="ChangePassBtn_Click"
+                        Margin="0, 10"
                         HorizontalAlignment="Right"
-                        Margin="0, 0, 0, 20">
-                        <Rectangle.Fill>
-                            <ImageBrush 
-                                x:Name="myImage" 
-                                ImageSource="/Resources/prjImage/ProjectImage1.png"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                </Grid>
-            </Grid>
-
-            <StackPanel Grid.Row="1">
-                <Expander
+                        Padding="30, 0"
+                        Foreground="White"
+                        FontSize="14" FontFamily="Idea" FontWeight="SemiBold"
+                        Background="{DynamicResource Primary}"/>
+                </StackPanel>
+                </Expander>
+            <Expander
+                    materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                    Margin="0, 10, 0, 0"
                     HorizontalAlignment="Stretch"
-                    Header="Theme">
-                    <StackPanel
+                    Background="{DynamicResource CardBackground}">
+                <Expander.Header>
+                    <Grid Width="Auto" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon 
+                                Kind="BrushOutline"
+                                Width="25" Height="25"
+                                Opacity="0.8" 
+                                VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Foreground="{DynamicResource Text}"/>
+                        <Grid Grid.Column="1">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                    Grid.Row="0"
+                                    Foreground="{DynamicResource Text}"
+                                    FontFamily="Idea" FontSize="17" FontWeight="Bold"
+                                    Text="Themes"/>
+                            <TextBlock
+                                    Grid.Row="1"
+                                    Opacity="0.7"
+                                    Foreground="{DynamicResource Text}"
+                                    FontFamily="Idea" FontSize="13" FontWeight="SemiBold"
+                                    Text="Change, manage themes"/>
+                        </Grid>
+                    </Grid>
+                </Expander.Header>
+                <StackPanel
                         Orientation="Vertical"
-                        TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                        TextBlock.Foreground="{DynamicResource Text}"
                         Margin="24,8,24,16">
-                        <ComboBox
+                    <ComboBox
                             Width="150"
                             HorizontalAlignment="Left"
                             x:Name="ThemeSelect" 
                             SelectionChanged="ThemeSelect_Selected">
-                            <ComboBoxItem Content="Dark"/>
-                            <ComboBoxItem Content="Light"/>
-                        </ComboBox>
-                    </StackPanel>
-                </Expander>
-            </StackPanel>
-        </Grid>
+                        <ComboBoxItem Content="Dark"/>
+                        <ComboBoxItem Content="Light"/>
+                    </ComboBox>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
     </Grid>
 </Page>

@@ -48,6 +48,8 @@ namespace ProjectManager.Controllers
         public void Delete(Project value) {
             var list = Model.GetProjects();
             list.Remove(value);
+            if(Directory.Exists(Environment.CurrentDirectory + @"\Data\" + value.Name))
+                Directory.Delete(Environment.CurrentDirectory + @"\Data\" + value.Name, true);
             Model.Save();
         }
     }

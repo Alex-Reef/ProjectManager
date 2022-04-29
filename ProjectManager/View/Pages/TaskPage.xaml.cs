@@ -29,6 +29,10 @@ namespace ProjectManager
             Panels = new List<StackPanel>();
             Headers = new List<HeaderColumn>();
 
+            UserChip.Content = model.GetCurentUser().UserName;
+            ProjectNameLabel.Content = model.GetCurentProject().Name;
+            ltsUserName.Content = model.GetCurentUser().UserName.Split(' ')[0];
+
             var list = model.GetCurentProject().Headers;
             for (int i = 0; i < list.Count; i++)
             {
@@ -38,10 +42,7 @@ namespace ProjectManager
                 HeaderPanel.Children.Add(Headers[i]);
             }
 
-            for(int i = 0; i < list.Count; i++)
-            {
-               LoadTask(Tasks[i], Panels[i], Headers[i]);
-            }
+            Update();
         }
 
         private int LoadTask(List<Task> taskList, StackPanel panel, HeaderColumn headers)
@@ -125,11 +126,22 @@ namespace ProjectManager
 
         private void Update()
         {
-            for (int i = 0; i < 3; i++)
+            var list = model.GetCurentProject().Headers;
+            for (int i = 0; i < list.Count; i++)
                 Panels[i].Children.Clear();
+
             Tasks = model.GetCurentProject().Tasks;
-            for (int i = 0; i < 3; i++)
+
+            for (int i = 0; i < list.Count; i++)
                 LoadTask(Tasks[i], Panels[i], Headers[i]);
+
+            int count = 0;
+            for(int i = 0; i < Tasks.Count; i++)
+            {
+                for(int j = 0; j < Tasks[i].Count; j++)
+                    count++;
+            }
+            CountTaskLabel.Content = count.ToString();
         }
 
         private void DeleteTask(Task task)

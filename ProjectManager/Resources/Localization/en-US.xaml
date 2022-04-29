@@ -4,5 +4,5 @@
     <system:String x:Key="LetsStartLabel">Let's Start, </system:String>
     <system:String x:Key="ProjectLabel">Projects / </system:String>
     <system:String x:Key="MarkersBtn">Markers</system:String>
-    <system:String x:Key="YouHaveTaskCount">You have COUNT tasks</system:String>
+    <system:String x:Key="YouHaveTaskCount">You have tasks: </system:String>
 </ResourceDictionary>

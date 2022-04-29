@@ -1,0 +1,151 @@
+﻿<Window x:Class="ProjectManager.View.Forms.RegistrationForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectManager.View.Forms"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Login"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <materialDesign:Card 
+            Grid.Row="1"
+            Background="{DynamicResource Background}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <Menu 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center">
+                    <MenuItem 
+                            Height="25" 
+                            Header="{materialDesign:PackIcon Kind=Close}"
+                            Foreground="{DynamicResource Text}"/>
+                </Menu>
+                <StackPanel Orientation="Vertical" Margin="30, 10, 30, 30">
+                    <Image 
+                            Source="{StaticResource Icon}" 
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Margin="0, 0, 0, 20"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                                Text="Create new account"
+                                FontFamily="Idea" FontSize="30" FontWeight="Bold"
+                                Foreground="{DynamicResource Text}"/>
+                        <TextBlock
+                                Text="."
+                                FontFamily="Idea" FontSize="30" FontWeight="Bold"
+                                Foreground="{DynamicResource Primary}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 20">
+                        <TextBlock
+                                Text="Already a Member?"
+                                Foreground="{DynamicResource Text}"
+                                VerticalAlignment="Center"
+                                Opacity="0.7"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"/>
+                        <Button
+                                Content="Log In!"
+                                x:Name="LogInBtn"
+                                Click="LogInBtn_Click"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Height="20" Padding="0"
+                                Margin="5, 0, 0, 0"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                Foreground="{DynamicResource Primary}" Cursor="Hand"/>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox 
+                                materialDesign:HintAssist.Hint="First Name" 
+                                x:Name="NameBox"
+                                BorderBrush="{DynamicResource TextFieldBackground}"
+                                Background="{DynamicResource TextFieldBackground}"
+                                Grid.Column="0"
+                                materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                                materialDesign:HintAssist.Background="Transparent"
+                                Foreground="{DynamicResource Text}"
+                                MaxLength="10"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                Padding="10"
+                                Margin="0, 0, 10, 0"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="Hand"/>
+                        <TextBox 
+                                materialDesign:HintAssist.Hint="Last Name" 
+                                x:Name="SurnameBox"
+                                BorderBrush="{DynamicResource TextFieldBackground}"
+                                Background="{DynamicResource TextFieldBackground}"
+                                Grid.Column="1"
+                                materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                                materialDesign:HintAssist.Background="Transparent"
+                                Foreground="{DynamicResource Text}"
+                                Margin="10, 0, 0, 0"
+                                MaxLength="15"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                Padding="10"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </Grid>
+                    <TextBox 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            Padding="10"
+                            MaxLength="50"
+                            VerticalAlignment="Center"
+                            BorderBrush="{DynamicResource TextFieldBackground}"
+                            Background="{DynamicResource TextFieldBackground}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                            materialDesign:HintAssist.Background="Transparent"
+                            Foreground="{DynamicResource Text}"
+                            Margin="0, 20, 0, 0"
+                            materialDesign:HintAssist.Hint="Login" 
+                            FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                            x:Name="LoginBox" Cursor="Arrow"/>
+                    <TextBox 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            Padding="10"
+                            MaxLength="50"
+                            VerticalAlignment="Center"
+                            BorderBrush="{DynamicResource TextFieldBackground}"
+                            Background="{DynamicResource TextFieldBackground}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                            materialDesign:HintAssist.Background="Transparent"
+                            Foreground="{DynamicResource Text}"
+                            Margin="0, 20, 0, 0"
+                            materialDesign:HintAssist.Hint="Email" 
+                            FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                            x:Name="EmailBox" Cursor="Arrow"/>
+                    <PasswordBox 
+                            Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                            Padding="10"
+                            MaxLength="25"
+                            BorderBrush="{DynamicResource TextFieldBackground}"
+                            Background="{DynamicResource TextFieldBackground}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                            materialDesign:HintAssist.Background="Transparent"
+                            Foreground="{DynamicResource Text}"
+                            VerticalAlignment="Center"
+                            Margin="0, 20, 0, 0"
+                            materialDesign:HintAssist.Hint="Password" 
+                            FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                            x:Name="PasswordBox" Cursor="Arrow"/>
+                    <Button 
+                            Content="Create account"
+                            Margin="0, 20, 0, 0"
+                            Height="35"
+                            x:Name="CreateBtn"
+                            Click="CreateBtn_Click"
+                            FontSize="14" FontFamily="Idea" FontWeight="SemiBold"
+                            Foreground="White"
+                            Background="{DynamicResource Primary}"
+                            BorderThickness="0" Cursor="Hand"/>
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</Window>

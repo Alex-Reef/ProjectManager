@@ -28,5 +28,19 @@ namespace ProjectManager.Controllers
             list.RemoveAll(x => x.UniqleID == user.UniqleID);
             Model.SaveUserData();
         }
+
+        public User Authorization(string login, string password)
+        {
+            var list = Model.GetUsers();
+            foreach (var user in list)
+            {
+                if (user.Login == login && user.Password == password)
+                {
+                    Model.SetUser(user);
+                    return user;
+                }
+            }
+            return null;
+        }
     }
 }

@@ -13,21 +13,16 @@ namespace ProjectManager
         private Controller controller;
         private List<Project> projectList;
 
-        public SelectProjectForm()
+        public SelectProjectForm(Controller controller, Model model)
         {
             InitializeComponent();
-            model = new Model();
-            controller = new Controller(model);
+            this.model = model;
+            this.controller = controller;
+
             projectList = new List<Project>();
             projectList = model.GetProjects();
+
             LoadListProject(projectList);
-            controller.settingsController.SetTheme(model.GetAppSettings().Theme);
-            controller.userController.Create(new User() { 
-                Email = "email", 
-                Password = "pass", 
-                UserName = "Nick", 
-                UniqleID = "01" 
-            });
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -69,7 +64,7 @@ namespace ProjectManager
 
         private void NewProjectBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreateProjectForm create = new CreateProjectForm(controller);
+            CreateProjectForm create = new CreateProjectForm(controller, model);
             create.Show();
             this.Hide();
         }

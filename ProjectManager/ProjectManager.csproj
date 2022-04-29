@@ -76,7 +76,10 @@
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\AppSettings.cs" />
+    <Compile Include="Models\Subtask.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Utilites\DataSecurityService.cs" />
+    <Compile Include="Utilites\KeyGenerator.cs" />
     <Compile Include="View\Controls\HeaderColumn.xaml.cs">
       <DependentUpon>HeaderColumn.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
     </Compile>
     <Compile Include="View\Controls\ProjectListItem.xaml.cs">
       <DependentUpon>ProjectListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SubtaskListItem.xaml.cs">
+      <DependentUpon>SubtaskListItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\TaskBlock.xaml.cs">
       <DependentUpon>TaskBlock.xaml</DependentUpon>
@@ -101,6 +107,12 @@
     <Compile Include="Models\Marker.cs" />
     <Compile Include="Controllers\PagesNavigator.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="View\Forms\RegistrationForm.xaml.cs">
+      <DependentUpon>RegistrationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Forms\LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\MessageForm.xaml.cs">
       <DependentUpon>MessageForm.xaml</DependentUpon>
     </Compile>
@@ -145,6 +157,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Controls\SubtaskListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\TaskBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +178,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\Blocks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Forms\RegistrationForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Forms\LoginForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,7 +260,7 @@
     <Resource Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utilites\" />
+    <Resource Include="Resources\Background.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\prjImage\ProjectImage1.png" />
