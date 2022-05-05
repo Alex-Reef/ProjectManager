@@ -7,106 +7,129 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Login"
+        Width="330" Height="350"
         WindowStyle="None" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" Background="Transparent">
     <Grid>
-        <materialDesign:Card 
-            Grid.Row="1"
-            Background="{DynamicResource Background}"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <StackPanel Orientation="Vertical">
-                <Menu 
-                HorizontalAlignment="Right" 
-                VerticalAlignment="Center">
-                    <MenuItem 
-                        Height="25" 
-                        Header="{materialDesign:PackIcon Kind=Close}"
-                        Foreground="{DynamicResource Text}"/>
-                </Menu>
-                <StackPanel Orientation="Vertical" Margin="30, 10, 30, 30">
-                    <Image 
-                        Source="{StaticResource Icon}" 
-                        Width="35"
-                        HorizontalAlignment="Left"
-                        Margin="0, 0, 0, 20"/>
-                    <StackPanel Orientation="Horizontal">
+        <materialDesign:DialogHost
+            CloseOnClickAway="True"
+            x:Name="Dialog">
+            <materialDesign:DialogHost.DialogContent>
+                <materialDesign:Card 
+                    Background="{DynamicResource CardBackground}">
+                    <StackPanel 
+                        Margin="10, 15" Orientation="Vertical"
+                        HorizontalAlignment="Center">
                         <TextBlock
-                            Text="Welcome Back"
-                            FontFamily="Idea" FontSize="30" FontWeight="Bold"
-                            Foreground="{DynamicResource Text}"/>
-                        <TextBlock
-                            Text="."
-                            FontFamily="Idea" FontSize="30" FontWeight="Bold"
-                            Foreground="{DynamicResource Primary}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 20">
-                        <TextBlock
-                            Text="Don't have account?"
-                            VerticalAlignment="Center"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Center"
+                            Text="{DynamicResource WrongPasswordOrLogin}"
+                            FontFamily="Idea" FontSize="13" FontWeight="Bold"
                             Foreground="{DynamicResource Text}"
-                            Opacity="0.7"
-                            FontSize="11" FontFamily="Idea" FontWeight="SemiBold"/>
+                            Margin="0, 10, 15, 0"/>
                         <Button
-                            Content="Create one!"
-                            VerticalAlignment="Center"
-                            x:Name="CreateAccBtn"
-                            Click="CreateAccBtn_Click"
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            Height="20" Padding="5,0"
-                            Margin="5, 0, 0, 0"
-                            FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
-                            Foreground="{DynamicResource Primary}"/>
+                            Margin="0, 20, 0, 0"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                            Background="{DynamicResource Primary}"
+                            Content="{DynamicResource OK}"
+                            Foreground="White"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            Width="100" Height="35"
+                            FontFamily="Idea" FontSize="13" FontWeight="SemiBold"/>
                     </StackPanel>
-                    <TextBox 
-                        materialDesign:HintAssist.Hint="Login" 
-                        x:Name="LoginBox"
-                        Width="270"
-                        BorderBrush="{DynamicResource TextFieldBackground}"
-                        Background="{DynamicResource TextFieldBackground}"
-                        MaxLength="25"
-                        FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
-                        Padding="10"
-                        materialDesign:HintAssist.Foreground="{DynamicResource Text}"
-                        materialDesign:HintAssist.Background="Transparent"
-                        Foreground="{DynamicResource Text}"
-                        Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="Arrow"/>
-                    <PasswordBox 
-                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
-                        Padding="10"
-                        materialDesign:HintAssist.Foreground="{DynamicResource Text}"
-                        materialDesign:HintAssist.Background="Transparent"
-                        BorderBrush="{DynamicResource TextFieldBackground}"
-                        Background="{DynamicResource TextFieldBackground}"
-                        Foreground="{DynamicResource Text}"
-                        Width="270"
-                        MaxLength="25"
-                        Margin="0, 20, 0, 0"
-                        materialDesign:HintAssist.Hint="Password" 
-                        FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
-                        x:Name="PasswordBox" Cursor="Arrow"/>
-                    <Button
-                        Content="Forgot password?"
-                        x:Name="ForgotPass"
-                        Click="ForgotPass_Click"
-                        FontFamily="Idea" FontSize="10" FontWeight="SemiBold"
-                        Foreground="{DynamicResource Primary}"
-                        Style="{StaticResource MaterialDesignFlatButton}"
-                        HorizontalAlignment="Right"
-                        Height="20" Padding="5"
-                        Width="Auto" Cursor="Hand"/>
-                    <Button 
-                        Content="Login"
-                        Margin="0, 20, 0, 0"
-                        x:Name="LoginBtn" 
-                        Click="LoginBtn_Click"
-                        Height="35"
-                        FontSize="14" FontFamily="Idea" FontWeight="SemiBold"
-                        Foreground="White"
-                        Background="{DynamicResource Primary}"
-                        BorderThickness="0" Cursor="Hand"/>
+                </materialDesign:Card>
+            </materialDesign:DialogHost.DialogContent>
+            <materialDesign:Card 
+                Grid.Row="1"
+                Background="{DynamicResource Background}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <Menu 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center">
+                        <MenuItem 
+                            x:Name="Close"
+                            Click="Close_Click"
+                            Height="25" 
+                            Header="{materialDesign:PackIcon Kind=Close}"
+                            Foreground="{DynamicResource Text}"/>
+                    </Menu>
+                    <StackPanel Orientation="Vertical" Margin="30, 10, 30, 30">
+                        <Image 
+                            Source="{StaticResource Icon}" 
+                            Width="35"
+                            HorizontalAlignment="Left"
+                            Margin="0, 0, 0, 20"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Text="{DynamicResource WelcomeBack}"
+                                FontFamily="Idea" FontSize="30" FontWeight="Bold"
+                                Foreground="{DynamicResource Text}"/>
+                            <TextBlock
+                                Text="."
+                                FontFamily="Idea" FontSize="30" FontWeight="Bold"
+                                Foreground="{DynamicResource Primary}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 20">
+                            <TextBlock
+                                Text="{DynamicResource DontHaveAcc}"
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource Text}"
+                                Opacity="0.7"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"/>
+                            <Button
+                                Content="{DynamicResource CreateOne}"
+                                VerticalAlignment="Center"
+                                x:Name="CreateAccBtn"
+                                Click="CreateAccBtn_Click"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Height="20" Padding="5,0"
+                                Margin="5, 0, 0, 0"
+                                FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                                Foreground="{DynamicResource Primary}"/>
+                        </StackPanel>
+                        <TextBox 
+                            materialDesign:HintAssist.Hint="{DynamicResource Username}" 
+                            x:Name="LoginBox"
+                            Width="270"
+                            BorderBrush="{DynamicResource TextFieldBackground}"
+                            Background="{DynamicResource TextFieldBackground}"
+                            MaxLength="25"
+                            FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                            Padding="10"
+                            materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                            materialDesign:HintAssist.Background="Transparent"
+                            Foreground="{DynamicResource Text}" Cursor="Arrow"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                        <PasswordBox 
+                            Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                            Padding="10"
+                            materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                            materialDesign:HintAssist.Background="Transparent"
+                            BorderBrush="{DynamicResource TextFieldBackground}"
+                            Background="{DynamicResource TextFieldBackground}"
+                            Foreground="{DynamicResource Text}"
+                            Width="270"
+                            MaxLength="25"
+                            Margin="0, 20, 0, 0"
+                            materialDesign:HintAssist.Hint="{DynamicResource Password}" 
+                            FontSize="11" FontFamily="Idea" FontWeight="SemiBold"
+                            x:Name="PasswordBox" Cursor="Arrow"/>
+                        <Button 
+                            Content="{DynamicResource Login}"
+                            Margin="0, 20, 0, 0"
+                            x:Name="LoginBtn" 
+                            Click="LoginBtn_Click"
+                            Height="35"
+                            FontSize="14" FontFamily="Idea" FontWeight="SemiBold"
+                            Foreground="White"
+                            Background="{DynamicResource Primary}"
+                            BorderThickness="0" Cursor="Hand"/>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </materialDesign:Card>
+            </materialDesign:Card>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>

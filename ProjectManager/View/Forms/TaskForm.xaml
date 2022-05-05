@@ -6,140 +6,190 @@
         xmlns:local="clr-namespace:ProjectManager" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="TaskEdit" Height="480" Width="600" ResizeMode="NoResize">
+        Title="TaskEdit" Height="480" Width="600" ResizeMode="NoResize"
+        WindowStyle="None">
     <Grid Background="{DynamicResource Background}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <StackPanel 
-            Grid.Column="0"
-            Margin="10, 10, 0, 0">
-            <Grid 
-                HorizontalAlignment="Left"
-                Background="{DynamicResource TextFieldBackground}"
-                Width="290" Height="120">
-                <Image/>
-                <Button
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Content="Select Image"/>
-            </Grid>
-            <TextBox 
-                Margin="0, 10, 0, 0"
-                x:Name="TaskNameBox"
-                Height="35" Width="290"
-                FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
-                HorizontalAlignment="Left"
-                TextWrapping="NoWrap"
-                MaxLength="50"
-                Padding="10"
-                Background="{DynamicResource TextFieldBackground}"
-                BorderBrush="{DynamicResource TextFieldBackground}"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                materialDesign:HintAssist.Hint="Task name" Cursor="Arrow"/>
-            <TextBox
-                x:Name="DescriptionBox"
-                Margin="0, 15, 0, 0"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Background="{DynamicResource TextFieldBackground}"
-                BorderBrush="{DynamicResource TextFieldBackground}"
-                TextWrapping="Wrap"
-                Padding="10"
-                Height="100" Width="290"
-                FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
-                HorizontalAlignment="Left"
-                materialDesign:HintAssist.Hint="Task Description" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card
+            Grid.Row="0"
+            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+            Background="{DynamicResource Bar}">
+            <Menu HorizontalAlignment="Right" VerticalAlignment="Center">
+                <MenuItem 
+                    Height="30" 
+                    Header="{materialDesign:PackIcon Kind=Close}"
+                    Click="CloseBtn_Click"
+                    Foreground="{DynamicResource Text}"/>
+            </Menu>
+        </materialDesign:Card>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <StackPanel 
-                Orientation="Horizontal"
-                Width="290"
-                Margin="0, 10"
-                HorizontalAlignment="Left">
-                <materialDesign:PackIcon 
-                    Kind="Tag"
+                Grid.Column="0"
+                Margin="10, 10, 0, 0">
+                <Grid 
+                    HorizontalAlignment="Left"
+                    Background="{DynamicResource TextFieldBackground}"
+                    Width="290" Height="120">
+                    <Image 
+                        x:Name="ImageBox"
+                        Stretch="Fill"/>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                        <Button
+                            x:Name="SelectImageBtn"
+                            Click="SelectImageBtn_Click"
+                            Content="{DynamicResource SelectImage}"
+                            Background="{DynamicResource Primary}"
+                            Foreground="White" />
+                        <Button
+                            Margin="5, 0"
+                            Background="{DynamicResource Gray}"
+                            BorderThickness="0"
+                            Style="{StaticResource MaterialDesignIconButton}"
+                            Foreground="{DynamicResource Text}"
+                            Width="30" Height="30"
+                            x:Name="ClearImage"
+                            ToolTip="{DynamicResource ClearImage}"
+                            Click="ClearImage_Click" Cursor="Hand">
+                            <materialDesign:PackIcon 
+                                Kind="Cancel"
+                                Width="15" Height="15"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <TextBox 
+                    Margin="0, 10, 0, 0"
+                    x:Name="TaskNameBox"
+                    Height="35" Width="290"
+                    FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
+                    HorizontalAlignment="Left"
+                    TextWrapping="NoWrap"
+                    MaxLength="50"
+                    Padding="10"
+                    materialDesign:HintAssist.Background="Transparent"
+                    materialDesign:HintAssist.Foreground="{DynamicResource Text}"
                     Foreground="{DynamicResource Text}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"/>
-                <StackPanel 
-                    Orientation="Horizontal" 
-                    x:Name="markerPanel"/>
-                <Button 
-                    x:Name="AddMarkerBtn" 
-                    Click="OpenPopup_Click" 
-                    Foreground="{DynamicResource Primary}"
-                    Style="{StaticResource MaterialDesignIconButton}"
-                    Width="25" Height="25">
-                    <materialDesign:PackIcon 
-                        Kind="AddBox" Width="15" Height="15"/>
-                </Button>
-                <Popup
-                    x:Name="Popup" StaysOpen="False" 
-                    Margin="20, 0"
-                    HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <materialDesign:Card
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Padding="20"
-                        Background="{DynamicResource CardBackground}">
-                        <ComboBox
-                            Width="150"
-                            x:Name="MarkerBox" 
-                            SelectionChanged="MarkerBox_SelectionChanged"/>
-                    </materialDesign:Card>
-                </Popup>
-            </StackPanel>
-            <Grid>
+                    Background="{DynamicResource TextFieldBackground}"
+                    BorderBrush="{DynamicResource TextFieldBackground}"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    materialDesign:HintAssist.Hint="{DynamicResource TaskTitle}" Cursor="Arrow"/>
+                <TextBox
+                    x:Name="DescriptionBox"
+                    Margin="0, 15, 0, 0"
+                    materialDesign:HintAssist.Background="Transparent"
+                    materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Background="{DynamicResource TextFieldBackground}"
+                    BorderBrush="{DynamicResource TextFieldBackground}"
+                    Foreground="{DynamicResource Text}"
+                    TextWrapping="Wrap"
+                    Padding="10"
+                    Height="100" Width="290"
+                    FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
+                    HorizontalAlignment="Left"
+                    materialDesign:HintAssist.Hint="{DynamicResource TaskAbout}" />
                 <StackPanel 
                     Orientation="Horizontal"
+                    Width="290"
+                    Margin="0, 10"
                     HorizontalAlignment="Left">
                     <materialDesign:PackIcon 
-                        Kind="TableColumn"
+                        Kind="Tag"
                         Foreground="{DynamicResource Text}"
-                        VerticalAlignment="Center"/>
-                    <ComboBox 
-                        x:Name="categoryBox"
-                        Padding="10"
-                        Background="{DynamicResource TextFieldBackground}"
-                        BorderBrush="{DynamicResource TextFieldBackground}"
-                        Foreground="{DynamicResource Text}"
-                        Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
-                        ItemsSource="{Binding ShortStringList}"
-                        materialDesign:HintAssist.Hint="Move to"
-                        FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
-                        Height="35" Width="120" HorizontalAlignment="Left"/>
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        x:Name="markerPanel"
+                        Margin="5, 0"/>
+                    <Button
+                        x:Name="AddMarkerBtn" 
+                        Click="OpenPopup_Click" 
+                        Foreground="{DynamicResource Primary}"
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        Width="25" Height="25">
+                        <materialDesign:PackIcon 
+                            Kind="AddBox" Width="15" Height="15"/>
+                    </Button>
+                    <Popup
+                        x:Name="Popup" StaysOpen="False" 
+                        Margin="20, 0"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <materialDesign:Card
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Padding="20"
+                            Background="{DynamicResource CardBackground}">
+                            <ComboBox
+                                Width="150"
+                                x:Name="MarkerBox" 
+                                SelectionChanged="MarkerBox_SelectionChanged"/>
+                        </materialDesign:Card>
+                    </Popup>
                 </StackPanel>
-                <StackPanel 
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-                    <DatePicker
-                        Padding="10, 0"
-                        FlowDirection="RightToLeft"
-                        HorizontalAlignment="Left"
-                        x:Name="DataPicker"
-                        Background="{DynamicResource TextFieldBackground}"
-                        BorderBrush="{DynamicResource TextFieldBackground}"
-                        Foreground="{DynamicResource Text}"
-                        Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-                        FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
-                        materialDesign:HintAssist.Hint="Pick Date"
-                        Height="35" Width="120"/>
-                    <materialDesign:PackIcon 
-                        Kind="Calendar"
-                        Foreground="{DynamicResource Text}"
-                        VerticalAlignment="Center"/>
-                </StackPanel>
-            </Grid>
+                <Grid>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                        <materialDesign:PackIcon 
+                            Kind="TableColumn"
+                            Foreground="{DynamicResource Text}"
+                            VerticalAlignment="Center"/>
+                        <ComboBox 
+                            x:Name="categoryBox"
+                            Padding="10"
+                            materialDesign:HintAssist.Background="Transparent"
+                            materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                            Background="{DynamicResource TextFieldBackground}"
+                            BorderBrush="{DynamicResource TextFieldBackground}"
+                            Foreground="{DynamicResource Text}"
+                            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                            IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
+                            ItemsSource="{Binding ShortStringList}"
+                            materialDesign:HintAssist.Hint="Move to"
+                            FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
+                            Height="35" Width="120" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                        <DatePicker
+                            Padding="10, 0"
+                            FlowDirection="RightToLeft"
+                            HorizontalAlignment="Left"
+                            x:Name="DataPicker"
+                            Background="{DynamicResource TextFieldBackground}"
+                            BorderBrush="{DynamicResource TextFieldBackground}"
+                            Foreground="{DynamicResource Text}"
+                            Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+                            FontFamily="Idea" FontWeight="SemiBold" FontSize="10"
+                            Height="35" Width="120"/>
+                        <materialDesign:PackIcon 
+                            Kind="Calendar"
+                            Foreground="{DynamicResource Text}"
+                            VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
             <Grid 
                 HorizontalAlignment="Center"
-                Margin="20,30, 20, 0"
+                VerticalAlignment="Bottom"
+                Margin="20,30,20, 30"
                 Width="290">
                 <Button 
                     Width="100"
                     HorizontalAlignment="Left"
                     Margin="30, 0, 0, 0"
                     VerticalAlignment="Bottom"
-                    Content="Save"
+                    Content="{DynamicResource Save}"
                     FontFamily="Idea" FontWeight="Medium" FontSize="13"
                     Foreground="White"
                     Background="{DynamicResource Primary}"
@@ -152,48 +202,66 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Margin="0, 0, 30, 0"
-                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                     Background="{DynamicResource Text}"
                     Foreground="{DynamicResource CardBackground}"
                     materialDesign:ButtonAssist.CornerRadius="20"
+                    BorderThickness="0"
                     FontFamily="Idea" FontWeight="Medium" FontSize="13"
-                    Content="Delete"
+                    Content="{DynamicResource Delete}"
                     x:Name="DeleteTaskBtn" Click="DeleteBtn_Click" Cursor="Hand">
                 </Button>
             </Grid>
-        </StackPanel>
-        <Grid Margin="10, 10, 10, 0"
+            <Grid Margin="10, 10, 10, 0"
             Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackPanel
-                Grid.Row="0"
-                x:Name="SubtaskPanel"
-                Margin="0, 0, 0, 10"
-                Height="Auto"/>
-            <Button
-                Grid.Row="1"
-                Margin="0, 0, 0, 30"
-                x:Name="AddSubtask"
-                Click="AddSubtask_Click"
-                Background="{DynamicResource Primary}"
-                Foreground="White"
-                Width="150"
-                BorderThickness="0"
-                materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                VerticalAlignment="Bottom" Cursor="Hand">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon 
-                        Kind="AddBox"
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <StackPanel
+                        x:Name="EmptyPanel"
                         VerticalAlignment="Center"
-                        Margin="5, 0"/>
-                    <TextBlock
-                        VerticalAlignment="Center"
-                        Text="Add Subtask"/>
-                </StackPanel>
-            </Button>
+                        HorizontalAlignment="Center">
+                        <materialDesign:PackIcon 
+                            Kind="ArchiveCancel"
+                            Foreground="{DynamicResource Text}"
+                            Width="35" Height="35"
+                            HorizontalAlignment="Center"/>
+                        <TextBlock
+                            FontFamily="Idea" FontWeight="SemiBold" FontSize="15"
+                            Text="{DynamicResource SubtaskEmpty}"
+                            Foreground="{DynamicResource Text}"
+                            HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="0"
+                        x:Name="SubtaskPanel"
+                        Margin="0, 0, 0, 10"
+                        Height="Auto"/>
+                </Grid>
+                <Button
+                    Grid.Row="1"
+                    Margin="0, 0, 0, 30"
+                    x:Name="AddSubtask"
+                    Click="AddSubtask_Click"
+                    Background="{DynamicResource Primary}"
+                    Foreground="White"
+                    Width="150"
+                    BorderThickness="0"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    VerticalAlignment="Bottom" Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon 
+                            Kind="AddBox"
+                            VerticalAlignment="Center"
+                            Margin="5, 0"/>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{DynamicResource AddSubtask}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

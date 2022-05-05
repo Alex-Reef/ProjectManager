@@ -5,29 +5,50 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectManager.View.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="280">
+             Height="Auto" Width="280">
     <materialDesign:Card 
-        Margin="10, 0"
+        Margin="10, 0, 10, 10"
         Background="{DynamicResource CardBackground}">
         <Grid
             x:Name="SubtaskGrid"
             MouseDown="SubtaskGrid_MouseDown"
             Margin="10, 0, 5, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
             <TextBlock
                 x:Name="SubtaskBlock"
+                TextWrapping="Wrap"
                 Text="Subtask"
+                Foreground="{DynamicResource Text}"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
                 FontFamily="Idea" FontWeight="SemiBold" FontSize="12"/>
-            <Button
-                x:Name="CheckBtn"
-                Width="30" Height="30"
+            <StackPanel 
+                Grid.Column="1"
+                Orientation="Horizontal"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Style="{StaticResource MaterialDesignIconButton}" Cursor="Hand">
-                <materialDesign:PackIcon 
-                    Kind="CheckCircle"
-                    Height="20" Width="20"/>
-            </Button>
+                VerticalAlignment="Top">
+                <Button
+                    x:Name="CheckBtn"
+                    Width="30" Height="30"
+                    Click="CheckBtn_Click"
+                    Style="{StaticResource MaterialDesignIconButton}">
+                    <materialDesign:PackIcon 
+                        Kind="CheckCircle"
+                        Height="20" Width="20"/>
+                </Button>
+                <Button
+                    x:Name="DeleteBtn"
+                    Click="DeleteBtn_Click"
+                    Width="30" Height="30"
+                    Foreground="Tomato"
+                    Style="{StaticResource MaterialDesignIconButton}" Cursor="Hand">
+                    <materialDesign:PackIcon 
+                        Kind="DeleteOutline"
+                        Height="20" Width="20"/>
+                </Button>
+            </StackPanel>
         </Grid>
     </materialDesign:Card>
 </UserControl>

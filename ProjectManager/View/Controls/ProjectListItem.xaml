@@ -45,7 +45,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock 
                     Grid.Row="0"
-                    Text="Last opened"
+                    Text="{DynamicResource LastOpened}"
                     Foreground="{DynamicResource Text}"
                     VerticalAlignment="Bottom" HorizontalAlignment="Center"
                     FontFamily="Idea" FontSize="13" FontWeight="Medium"/>
@@ -63,7 +63,7 @@
                 Orientation="Horizontal" Grid.Column="2" 
                 HorizontalAlignment="Right">
                 <Button 
-                    Content="Open Project" 
+                    Content="{DynamicResource OpenProject}" 
                     Margin="10, 0" 
                     x:Name="OpenPrj" 
                     Click="OpenPrj_Click"

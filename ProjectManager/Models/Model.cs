@@ -15,12 +15,14 @@ namespace ProjectManager
         public List<User> users { get; set; }
         public List<Project> projects { get; set; }
         public AppSettings appSettings { get; set; }
+        public List<Notification> Notifications { get; set; }
 
         public Model()
         {
             projects = new List<Project>();
             appSettings = new AppSettings();
             users = new List<User>();
+            Notifications = new List<Notification>();
             Load();
             LoadAppData();
             LoadUserData();

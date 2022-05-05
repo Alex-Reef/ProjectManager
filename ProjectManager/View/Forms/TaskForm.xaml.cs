@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using ProjectManager.Controllers;
 using ProjectManager.Models;
 using ProjectManager.View.Controls;
 using ProjectManager.Utilites;
+using Microsoft.Win32;
+using System.Windows.Media.Imaging;
+using System;
+using System.IO;
 
 namespace ProjectManager
 {
@@ -14,25 +17,28 @@ namespace ProjectManager
         private Model model { get; set; }
         private Controller controller { get; set; }
         private List<string> markersID { get; set; }
-        public int CategoryID { get; set; }
-        public int PositionID { get; set; }
+        public string ImagePath { get; set; }
 
         public TaskForm(Task ts, Model md, Controller contr)
         {
             InitializeComponent();
             model = md;
             controller = contr;
+
             foreach(var col in model.GetCurentProject().Tasks)
             {
                 task = col.Find(x => x.UniqleID == ts.UniqleID);
                 if (task != null)
                     break;
             }
+
             markersID = new List<string>();
+
             TaskNameBox.Text = task.Name;
             DescriptionBox.Text = task.Description;
-            PositionID = -1;
-            CategoryID = -1;
+
+            if(File.Exists(task.ImagePath))
+                ImageBox.Source = new BitmapImage(new Uri(task.ImagePath));
 
             var list = model.GetCurentProject().Markers;
             foreach (var item in list)
@@ -49,8 +55,13 @@ namespace ProjectManager
                 markerPanel.Children.Add(markerBlock);
             }
 
+            if (task.Subtasks.Count > 0)
+                EmptyPanel.Visibility = Visibility.Collapsed;
+            else
+                EmptyPanel.Visibility = Visibility.Visible;
+
             foreach (var item in task.Subtasks)
-                SubtaskPanel.Children.Add(new SubtaskListItem(item));
+                SubtaskPanel.Children.Add(new SubtaskListItem(item, task, controller, this));
 
             foreach(var item in model.GetCurentProject().Headers)
                 categoryBox.Items.Add(item);
@@ -71,6 +82,7 @@ namespace ProjectManager
             task.Description = DescriptionBox.Text;
             task.EndTime = DataPicker.Text.ToString();
             task.MarkersID = markersID;
+            task.ImagePath = ImagePath;
             controller.taskController.Move(task, categoryBox.SelectedIndex);
             controller.taskController.Update(task);
             this.Visibility = Visibility.Hidden;
@@ -90,7 +102,6 @@ namespace ProjectManager
         {
             AddMarker(MarkerBox.SelectedIndex);
         }
-
 
         public void AddMarker(int ID)
         {
@@ -118,10 +129,44 @@ namespace ProjectManager
             Update();
         }
 
-        private void Update()
+        public void Update()
         {
+            SubtaskPanel.Children.Clear();
             foreach (var item in task.Subtasks)
-                SubtaskPanel.Children.Add(new SubtaskListItem(item));
+                SubtaskPanel.Children.Add(new SubtaskListItem(item, task, controller, this));
+
+            if(task.Subtasks.Count > 0)
+                EmptyPanel.Visibility = Visibility.Collapsed;
+            else
+                EmptyPanel.Visibility = Visibility.Visible;
+
+            ImageBox.Source = null;
+            if (File.Exists(ImagePath))
+                ImageBox.Source = new BitmapImage(new Uri(ImagePath));
+        }
+
+        private void SelectImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+
+            if (dialog.ShowDialog() == true)
+            {
+                ImagePath = dialog.FileName;
+            }
+
+            Update();
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void ClearImage_Click(object sender, RoutedEventArgs e)
+        {
+            ImagePath = null;
+            Update();
         }
     }
 }

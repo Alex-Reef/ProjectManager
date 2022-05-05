@@ -28,9 +28,20 @@ namespace ProjectManager.Controllers
             Model.SaveAppData();
         }
 
-        public void SetLanguage()
+        public void SetLanguage(int language)
         {
-            Application.Current.Resources.MergedDictionaries[1].Source = new Uri("/Resources/Localization/en-US.xaml", UriKind.RelativeOrAbsolute);
+            Model.GetAppSettings().Language = language;
+            switch (language)
+            {
+                case 0:
+                    Application.Current.Resources.MergedDictionaries[1].Source = new Uri("/Resources/Localization/en-US.xaml", UriKind.RelativeOrAbsolute);
+                    break;
+
+                case 1:
+                    Application.Current.Resources.MergedDictionaries[1].Source = new Uri("/Resources/Localization/ua-UA.xaml", UriKind.RelativeOrAbsolute);
+                    break;
+            }
+            Model.SaveAppData();
         }
     }
 }

@@ -18,7 +18,6 @@ namespace ProjectManager
             presenter = Presenter;
 
             model.SetProject(project);
-            MessageBox.Show(model.GetCurentProject().Name, "info", MessageBoxButton.OK);
             TaskPage taskPage = new TaskPage(model, presenter);
 
             frame.Content = taskPage;

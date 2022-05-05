@@ -1,4 +1,4 @@
-﻿using ProjectManager.View.Forms;
+﻿using ProjectManager.View.Controls;
 namespace ProjectManager.Controllers
 {
     public static class Message
@@ -16,9 +16,9 @@ namespace ProjectManager.Controllers
             YesNo
         }
 
-        public static void Show(string name, MessageIcon icon, MessageButton button)
+        public static void Show(string Title, MessageIcon icon, MessageButton button)
         {
-            MessageForm mf = new MessageForm(name, icon, button);
+            MessageForm mf = new MessageForm(Title, icon, button);
             mf.ShowDialog();
         }
     }

@@ -1,10 +1,94 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    
+
+    <!-- Task Page-->
     <system:String x:Key="NewTaskBtn">Нове завдання</system:String>
     <system:String x:Key="LetsStartLabel">Давай Починати, </system:String>
     <system:String x:Key="ProjectLabel">Проекти / </system:String>
     <system:String x:Key="MarkersBtn">Маркери</system:String>
     <system:String x:Key="YouHaveTaskCount">Ти маєшь завдань:</system:String>
+
+    <!-- Settings-->
+    <system:String x:Key="Settings">Налаштування</system:String>
+    <system:String x:Key="Save">Зберегти</system:String>
+
+    <!-- Settings: User Info-->
+    <system:String x:Key="UserInfo">Інформація про користувача</system:String>
+    <system:String x:Key="UserInfoDescr">Редагуйте інформацію аккаунту: електронна пошта, ім'я користувача та інше.</system:String>
+    <system:String x:Key="First Name">Ім'я</system:String>
+    <system:String x:Key="Last Name">Прізвище</system:String>
+    <system:String x:Key="Email">Електронна пошта</system:String>
+    <system:String x:Key="Username">Ім'я користувача</system:String>
+    
+    <!-- Settings: Security-->
+    <system:String x:Key="Security">Безпека</system:String>
+    <system:String x:Key="SecurityDescr">Змінити пароль</system:String>
+    <system:String x:Key="OldPassword">Старий пароль</system:String>
+    <system:String x:Key="NewPassword">Новий пароль</system:String>
+    
+    <!-- Settings: Themes-->
+    <system:String x:Key="Themes">Теми</system:String>
+    <system:String x:Key="ThemesDescr">Обирайте, керуйте темами</system:String>
+    <system:String x:Key="Dark">Темна</system:String>
+    <system:String x:Key="Light">Світла</system:String>
+
+    <!-- Settings: Languages-->
+    <system:String x:Key="Languages">Мова</system:String>
+    <system:String x:Key="LanguagesDescr">Обрання мови</system:String>
+    <system:String x:Key="English">Англійська</system:String>
+    <system:String x:Key="Ukraine">Українська</system:String>
+
+    <!-- Login -->
+    <system:String x:Key="WelcomeBack">З поверненням</system:String>
+    <system:String x:Key="DontHaveAcc">Не маєте аккаунту?</system:String>
+    <system:String x:Key="Login">Увійти</system:String>
+    <system:String x:Key="CreateOne">Створіть один!</system:String>
+    <system:String x:Key="Password">Пароль</system:String>
+
+    <!-- Registration -->
+    <system:String x:Key="CreateNewAcc">Створити новий аккаунт</system:String>
+    <system:String x:Key="AlreadyMemder">Вже маєте аккаунт?</system:String>
+    <system:String x:Key="LoginMin3">Ім'я користувача (Мін. 3 символи)</system:String>
+    <system:String x:Key="PasswordMin5">Пароль (Мін. 5 символів)</system:String>
+    <system:String x:Key="CreateAcc">Створити аккаунт</system:String>
+
+    <!-- Task Form -->
+    <system:String x:Key="SelectImage">Обрати зображення</system:String>
+    <system:String x:Key="ClearImage">Очистити зображення</system:String>
+    <system:String x:Key="TaskTitle">Заголовок завдання</system:String>
+    <system:String x:Key="TaskAbout">Яке нове завдання?</system:String>
+    <system:String x:Key="Delete">Вмдалити</system:String>
+    <system:String x:Key="SubtaskEmpty">Список підзавдань порожній</system:String>
+    <system:String x:Key="AddSubtask">Додати підзавдання</system:String>
+
+    <!-- Selecr Project -->
+    <system:String x:Key="NewProject">Новий Проект</system:String>
+    <system:String x:Key="MyProject">Мої Проекти</system:String>
+
+    <!-- Main Window -->
+    <system:String x:Key="Dashboard">Головна панель</system:String>
+    <system:String x:Key="Tasks">Завдання</system:String>
+    <system:String x:Key="Code">Код</system:String>
+    <system:String x:Key="Archive">Архів</system:String>
+    <system:String x:Key="Logout">Вихід</system:String>
+    
+    <!-- Create Task -->
+    <system:String x:Key="OK">Oк</system:String>
+    <system:String x:Key="Cancel">Відміна</system:String>
+    <system:String x:Key="Create">Створити</system:String>
+    <system:String x:Key="CreateNewTask">Створити нове завдання</system:String>
+    
+    <!-- Notification -->
+    <system:String x:Key="Notifications">Повідомлення</system:String>
+    <system:String x:Key="NoNotifications">Немає повідомлень</system:String>
+
+    <!-- MESSAGES -->
+    <system:String x:Key="Deadline">Час закінчення завдання вичерпаний!</system:String>
+    <system:String x:Key="DeadlineMessage">Одне або декілька завдань очікує на завершення</system:String>
+    <system:String x:Key="WrongPasswordOrLogin">Неправильний пароль або ім'я користувача</system:String>
+    <system:String x:Key="WrongPassword">Неправильний пароль</system:String>
+    <system:String x:Key="FillingFields">Всі поля мають бути заповнені.</system:String>
+    <system:String x:Key="InvalidEmail">Електронна пошта не дійсна.</system:String>
+    <system:String x:Key="LoginAlready">Це ім'я користувача вже зайняте.</system:String>
 </ResourceDictionary>

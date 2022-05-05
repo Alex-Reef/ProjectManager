@@ -26,19 +26,28 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Width="230" Grid.Row="0" x:Name="TaskName"
-                       Text="Task name" 
-                       Foreground="{StaticResource Text}" 
-                       FontSize="16" FontFamily="Idea" FontWeight="Medium"
-                       VerticalAlignment="Bottom"
-                       HorizontalAlignment="Left"/>
-                <TextBlock Grid.Row="1" Width="240" x:Name="TaskDescription"
-                       Text="Description"
-                       Foreground="{StaticResource Text}" 
-                       Opacity="0.4"
-                       FontSize="10" FontFamily="Idea" FontWeight="Medium"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top" TextWrapping="Wrap"/>
+                <TextBlock 
+                    Width="230" Grid.Row="0" x:Name="TaskName"
+                    Text="Task name" 
+                    Foreground="{StaticResource Text}" 
+                    FontSize="16" FontFamily="Idea" FontWeight="Medium"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left"/>
+                <Image 
+                    Grid.Row="1"
+                    Visibility="Visible"
+                    Height="120"
+                    Source ="/Resources/Background.png"
+                    x:Name="ImageBox" Stretch="UniformToFill"/>
+                <TextBlock 
+                    Visibility="Collapsed"
+                    Grid.Row="1" Width="240" x:Name="TaskDescription"
+                    Text="Description"
+                    Foreground="{StaticResource Text}" 
+                    Opacity="0.4"
+                    FontSize="10" FontFamily="Idea" FontWeight="Medium"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" TextWrapping="Wrap"/>
             </Grid>
             
             <Separator 
@@ -66,41 +75,21 @@
                         Foreground="{StaticResource Text}"
                         Opacity="0.3"/>
                 </StackPanel>
-                <Grid Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel 
-                        Grid.Column="0" 
-                        Orientation="Horizontal" HorizontalAlignment="Right">
-                        <md:PackIcon 
-                            Kind="Subtasks" 
-                            VerticalAlignment="Center" 
-                            Foreground="{StaticResource Text}"
-                            Opacity="0.3"/>
-                        <Label 
-                            Content="0" 
-                            x:Name="TaskSubtaskCount" 
-                            VerticalAlignment="Center" 
-                            Foreground="{StaticResource Text}"
-                            Opacity="0.3"/>
-                    </StackPanel>
-                    <StackPanel 
-                        Grid.Column="1" 
-                        Orientation="Horizontal" HorizontalAlignment="Right">
-                        <md:PackIcon 
-                            Kind="Comments" 
-                            VerticalAlignment="Center" 
-                            Foreground="{StaticResource Text}"
-                            Opacity="0.3"/>
-                        <Label 
-                            Content="0" x:Name="TaskCommentsCount" 
-                            VerticalAlignment="Center" 
-                            Foreground="{StaticResource Text}"
-                            Opacity="0.3"/>
-                    </StackPanel>
-                </Grid>
+                <StackPanel 
+                    Grid.Column="1" 
+                    Orientation="Horizontal" HorizontalAlignment="Right">
+                    <md:PackIcon 
+                        Kind="Subtasks" 
+                        VerticalAlignment="Center" 
+                        Foreground="{StaticResource Text}"
+                        Opacity="0.3"/>
+                    <Label 
+                        Content="0" 
+                        x:Name="TaskSubtaskCount" 
+                        VerticalAlignment="Center" 
+                        Foreground="{StaticResource Text}"
+                        Opacity="0.3"/>
+                </StackPanel>
             </Grid>
         </Grid>
     </md:Card>

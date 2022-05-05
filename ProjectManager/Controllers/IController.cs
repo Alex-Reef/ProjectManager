@@ -10,6 +10,6 @@ namespace ProjectManager.Controllers
     {
         void Create(T value);
         void Update(T value);
-        void Delete(T valie);
+        void Delete(T value);
     }
 }

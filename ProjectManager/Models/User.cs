@@ -7,5 +7,6 @@
         public string Password { get; set; }
         public string Email { get; set; }
         public string UniqleID { get; set; }
+        public string ImagePath { get; set; }
     }
 }

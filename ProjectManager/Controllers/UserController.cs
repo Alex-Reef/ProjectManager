@@ -2,6 +2,9 @@
 using ProjectManager.Models;
 using System;
 using System.IO;
+using ProjectManager.Utilites;
+using System.Net;
+using System.Net.Mail;
 
 namespace ProjectManager.Controllers
 {
@@ -34,7 +37,7 @@ namespace ProjectManager.Controllers
             var list = Model.GetUsers();
             foreach (var user in list)
             {
-                if (user.Login == login && user.Password == password)
+                if (user.Login == login && user.Password == DataSecurityService.CreateMD5(password))
                 {
                     Model.SetUser(user);
                     return user;

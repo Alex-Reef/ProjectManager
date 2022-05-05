@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using ProjectManager.Controllers;
 using ProjectManager.Models;
 using ProjectManager.View.Controls;
+using System.Windows.Media.Imaging;
 
 namespace ProjectManager
 {
@@ -30,6 +31,12 @@ namespace ProjectManager
             Headers = new List<HeaderColumn>();
 
             UserChip.Content = model.GetCurentUser().UserName;
+
+            String stringPath = model.GetCurentUser().ImagePath;
+            Uri imageUri = new Uri(stringPath, UriKind.Relative);
+            BitmapImage imageBitmap = new BitmapImage(imageUri);
+            UserImage.Source = imageBitmap;
+
             ProjectNameLabel.Content = model.GetCurentProject().Name;
             ltsUserName.Content = model.GetCurentUser().UserName.Split(' ')[0];
 
@@ -41,6 +48,9 @@ namespace ProjectManager
                 ColumnPanel.Children.Add(Panels[i]);
                 HeaderPanel.Children.Add(Headers[i]);
             }
+
+            UserImage.Source = new BitmapImage(new Uri(model.GetCurentUser().ImagePath));
+            UserChip.Content = model.GetCurentUser().UserName;
 
             Update();
         }
@@ -63,24 +73,27 @@ namespace ProjectManager
             {
                 createTaskForm = new CreateTaskForm(model);
                 createTaskForm.ShowDialog();
-
-                Task task = new Task()
+                if (createTaskForm.DialogResult == true)
                 {
-                    Name = createTaskForm.GetTaskName(),
-                    Description = createTaskForm.GetDesc(),
-                    UniqleID = createTaskForm.GetID(),
-                    MarkersID = createTaskForm.GetMarkers(),
-                    EndTime = createTaskForm.GetDate(),
-                    Subtasks = new List<Subtask>()
-                };
 
-                Button taskPanel = CreateTask(task).Item1;
-                controller.taskController.Create(task);
-                Panels[0].Children.Add(taskPanel);
+                    Task task = new Task()
+                    {
+                        Name = createTaskForm.GetTaskName(),
+                        Description = createTaskForm.GetDesc(),
+                        UniqleID = createTaskForm.GetID(),
+                        MarkersID = createTaskForm.GetMarkers(),
+                        EndTime = createTaskForm.GetDate(),
+                        Subtasks = new List<Subtask>()
+                    };
 
-                MySnackbar.IsActive = true;
-                MySnackbar.MouseDown += MySnackbar_MouseDown;
-                Update();
+                    Button taskPanel = CreateTask(task).Item1;
+                    controller.taskController.Create(task);
+                    Panels[0].Children.Add(taskPanel);
+
+                    MySnackbar.IsActive = true;
+                    MySnackbar.MouseDown += MySnackbar_MouseDown;
+                    Update();
+                }
             }
             else
             {
@@ -143,6 +156,7 @@ namespace ProjectManager
                     count++;
             }
             CountTaskLabel.Content = count.ToString();
+            controller.notificationsController.Check();
         }
 
         private void DeleteTask(Task task)
@@ -164,7 +178,6 @@ namespace ProjectManager
             {
                 Background = new SolidColorBrush(Colors.Transparent),
                 Width = 280,
-                Height = 150,
                 Margin = new Thickness(0, 20, 0, 0),
                 BorderThickness = new Thickness(0),
                 Content = taskBlock,
@@ -178,6 +191,11 @@ namespace ProjectManager
 
             Tuple<Button, Task> tuple = new Tuple<Button, Task>(button, task);
             return tuple;
+        }
+
+        private void NotifyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NotifyContent.Content = new NotificationBlock(controller, model);
         }
     }
 }

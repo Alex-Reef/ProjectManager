@@ -10,5 +10,6 @@ namespace ProjectManager.Models
         public string UniqleID { get; set; }
         public string EndTime { get; set; }
         public List<Subtask> Subtasks { get; set; }
+        public string ImagePath { get; set; }
     }
 }

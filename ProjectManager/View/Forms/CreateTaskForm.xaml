@@ -6,33 +6,223 @@
         xmlns:local="clr-namespace:ProjectManager"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="CreateTaskForm" Height="450" Width="400">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition Height="80"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Add Task"  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16"/>
-        <TextBox x:Name="taskNameBox" Grid.Row ="1" HorizontalAlignment="Left" Height="23" Margin="40,0,0,0" TextWrapping="Wrap" Text="Task name" VerticalAlignment="Center" Width="200" MaxLength="30" MaxLines="1"/>
-        <TextBox x:Name="descTaskBox" Grid.Row ="2" HorizontalAlignment="Left" Height="60" Margin="40,0,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Center" Width="300" MaxLength="240" MaxLines="15"/>
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <StackPanel Orientation="Horizontal" x:Name="markerPanel"/>
-            <Button x:Name="AddMarkerBtn" Click="OpenPopup_Click" Cursor="Hand"/>
-            <Popup x:Name="Popup" StaysOpen="True">
-                <StackPanel Orientation="Vertical">
-                    <ComboBox x:Name="MarkerBox" SelectionChanged="MarkerBox_SelectionChanged"/>
-                    <Button x:Name="ClosePopup" Click="ClosePopup_Click"/>
-                </StackPanel>
-            </Popup>
-        </StackPanel>
-        <DatePicker Grid.Row="4" Width="120" HorizontalAlignment="Left" x:Name="DatePicker"/>
-        <Button x:Name="addTaskBtn" Content="Add" Grid.Row="5" Height="30" Width="120" HorizontalAlignment="Left" Margin="40, 0, 0, 0" Click="addTaskBtn_Click"></Button>
-    </Grid>
+        Title="CreateTaskForm" Height="Auto" Width="350"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <materialDesign:Card Background="{DynamicResource Background}">
+        <materialDesign:DialogHost>
+            <Grid Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <TextBlock
+                            Text="{DynamicResource CreateNewTask}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Idea" FontSize="18" FontWeight="SemiBold"
+                            Foreground="{DynamicResource Text}"/>
+                        <Menu 
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Top">
+                            <MenuItem 
+                                Height="30" 
+                                Header="{materialDesign:PackIcon Kind=Close}"
+                                Click="CloseBtn_Click"
+                                Foreground="{DynamicResource Text}"/>
+                        </Menu>
+                    </Grid>
+                    <StackPanel 
+                        Grid.Row="1"
+                        Orientation="Vertical">
+                        <TextBox
+                            x:Name="taskNameBox"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            Margin="0, 15"
+                            Height="50"
+                            Padding="15"
+                            materialDesign:HintAssist.Hint="{DynamicResource TaskTitle}"
+                            materialDesign:HintAssist.Background="Transparent"
+                            Foreground="{DynamicResource Text}"
+                            Background="{DynamicResource TextFieldBackground}"
+                            BorderThickness="0"
+                            FontFamily="Idea" FontWeight="SemiBold" FontSize="13"
+                            MaxLength="50" Cursor="Arrow"
+                            />
+                        <Grid 
+                            x:Name="TextBlock"
+                            Height="140" Margin="0, 10"
+                            Visibility="Collapsed">
+                            <TextBox
+                                x:Name="descTaskBox"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                VerticalAlignment="Top"
+                                Height="100"
+                                Padding="15"
+                                materialDesign:HintAssist.Hint="{DynamicResource TaskAbout}"
+                                materialDesign:HintAssist.Background="Transparent"
+                                Foreground="{DynamicResource Text}"
+                                Background="{DynamicResource TextFieldBackground}"
+                                BorderThickness="0"
+                                FontFamily="Idea" FontWeight="SemiBold" FontSize="13"
+                                MaxLength="100" Cursor="Arrow"
+                            />
+                            <Button
+                                x:Name="OpenImageBtn"
+                                Click="OpenImageBtn_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                Width="30" Height="30"
+                                Foreground="{DynamicResource Primary}">
+                                <materialDesign:PackIcon 
+                                    Kind="Image"
+                                    Width="20" Height="20"/>
+                            </Button>
+                        </Grid>
+                        <Grid 
+                            x:Name="ImageBlock"
+                            Margin="0, 10"
+                            Visibility="Visible"
+                            Background="{DynamicResource TextFieldBackground}"
+                            Height="120">
+                            <Image 
+                                x:Name="ImageBox"
+                                Stretch="Fill"/>
+                            <StackPanel 
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                                <Button
+                                    x:Name="SelectImageBtn"
+                                    Click="SelectImageBtn_Click"
+                                    Content="{DynamicResource SelectImage}"
+                                    Background="{DynamicResource Primary}"
+                                    Foreground="White" Cursor="Hand" />
+                                <Button
+                                    Margin="5, 0"
+                                    Background="{DynamicResource Gray}"
+                                    BorderThickness="0"
+                                    Style="{StaticResource MaterialDesignIconButton}"
+                                    Foreground="{DynamicResource Text}"
+                                    Width="30" Height="30"
+                                    x:Name="ClearImage"
+                                    ToolTip="{DynamicResource ClearImage}"
+                                    Click="ClearImage_Click">
+                                    <materialDesign:PackIcon 
+                                        Kind="Cancel"
+                                        Width="15" Height="15"/>
+                                </Button>
+                            </StackPanel>
+                            <Button
+                                x:Name="SelectTextBtn"
+                                Click="SelectTextBtn_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                Width="30" Height="30"
+                                Foreground="{DynamicResource Primary}">
+                                <materialDesign:PackIcon 
+                                    Kind="Text"
+                                    Width="20" Height="20"/>
+                            </Button>
+                        </Grid>
+                        <StackPanel 
+                            Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                                Kind="Tag"
+                                Foreground="{DynamicResource Text}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"/>
+                            <StackPanel 
+                                Orientation="Horizontal" 
+                                x:Name="markerPanel"
+                                Margin="5, 0"/>
+                            <Button
+                                x:Name="AddMarkerBtn" 
+                                Click="OpenPopup_Click" 
+                                Foreground="{DynamicResource Primary}"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Width="25" Height="25">
+                                <materialDesign:PackIcon 
+                                    Kind="AddBox" Width="15" Height="15"/>
+                            </Button>
+                            <Popup
+                                x:Name="Popup" StaysOpen="False" 
+                                Margin="20, 0"
+                                HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <materialDesign:Card
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Padding="20"
+                                    Background="{DynamicResource CardBackground}">
+                                    <ComboBox
+                                        Foreground="{DynamicResource Text}"
+                                        Width="150"
+                                        x:Name="MarkerBox" 
+                                        SelectionChanged="MarkerBox_SelectionChanged"/>
+                                </materialDesign:Card>
+                            </Popup>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0, 10">
+                            <TextBlock
+                                Text="{Binding Date, StringFormat=d}"
+                                VerticalAlignment="Center"
+                                x:Name="DateBlock"
+                                Foreground="{DynamicResource Text}"
+                                FontFamily="Idea" FontWeight="SemiBold" FontSize="13"/>
+                            <Button
+                                Margin="8 0 0 0"
+                                Content="{materialDesign:PackIcon Kind=Calendar}"
+                                Background="{DynamicResource Primary}"
+                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                                <Button.CommandParameter>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Viewbox Stretch="Uniform" Width="300">
+                                            <Calendar
+                                                materialDesign:CalendarAssist.HeaderBackground="{DynamicResource Primary}"
+                                                materialDesign:CalendarAssist.HeaderForeground="White"
+                                                Background="{DynamicResource CardBackground}"
+                                                Foreground="{DynamicResource Text}"
+                                                x:Name="Calendar"
+                                                Margin="-1 -4 -1 0" />  
+                                        </Viewbox>
+                                        <StackPanel
+                                            Grid.Row="1"
+                                            Margin="8"
+                                            HorizontalAlignment="Right"
+                                            Orientation="Horizontal">
+                                            <Button
+                                                Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                                CommandParameter="0"
+                                                Content="{DynamicResource Cancel}" />
+                                            <Button
+                                                Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                                CommandParameter="1"
+                                                Content="{DynamicResource OK}"
+                                                x:Name="OK_SelectDate"
+                                                Click="OK_SelectDate_Click"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Button.CommandParameter>
+                            </Button>
+                        </StackPanel>
+                        <Button
+                            Content="{DynamicResource Create}"
+                            Height="40"
+                            Click="addTaskBtn_Click"
+                            Background="{DynamicResource Primary}"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            FontWeight="Bold" FontFamily="Idea" FontSize="14" Cursor="Hand"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </materialDesign:DialogHost>
+    </materialDesign:Card>
 </Window>

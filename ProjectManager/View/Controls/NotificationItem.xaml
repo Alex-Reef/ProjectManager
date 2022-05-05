@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="ProjectManager.View.Controls.NotificationItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectManager.View.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Height="Auto" Width="380">
+    <materialDesign:Card Background="{DynamicResource CardBackground}" Margin="0, 10, 20, 0">
+        <Grid Margin="10, 5, 0, 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+                <TextBlock
+                    x:Name="NotifyTitle"
+                    Text="NotifyName"
+                    Foreground="{DynamicResource Text}"
+                    FontFamily="Idea" FontSize="14" FontWeight="Bold"/>
+                <TextBlock
+                    x:Name="NotifyDescr"
+                    Text="NotifyDescription"
+                    Foreground="{DynamicResource Text}" Opacity="0.5"
+                    FontFamily="Idea" FontSize="10" FontWeight="SemiBold"/>
+            </StackPanel>
+            <Button
+                x:Name="ClearBtn" Click="ClearBtn_Click"
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignIconButton}"
+                VerticalAlignment="Top"
+                Height="40">
+                <Button.Content>
+                    <materialDesign:PackIcon Kind="Delete" Width="20" Height="20"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

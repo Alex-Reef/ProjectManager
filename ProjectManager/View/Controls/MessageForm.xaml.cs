@@ -2,7 +2,7 @@
 using System.Windows.Media;
 using ProjectManager.Controllers;
 
-namespace ProjectManager.View.Forms
+namespace ProjectManager.View.Controls
 {
     public partial class MessageForm : Window
     {
@@ -16,22 +16,18 @@ namespace ProjectManager.View.Forms
                 case Message.MessageIcon.Success:
                     MsgIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.CheckCircle;
                     MsgIcon.Foreground = new SolidColorBrush(Colors.Green);
-                    MsgHeader.Fill = new SolidColorBrush(Colors.Green);
                     break;
                 case Message.MessageIcon.Error:
                     MsgIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Error;
                     MsgIcon.Foreground = new SolidColorBrush(Colors.Tomato);
-                    MsgHeader.Fill = new SolidColorBrush(Colors.Tomato);
                     break;
                 case Message.MessageIcon.Info:
                     MsgIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.InfoCircle;
                     MsgIcon.Foreground = new SolidColorBrush(Colors.DodgerBlue);
-                    MsgHeader.Fill = new SolidColorBrush(Colors.DodgerBlue);
                     break;
                 case Message.MessageIcon.Question:
                     MsgIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.QuestionAnswer;
                     MsgIcon.Foreground = new SolidColorBrush(Colors.Orange);
-                    MsgHeader.Fill = new SolidColorBrush(Colors.Orange);
                     break;
             }
 

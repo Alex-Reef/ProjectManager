@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using ProjectManager.Controllers;
 using ProjectManager.Models;
 
@@ -17,6 +15,7 @@ namespace ProjectManager.View.Forms
             model = new Model();
             controller = new Controller(model);
             controller.settingsController.SetTheme(model.GetAppSettings().Theme);
+            controller.settingsController.SetLanguage(model.GetAppSettings().Language);
         }
 
         public LoginForm(Model model, Controller controller)
@@ -36,6 +35,8 @@ namespace ProjectManager.View.Forms
                 spf.Show();
                 this.Hide();
             }
+            else
+                Dialog.IsOpen = true;
         }
 
         private void CreateAccBtn_Click(object sender, RoutedEventArgs e)
@@ -45,9 +46,9 @@ namespace ProjectManager.View.Forms
             this.Hide();
         }
 
-        private void ForgotPass_Click(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
     }
 }

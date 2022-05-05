@@ -10,227 +10,234 @@
       Title="TaskPage">
 
     <Grid Background="{DynamicResource Background}">
-        <Grid Margin="0, 0, 0, 0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="170"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
+        <materialDesign:DialogHost 
+            Placement="Mouse"
+            CloseOnClickAway="True"
+            x:Name="Dialog"
+            Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
+            <materialDesign:DialogHost.DialogContent>
+                <materialDesign:Card 
+                    x:Name="NotifyContent" 
+                    HorizontalAlignment="Left"
+                    Background="Transparent"
+                    UniformCornerRadius="10"/>
+            </materialDesign:DialogHost.DialogContent>
+            
+            <Grid Margin="0, 0, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Height="170" VerticalAlignment="Top">
-                <Grid Grid.Column="1" Margin="30, 20, 30, 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" VerticalAlignment="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Orientation="Horizontal" Grid.Row="0">
-                                <Label
-                                    Content="{DynamicResource ProjectLabel}"
-                                    FontSize="10"
-                                    FontFamily="Inter" 
-                                    FontWeight="SemiBold" 
-                                    Foreground="{DynamicResource Text}"/>
-                                <Label
-                                    FontSize="10"
-                                    x:Name="ProjectNameLabel"
-                                    FontFamily="Inter" 
-                                    FontWeight="SemiBold" 
-                                    Foreground="{DynamicResource Text}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                <Label
-                                    Content="{DynamicResource LetsStartLabel}"
-                                    FontSize="25"
-                                    FontFamily="Inter" 
-                                    FontWeight="SemiBold" 
-                                    Foreground="{DynamicResource Text}"/>
-                                <Label
-                                    x:Name="ltsUserName"
-                                    FontSize="25"
-                                    FontFamily="Inter" 
-                                    FontWeight="SemiBold" 
-                                    Foreground="{DynamicResource Text}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Grid.Row="2">
-                                <Label
-                                    Content="{DynamicResource YouHaveTaskCount}"
-                                    FontSize="10"
-                                    FontFamily="Inter" 
-                                    FontWeight="SemiBold" 
-                                    Foreground="{DynamicResource Text}"
-                                    Opacity="0.5"/>
-                                <Label
-                                    FontSize="10"
-                                    x:Name="CountTaskLabel"
-                                    FontFamily="Inter" 
-                                    FontWeight="SemiBold" 
-                                    Foreground="{DynamicResource Text}"
-                                    Opacity="0.5"/>
-                            </StackPanel>
-                        </Grid>
-
-                        <StackPanel 
-                            Orientation="Horizontal" 
-                            Grid.Column="1" 
-                            HorizontalAlignment="Right" VerticalAlignment="Top">
-                            <Button
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Margin="0, 0, 15, 0"
-                                Width="35" Height="35"
-                                BorderThickness="0"
-                                Foreground="{DynamicResource Text}"
-                                Background="{DynamicResource Gray}">
-                                <materialDesign:PackIcon Kind="Search" Height="20"/>
-                            </Button>
-                            <Button
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Margin="0, 0, 15, 0"
-                                Width="35" Height="35"
-                                BorderThickness="0"
-                                Foreground="{DynamicResource Text}"
-                                Background="{DynamicResource Gray}"
-                                materialDesign:ShadowAssist.ShadowDepth="Depth2" Cursor="Hand">
-                                <materialDesign:PackIcon Kind="BellOutline" Height="20"/>
-                            </Button>
-                            <materialDesign:Chip 
-                                x:Name="UserChip"
-                                Content="UserName" 
-                                Style="{StaticResource MaterialDesignOutlineChip}"
-                                Foreground="{DynamicResource Text}"
-                                FontFamily="Idea" FontWeight="Medium" FontSize="13">
-                                <materialDesign:Chip.Icon>
-                                    <Image 
-                                        Width="40" Height="40" 
-                                        Source="/Resources/prjImage/ProjectImage1.png"/>
-                                </materialDesign:Chip.Icon>
-                            </materialDesign:Chip>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button 
-                            Grid.Column="0"
-                            Height="35"
-                            Width="Auto"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            x:Name="addTaskBtn" 
-                            Click="addTaskBtn_Click" BorderThickness="0"
-                            materialDesign:ButtonAssist.CornerRadius="20"
-                            Background="{DynamicResource Primary}"
-                            Foreground="White"
-                            Style="{StaticResource MaterialDesignFlatAccentBgButton}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="{DynamicResource NewTaskBtn}"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"/>
-                                <materialDesign:PackIcon 
-                                    Kind="AddBold"
-                                    VerticalAlignment="Center"
-                                    Margin="5, 0, 0, 0"/>
-                            </StackPanel>
-                        </Button>
-                        <Button 
-                            Grid.Column="1"
-                            Height="35"
-                            Width="Auto"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            x:Name="MarkerBtn" 
-                            Click="settingBtn_Click" BorderThickness="0"
-                            materialDesign:ButtonAssist.CornerRadius="20"
-                            Background="{DynamicResource Text}"
-                            Foreground="{DynamicResource Bar}"
-                            Style="{StaticResource MaterialDesignFlatAccentBgButton}" Cursor="Hand">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="{DynamicResource MarkersBtn}"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"/>
-                                <materialDesign:PackIcon 
-                                    Kind="Brush"
-                                    VerticalAlignment="Center"
-                                    Margin="5, 0, 0, 0"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="1" Margin="30, 0, 30, 0">
-                <StackPanel 
-                    Orientation="Horizontal" 
-                    Grid.Row="0" Height="30" 
-                    VerticalAlignment="Center"
-                    x:Name="HeaderPanel"/>
-
-            </Grid>
-            <Grid Grid.Row="3" VerticalAlignment="Stretch" Margin="30, 0, 30, 0">
-                <ScrollViewer 
-                        VerticalScrollBarVisibility="Auto" 
-                        HorizontalScrollBarVisibility="Hidden" 
-                        VerticalContentAlignment="Stretch" 
-                        HorizontalAlignment="Stretch"
-                        Grid.Row="1">
-                    <StackPanel 
-                            Orientation="Horizontal" 
-                            x:Name="ColumnPanel"/>
-
-                </ScrollViewer>
-                <materialDesign:Snackbar 
-                    x:Name="MySnackbar"
-                    HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"
-                    IsActive="False"
-                    MessageQueue="{materialDesign:MessageQueue}">
-                    <materialDesign:SnackbarMessage>
-                        <Grid HorizontalAlignment="Center">
+                <Grid Grid.Row="0" Height="170" VerticalAlignment="Top">
+                    <Grid Grid.Column="1" Margin="30, 20, 30, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <materialDesign:PackIcon 
-                                Kind="CheckCircle" 
-                                Grid.Column="0"
-                                Width="30" Height="30"
-                                Foreground="DodgerBlue"
-                                VerticalAlignment="Center"/>
-                            <Grid Grid.Column="1">
+                            <Grid Grid.Column="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <TextBlock 
-                                    x:Name="SnackBarText" 
-                                    VerticalAlignment="Center"
-                                    Text="Задача создана!" 
-                                    FontFamily="Idea" FontWeight="Medium"
-                                    Grid.Row="0"/>
-                                <TextBlock 
-                                    VerticalAlignment="Center"
-                                    Text="Нажмите, чтобы скрыть" 
-                                    FontFamily="Idea" FontWeight="Normal"
-                                    FontSize="10"
-                                    Grid.Row="1"/>
+                                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                    <Label
+                                        Content="{DynamicResource ProjectLabel}"
+                                        FontSize="10"
+                                        FontFamily="Inter" 
+                                        FontWeight="SemiBold" 
+                                        Foreground="{DynamicResource Text}"/>
+                                    <Label
+                                        FontSize="10"
+                                        x:Name="ProjectNameLabel"
+                                        FontFamily="Inter" 
+                                        FontWeight="SemiBold" 
+                                        Foreground="{DynamicResource Text}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                    <Label
+                                        Content="{DynamicResource LetsStartLabel}"
+                                        FontSize="25"
+                                        FontFamily="Inter" 
+                                        FontWeight="SemiBold" 
+                                        Foreground="{DynamicResource Text}"/>
+                                    <Label
+                                        x:Name="ltsUserName"
+                                        FontSize="25"
+                                        FontFamily="Inter" 
+                                        FontWeight="SemiBold" 
+                                        Foreground="{DynamicResource Text}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                    <Label
+                                        Content="{DynamicResource YouHaveTaskCount}"
+                                        FontSize="10"
+                                        FontFamily="Inter" 
+                                        FontWeight="SemiBold" 
+                                        Foreground="{DynamicResource Text}"
+                                        Opacity="0.5"/>
+                                    <Label
+                                        FontSize="10"
+                                        x:Name="CountTaskLabel"
+                                        FontFamily="Inter" 
+                                        FontWeight="SemiBold" 
+                                        Foreground="{DynamicResource Text}"
+                                        Opacity="0.5"/>
+                                </StackPanel>
                             </Grid>
+
+                            <StackPanel 
+                                Orientation="Horizontal" 
+                                Grid.Column="1" 
+                                HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <Button
+                                    Click="NotifyBtn_Click"
+                                    x:Name="NotifyBtn"
+                                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                    Style="{StaticResource MaterialDesignIconButton}"
+                                    Margin="0, 0, 15, 0"
+                                    Width="35" Height="35"
+                                    BorderThickness="0"
+                                    Foreground="{DynamicResource Text}"
+                                    Background="{DynamicResource Gray}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth2" Cursor="Hand">
+                                    <materialDesign:PackIcon Kind="BellOutline" Height="20"/>
+                                </Button>
+                                <materialDesign:Chip 
+                                    x:Name="UserChip"
+                                    Content="UserName" 
+                                    Style="{StaticResource MaterialDesignOutlineChip}"
+                                    Foreground="{DynamicResource Text}"
+                                    FontFamily="Idea" FontWeight="Medium" FontSize="13" Cursor="Hand">
+                                    <materialDesign:Chip.Icon>
+                                        <Image 
+                                            x:Name="UserImage"
+                                            Width="40" Height="40"/>
+                                    </materialDesign:Chip.Icon>
+                                </materialDesign:Chip>
+                            </StackPanel>
                         </Grid>
-                    </materialDesign:SnackbarMessage>
-                </materialDesign:Snackbar>
+                        <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button 
+                                Grid.Column="0"
+                                Height="35"
+                                Width="Auto"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                x:Name="addTaskBtn" 
+                                Click="addTaskBtn_Click" BorderThickness="0"
+                                materialDesign:ButtonAssist.CornerRadius="20"
+                                Background="{DynamicResource Primary}"
+                                Foreground="White"
+                                Style="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="{DynamicResource NewTaskBtn}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon 
+                                        Kind="AddBold"
+                                        VerticalAlignment="Center"
+                                        Margin="5, 0, 0, 0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button 
+                                Grid.Column="1"
+                                Height="35"
+                                Width="Auto"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                x:Name="MarkerBtn" 
+                                Click="settingBtn_Click" BorderThickness="0"
+                                materialDesign:ButtonAssist.CornerRadius="20"
+                                Background="{DynamicResource Text}"
+                                Foreground="{DynamicResource Bar}"
+                                Style="{StaticResource MaterialDesignFlatAccentBgButton}" Cursor="Hand">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="{DynamicResource MarkersBtn}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon 
+                                        Kind="Brush"
+                                        VerticalAlignment="Center"
+                                        Margin="5, 0, 0, 0"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Margin="30, 0, 30, 0">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        Grid.Row="0" Height="30" 
+                        VerticalAlignment="Center"
+                        x:Name="HeaderPanel"/>
+                </Grid>
+                <Grid Grid.Row="3" VerticalAlignment="Stretch" Margin="30, 0, 30, 0">
+                    <ScrollViewer 
+                            VerticalScrollBarVisibility="Auto" 
+                            HorizontalScrollBarVisibility="Hidden" 
+                            VerticalContentAlignment="Stretch" 
+                            HorizontalAlignment="Stretch"
+                            Grid.Row="1">
+                        <StackPanel 
+                                Orientation="Horizontal" 
+                                x:Name="ColumnPanel"/>
+
+                    </ScrollViewer>
+                    <materialDesign:Snackbar 
+                        x:Name="MySnackbar"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        IsActive="False"
+                        MessageQueue="{materialDesign:MessageQueue}">
+                        <materialDesign:SnackbarMessage>
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon 
+                                    Kind="CheckCircle" 
+                                    Grid.Column="0"
+                                    Width="30" Height="30"
+                                    Foreground="DodgerBlue"
+                                    VerticalAlignment="Center"/>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock 
+                                        x:Name="SnackBarText" 
+                                        VerticalAlignment="Center"
+                                        Text="Задача создана!" 
+                                        FontFamily="Idea" FontWeight="Medium"
+                                        Grid.Row="0"/>
+                                    <TextBlock 
+                                        VerticalAlignment="Center"
+                                        Text="Нажмите, чтобы скрыть" 
+                                        FontFamily="Idea" FontWeight="Normal"
+                                        FontSize="10"
+                                        Grid.Row="1"/>
+                                </Grid>
+                            </Grid>
+                        </materialDesign:SnackbarMessage>
+                    </materialDesign:Snackbar>
+                </Grid>
             </Grid>
-        </Grid>
+        </materialDesign:DialogHost>
     </Grid>
 </Page>

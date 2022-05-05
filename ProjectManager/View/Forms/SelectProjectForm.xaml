@@ -55,11 +55,11 @@
             <Grid>
                 <Label 
                     FontFamily="Idea" FontSize="25" FontWeight="Medium" 
-                    Content="My Projects"
+                    Content="{DynamicResource MyProject}"
                     Foreground="{DynamicResource Text}"/>
                 <Button 
                     HorizontalAlignment="Right" 
-                    Content="New Project"
+                    Content="{DynamicResource NewProject}"
                     Height="35"
                     materialDesign:ButtonAssist.CornerRadius="20"
                     Style="{StaticResource MaterialDesignFlatAccentBgButton}"

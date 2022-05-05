@@ -1,11 +1,10 @@
-﻿using System.Windows.Media;
-using System.Windows;
-using System.Text;
-using System.Security.Cryptography;
+﻿using System.Windows;
 using System.Collections.Generic;
-using System;
 using ProjectManager.View.Controls;
 using ProjectManager.Models;
+using ProjectManager.Utilites;
+using Microsoft.Win32;
+using System.Windows.Media.Imaging;
 
 namespace ProjectManager
 {
@@ -16,7 +15,9 @@ namespace ProjectManager
         private List<string> markersID { get; set; }
         private string uID { get; set; }
         private string Date { get; set; }
-        private List<Subtask> subtasks { get; set; }
+        private string ImagePath { get; set; }
+        private bool SelectImage { get; set; }
+
         private Model model { get; set; }
 
         public CreateTaskForm(Model model)
@@ -24,6 +25,8 @@ namespace ProjectManager
             InitializeComponent();
             this.model = model;
             markersID = new List<string>();
+            SelectImage = false;
+
             var list = model.GetCurentProject().Markers;
             foreach (var item in list)
             {
@@ -76,31 +79,13 @@ namespace ProjectManager
             markerPanel.Children.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
         }
 
-        private string RandomString(int length)
-        {
-            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            StringBuilder res = new StringBuilder();
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                byte[] uintBuffer = new byte[sizeof(uint)];
-
-                while (length-- > 0)
-                {
-                    rng.GetBytes(uintBuffer);
-                    uint num = BitConverter.ToUInt32(uintBuffer, 0);
-                    res.Append(valid[(int)(num % (uint)valid.Length)]);
-                }
-            }
-
-            return res.ToString();
-        }
-
         private void addTaskBtn_Click(object sender, RoutedEventArgs e)
         {
             taskName = taskNameBox.Text;
             descTask = descTaskBox.Text;
-            uID = RandomString(10);
-            Date = DatePicker.SelectedDate.Value.ToString("d MMMM");
+            uID = KeyGenerator.Generate(10);
+            Date = Calendar.SelectedDate.Value.ToString("d MMMM");
+            DialogResult = true;
             this.Visibility = Visibility.Hidden;
         }
 
@@ -117,6 +102,49 @@ namespace ProjectManager
         private void MarkerBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             AddMarker(MarkerBox.SelectedIndex);
+        }
+
+        private void SelectImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+
+            if (dialog.ShowDialog() == true)
+            {
+                ImagePath = dialog.FileName;
+                ImageBox.Source = new BitmapImage(new System.Uri(ImagePath));
+            }
+        }
+
+        private void SelectTextBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SelectImage = false;
+            ImageBlock.Visibility = Visibility.Collapsed;
+            TextBlock.Visibility = Visibility.Visible;
+        }
+
+        private void ClearImage_Click(object sender, RoutedEventArgs e)
+        {
+            ImagePath = null;
+            ImageBox.Source = null;
+        }
+
+        private void OpenImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SelectImage = true;
+            ImageBlock.Visibility = Visibility.Visible;
+            TextBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void OK_SelectDate_Click(object sender, RoutedEventArgs e)
+        {
+            DateBlock.Text = Calendar.SelectedDate.Value.ToString("d MMMM");
         }
     }
 }

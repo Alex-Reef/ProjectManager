@@ -1,8 +1,97 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
+   
+    
+    <!-- Task Page-->
     <system:String x:Key="NewTaskBtn">New Task</system:String>
     <system:String x:Key="LetsStartLabel">Let's Start, </system:String>
     <system:String x:Key="ProjectLabel">Projects / </system:String>
     <system:String x:Key="MarkersBtn">Markers</system:String>
     <system:String x:Key="YouHaveTaskCount">You have tasks: </system:String>
+
+    <!-- Settings-->
+    <system:String x:Key="Settings">Settings</system:String>
+    <system:String x:Key="Save">Save</system:String>
+
+    <!-- Settings: User Info-->
+    <system:String x:Key="UserInfo">User Info</system:String>
+    <system:String x:Key="UserInfoDescr">Edit account info: email, login etc.</system:String>
+    <system:String x:Key="First Name">First Name</system:String>
+    <system:String x:Key="Last Name">Last Name</system:String>
+    <system:String x:Key="Email">Email</system:String>
+    <system:String x:Key="Login">Login</system:String>
+
+    <!-- Settings: Security-->
+    <system:String x:Key="Security">Security</system:String>
+    <system:String x:Key="SecurityDescr">Change Password</system:String>
+    <system:String x:Key="OldPassword">Old Password</system:String>
+    <system:String x:Key="NewPassword">New Password</system:String>
+    
+    <!-- Settings: Themes-->
+    <system:String x:Key="Themes">Themes</system:String>
+    <system:String x:Key="ThemesDescr">Change, manage themes</system:String>
+    <system:String x:Key="Dark">Dark</system:String>
+    <system:String x:Key="Light">Light</system:String>
+
+    <!-- Settings: Languages-->
+    <system:String x:Key="Languages">Language</system:String>
+    <system:String x:Key="LanguagesDescr">Change language</system:String>
+    <system:String x:Key="English">English</system:String>
+    <system:String x:Key="Ukraine">Ukraine</system:String>
+
+    <!-- Login -->
+    <system:String x:Key="WelcomeBack">Welcome Back</system:String>
+    <system:String x:Key="Login">Login</system:String>
+    <system:String x:Key="DontHaveAcc">Don't have account?</system:String>
+    <system:String x:Key="CreateOne">Create one!</system:String>
+    <system:String x:Key="Password">Password</system:String>
+
+    <!-- Registration -->
+    <system:String x:Key="CreateNewAcc">Create new account</system:String>
+    <system:String x:Key="AlreadyMemder">Already a Member?</system:String>
+    <system:String x:Key="LoginMin3">Login (Min. 3 symbols)</system:String>
+    <system:String x:Key="PasswordMin5">Password (Min. 5 symbols)</system:String>
+    <system:String x:Key="CreateAcc">Create account</system:String>
+    
+    <!-- Task Form -->
+    <system:String x:Key="SelectImage">Select Image</system:String>
+    <system:String x:Key="ClearImage">Clear Image</system:String>
+    <system:String x:Key="TaskTitle">Task Title</system:String>
+    <system:String x:Key="TaskAbout">What is the new task?</system:String>
+    <system:String x:Key="Delete">Delete</system:String>
+    <system:String x:Key="SubtaskEmpty">List of subtasks is empty</system:String>
+    <system:String x:Key="AddSubtask">Add Subtask</system:String>
+    
+    <!-- Select Project -->
+    <system:String x:Key="NewProject">New Project</system:String>
+    <system:String x:Key="MyProject">My Project</system:String>
+    <system:String x:Key="OpenProject">Open Project</system:String>
+    <system:String x:Key="LastOpened">Last Opened</system:String>
+
+    <!-- Main Window -->
+    <system:String x:Key="Dashboard">Dashboard</system:String>
+    <system:String x:Key="Tasks">Tasks</system:String>
+    <system:String x:Key="Code">Code</system:String>
+    <system:String x:Key="Archive">Archive</system:String>
+    <system:String x:Key="Logout">Logout</system:String>
+
+    <!-- Create Task -->
+    <system:String x:Key="OK">Ok</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
+    <system:String x:Key="Create">Create</system:String>
+    <system:String x:Key="CreateNewTask">Create new task</system:String>
+    
+    <!-- Notification -->
+    <system:String x:Key="Notifications">Notifications</system:String>
+    <system:String x:Key="NoNotifications">No notifications</system:String>
+    
+    <!-- MESSAGES -->
+    <system:String x:Key="Deadline">Deadline is near!</system:String>
+    <system:String x:Key="DeadlineMessage">One or more tasks waiting for complete.</system:String>
+    <system:String x:Key="WrongPasswordOrLogin">Wrong Password or Username</system:String>
+    <system:String x:Key="WrongPassword">Wrong Password</system:String>
+    <system:String x:Key="FillingFields">All fields must be filled.</system:String>
+    <system:String x:Key="InvalidEmail">Email is invalid.</system:String>
+    <system:String x:Key="LoginAlready">This username is already taken.</system:String>
+
 </ResourceDictionary>

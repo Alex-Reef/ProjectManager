@@ -13,6 +13,7 @@ namespace ProjectManager.Controllers
         public TaskController taskController { get; set; }
         public SettingsController settingsController { get; set; }
         public UserController userController { get; set; }
+        public NotificationsController notificationsController { get; set; }
 
         public Controller() { }
 
@@ -24,6 +25,7 @@ namespace ProjectManager.Controllers
             projectController = new ProjectController(model);
             settingsController = new SettingsController(model);
             userController = new UserController(model);
+            notificationsController = new NotificationsController(model);
         }
 
         public Page OpenPage(string PageName)

@@ -8,7 +8,7 @@ namespace ProjectManager.View.Controls
         public HeaderColumn(string Text, int count)
         {
             InitializeComponent();
-            ColumnName = Text;
+            ColumnName = Text.ToUpper();
             Content.Text = Text;
             Count.Text = count.ToString();
         }

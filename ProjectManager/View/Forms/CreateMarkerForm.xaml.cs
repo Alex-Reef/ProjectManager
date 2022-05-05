@@ -33,7 +33,6 @@ namespace ProjectManager
         private void SetMarker(Marker mark)
         {
             marker = mark;
-            MarkLabel.Content = mark.Text;
             MarkerName.Text = mark.Text;
             HexBox.Text = "#" + mark.Color.R.ToString("X2") + mark.Color.G.ToString("X2") + mark.Color.B.ToString("X2");
             ColorPicker.Color = mark.Color;
