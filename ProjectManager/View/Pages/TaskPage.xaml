@@ -179,8 +179,8 @@
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1" Margin="30, 0, 30, 0">
-                    <StackPanel 
-                        Orientation="Horizontal" 
+                    <StackPanel
+                        Orientation="Horizontal"
                         Grid.Row="0" Height="30" 
                         VerticalAlignment="Center"
                         x:Name="HeaderPanel"/>

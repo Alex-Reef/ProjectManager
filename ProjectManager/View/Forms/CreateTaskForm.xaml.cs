@@ -10,12 +10,12 @@ namespace ProjectManager
 {
     public partial class CreateTaskForm : Window
     {
-        private string taskName { get; set; }
-        private string descTask { get; set; }
-        private List<string> markersID { get; set; }
-        private string uID { get; set; }
-        private string Date { get; set; }
-        private string ImagePath { get; set; }
+        public string taskName { get; private set; }
+        public string descTask { get; private set; }
+        public List<string> markersID { get; private set; }
+        public string uID { get; private set; }
+        public string Date { get; private set; }
+        public string ImagePath { get; private set; }
         private bool SelectImage { get; set; }
 
         private Model model { get; set; }
@@ -27,42 +27,17 @@ namespace ProjectManager
             markersID = new List<string>();
             SelectImage = false;
 
-            var list = model.GetCurentProject().Markers;
+            var list = model.CurentProject.Markers;
             foreach (var item in list)
             {
                 MarkerBox.Items.Add(item.Text);
             }
         }
 
-        public string GetTaskName()
-        {
-            return taskName;
-        }
-
-        public string GetDesc()
-        {
-            return descTask;
-        }
-
-        public string GetID()
-        {
-            return uID;
-        }
-
-        public string GetDate()
-        {
-            return Date;
-        }
-
-        public List<string> GetMarkers()
-        {
-            return markersID;
-        }
-
         public void AddMarker(int ID)
         {
-            markersID.Add(model.GetCurentProject().Markers[ID].UniqleID);
-            MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers[ID]);
+            markersID.Add(model.CurentProject.Markers[ID].UniqleID);
+            MarkerBlock markerBlock = new MarkerBlock(model.CurentProject.Markers[ID]);
             markerBlock.MouseDown += MarkerBlock_MouseDown;
             markerPanel.Children.Add(markerBlock);
         }
@@ -75,8 +50,8 @@ namespace ProjectManager
 
         public void RemoveMarker(Marker marker)
         {
-            markersID.RemoveAt(model.GetCurentProject().Markers.FindIndex(x=>x.UniqleID == marker.UniqleID));
-            markerPanel.Children.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
+            markersID.RemoveAt(model.CurentProject.Markers.FindIndex(x=>x.UniqleID == marker.UniqleID));
+            markerPanel.Children.RemoveAt(model.CurentProject.Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
         }
 
         private void addTaskBtn_Click(object sender, RoutedEventArgs e)

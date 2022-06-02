@@ -20,10 +20,10 @@ namespace ProjectManager
             InitializeComponent();
             this.Controller = controller;
             this.Model = model;
-            ThemeSelect.SelectedIndex = model.GetAppSettings().Theme;
-            LangSelect.SelectedIndex = model.GetAppSettings().Language;
+            ThemeSelect.SelectedIndex = model.AppSettings.Theme;
+            LangSelect.SelectedIndex = model.AppSettings.Language;
 
-            var user = model.GetCurentUser();
+            var user = model.CurentUser;
             FirstNameBox.Text = user.UserName.Split(' ')[0];
             LastNameBox.Text = user.UserName.Split(' ')[1];
             LoginBox.Text = user.Login;
@@ -60,7 +60,7 @@ namespace ProjectManager
 
             if (valid)
             {
-                var user = Model.GetCurentUser();
+                var user = Model.CurentUser;
                 user.UserName = FirstNameBox.Text + " " + LastNameBox.Text;
                 user.ImagePath = ImagePath;
                 user.Email = EmailBox.Text;
@@ -76,7 +76,7 @@ namespace ProjectManager
 
         private void ChangePassBtn_Click(object sender, RoutedEventArgs e)
         {
-            var user = Model.GetCurentUser();
+            var user = Model.CurentUser;
             if(DataSecurityService.CreateMD5(OldPassBox.Text) == user.Password)
             {
                 user.Password = DataSecurityService.CreateMD5(NewPassBox.Text);

@@ -20,6 +20,7 @@
     <system:String x:Key="Last Name">Last Name</system:String>
     <system:String x:Key="Email">Email</system:String>
     <system:String x:Key="Login">Login</system:String>
+    <system:String x:Key="Username">Username</system:String>
 
     <!-- Settings: Security-->
     <system:String x:Key="Security">Security</system:String>
@@ -41,7 +42,6 @@
 
     <!-- Login -->
     <system:String x:Key="WelcomeBack">Welcome Back</system:String>
-    <system:String x:Key="Login">Login</system:String>
     <system:String x:Key="DontHaveAcc">Don't have account?</system:String>
     <system:String x:Key="CreateOne">Create one!</system:String>
     <system:String x:Key="Password">Password</system:String>
@@ -94,4 +94,10 @@
     <system:String x:Key="InvalidEmail">Email is invalid.</system:String>
     <system:String x:Key="LoginAlready">This username is already taken.</system:String>
 
+    <!-- CREATE PROJECT -->
+    <system:String x:Key="ProjectName">Project Nmae</system:String>
+    <system:String x:Key="EnterProjectName">Enter a project name</system:String>
+
+    <!-- Archive -->
+    <system:String x:Key="Retrieve">Повернути</system:String>
 </ResourceDictionary>

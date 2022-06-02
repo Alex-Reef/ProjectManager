@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using ProjectManager.Models;
 using ProjectManager.Controllers;
+using System;
 
 namespace ProjectManager.View.Controls
 {
@@ -20,10 +21,12 @@ namespace ProjectManager.View.Controls
             _window = window;
             _model = model;
             NameBlock.Text = project.Name;
+            LastOpened.Text = project.LastOpened;
         }
 
         private void OpenPrj_Click(object sender, RoutedEventArgs e)
         {
+            _project.LastOpened = DateTime.Now.ToString("d MMMM");
             MainWindow mw = new MainWindow(_model, _controller, _project);
             mw.Show();
             _window.Hide();

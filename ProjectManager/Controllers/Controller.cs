@@ -14,6 +14,7 @@ namespace ProjectManager.Controllers
         public SettingsController settingsController { get; set; }
         public UserController userController { get; set; }
         public NotificationsController notificationsController { get; set; }
+        public ArchiveController archiveController { get; set; }
 
         public Controller() { }
 
@@ -26,17 +27,16 @@ namespace ProjectManager.Controllers
             settingsController = new SettingsController(model);
             userController = new UserController(model);
             notificationsController = new NotificationsController(model);
+            archiveController = new ArchiveController(model);
         }
 
-        public Page OpenPage(string PageName)
-        {
+        public Page OpenPage(string PageName) {
             return PagesNavigator.Open(PageName, model, this);
         }
 
-        public Tuple<int, int> GetTaskPosition(Model model, Task task)
-        {
+        public int GetTaskPosition(Task task) {
             int PositionID = -1, CategoryID = -1;
-            var list = model.GetCurentProject().Tasks;
+            var list = model.CurentProject.Tasks;
             for (int i = 0; i < 3; i++)
             {
                 PositionID = list[i].FindIndex(s => s.UniqleID == task.UniqleID);
@@ -47,7 +47,7 @@ namespace ProjectManager.Controllers
                 }
             }
 
-            return new Tuple<int, int>(PositionID, CategoryID);
+            return CategoryID;
         }
     }
 }

@@ -14,8 +14,8 @@ namespace ProjectManager.View.Forms
             InitializeComponent();
             model = new Model();
             controller = new Controller(model);
-            controller.settingsController.SetTheme(model.GetAppSettings().Theme);
-            controller.settingsController.SetLanguage(model.GetAppSettings().Language);
+            controller.settingsController.SetTheme(model.AppSettings.Theme);
+            controller.settingsController.SetLanguage(model.AppSettings.Language);
         }
 
         public LoginForm(Model model, Controller controller)

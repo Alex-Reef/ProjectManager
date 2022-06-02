@@ -68,9 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\ArchiveController.cs" />
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\MarkerController.cs" />
-    <Compile Include="Controllers\Message.cs" />
+    <Compile Include="Utilites\Message.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
@@ -103,6 +104,9 @@
     <Compile Include="View\Controls\TaskBlock.xaml.cs">
       <DependentUpon>TaskBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\TaskListItem.xaml.cs">
+      <DependentUpon>TaskListItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\CreateMarkerForm.xaml.cs">
       <DependentUpon>CreateMarkerForm.xaml</DependentUpon>
     </Compile>
@@ -130,12 +134,18 @@
     <Compile Include="View\Forms\SelectProjectForm.xaml.cs">
       <DependentUpon>SelectProjectForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\ArchivePage.xaml.cs">
+      <DependentUpon>ArchivePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Task.cs" />
     <Compile Include="View\Forms\TaskForm.xaml.cs">
       <DependentUpon>TaskForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\TaskPage.xaml.cs">
       <DependentUpon>TaskPage.xaml</DependentUpon>
@@ -181,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\TaskBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\TaskListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,6 +250,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\ArchivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,6 +261,10 @@
     <Page Include="View\Forms\TaskForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\DashboardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Pages\TaskPage.xaml">
       <SubType>Designer</SubType>

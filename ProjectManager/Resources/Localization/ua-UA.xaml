@@ -58,13 +58,15 @@
     <system:String x:Key="ClearImage">Очистити зображення</system:String>
     <system:String x:Key="TaskTitle">Заголовок завдання</system:String>
     <system:String x:Key="TaskAbout">Яке нове завдання?</system:String>
-    <system:String x:Key="Delete">Вмдалити</system:String>
+    <system:String x:Key="Delete">Видалити</system:String>
     <system:String x:Key="SubtaskEmpty">Список підзавдань порожній</system:String>
     <system:String x:Key="AddSubtask">Додати підзавдання</system:String>
 
     <!-- Selecr Project -->
     <system:String x:Key="NewProject">Новий Проект</system:String>
     <system:String x:Key="MyProject">Мої Проекти</system:String>
+    <system:String x:Key="OpenProject">Відкрити Проект</system:String>
+    <system:String x:Key="LastOpened">Останнє відкриття</system:String>
 
     <!-- Main Window -->
     <system:String x:Key="Dashboard">Головна панель</system:String>
@@ -91,4 +93,11 @@
     <system:String x:Key="FillingFields">Всі поля мають бути заповнені.</system:String>
     <system:String x:Key="InvalidEmail">Електронна пошта не дійсна.</system:String>
     <system:String x:Key="LoginAlready">Це ім'я користувача вже зайняте.</system:String>
+    
+    <!-- CREATE PROJECT -->
+    <system:String x:Key="ProjectName">Назва проекту</system:String>
+    <system:String x:Key="EnterProjectName">Введіть назву проекту</system:String>
+
+    <!-- Archive -->
+    <system:String x:Key="Retrieve">Повернути</system:String>
 </ResourceDictionary>

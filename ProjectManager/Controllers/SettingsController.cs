@@ -14,7 +14,7 @@ namespace ProjectManager.Controllers
 
         public void SetTheme(int theme)
         {
-            Model.GetAppSettings().Theme = theme;
+            Model.AppSettings.Theme = theme;
             switch(theme)
             {
                 case 0:
@@ -30,7 +30,7 @@ namespace ProjectManager.Controllers
 
         public void SetLanguage(int language)
         {
-            Model.GetAppSettings().Language = language;
+            Model.AppSettings.Language = language;
             switch (language)
             {
                 case 0:

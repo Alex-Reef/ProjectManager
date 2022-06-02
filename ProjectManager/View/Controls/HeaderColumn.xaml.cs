@@ -1,15 +1,14 @@
 ﻿using System.Windows.Controls;
+using ProjectManager.Models;
 
 namespace ProjectManager.View.Controls
 {
     public partial class HeaderColumn : UserControl
     {
-        public string ColumnName { get; set; }
-        public HeaderColumn(string Text, int count)
+        public HeaderColumn(string title, int count)
         {
             InitializeComponent();
-            ColumnName = Text.ToUpper();
-            Content.Text = Text;
+            Content.Text = title.ToUpper();
             Count.Text = count.ToString();
         }
 

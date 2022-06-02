@@ -38,7 +38,7 @@ namespace ProjectManager.Utilites
 
         public static bool IsValidLogin(Model model, string login)
         {
-            if (model.GetUsers().Find(x => x.Login == login) == null)
+            if (model.Users.Find(x => x.Login == login) == null)
                 return true;
             else
                 return false;

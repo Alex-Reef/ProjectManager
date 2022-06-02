@@ -18,8 +18,24 @@ namespace ProjectManager
 
         private void createProjectBtn_Click(object sender, RoutedEventArgs e)
         {
-            Project project = new Project() { Name = prjNameBox.Text };
-            controller.projectController.Create(project);
+            if (prjNameBox.Text.Length > 0)
+            {
+                Project project = new Project()
+                {
+                    Name = prjNameBox.Text,
+                    LastOpened = "-"
+                };
+                controller.projectController.Create(project);
+                SelectProjectForm mw = new SelectProjectForm(controller, model);
+                mw.Show();
+                this.Close();
+            }
+            else
+                Dialog.IsOpen = true;
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
             SelectProjectForm mw = new SelectProjectForm(controller, model);
             mw.Show();
             this.Close();

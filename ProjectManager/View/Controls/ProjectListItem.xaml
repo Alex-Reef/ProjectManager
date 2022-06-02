@@ -51,12 +51,12 @@
                     FontFamily="Idea" FontSize="13" FontWeight="Medium"/>
                 <TextBlock
                     HorizontalAlignment="Center"
+                    x:Name="LastOpened"
                     VerticalAlignment="Top"
                     Foreground="{DynamicResource Text}"
-                    Grid.Row="1" x:Name="DateBlock"
+                    Grid.Row="1"
                     Opacity="0.7"
-                    FontFamily="Idea" FontSize="13" FontWeight="Medium"
-                    Text="12.12.1221"/>
+                    FontFamily="Idea" FontSize="13" FontWeight="Medium"/>
             </Grid>
 
             <StackPanel 

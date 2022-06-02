@@ -1,0 +1,403 @@
+﻿<Page x:Class="ProjectManager.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectManager"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="680" d:DesignWidth="1020"
+      Title="TaskPage">
+
+    <Grid Background="{DynamicResource Background}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Margin="10, 30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Margin="20, 0"
+                Text="Dashboard"
+                Foreground="{DynamicResource Text}"
+                FontSize="25" FontFamily="Idea" FontWeight="SemiBold"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <materialDesign:Card
+                    Background="{DynamicResource Primary}"
+                    Margin="20,35"
+                    UniformCornerRadius="10"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:Card
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            VerticalAlignment="Center"
+                            Width="50" Height="50"
+                            UniformCornerRadius="10"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                            Foreground="#ffb136"
+                            Background="White">
+                            <Grid>
+                                <materialDesign:PackIcon
+                                    Kind="ChartTimelineVariant"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Width="30" Height="30"/>
+                            </Grid>
+                        </materialDesign:Card>
+
+                        <Grid 
+                            Grid.Row="1" 
+                            Margin="0, 0, 0, 20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Margin="0, 10, 0, 0"
+                                VerticalAlignment="Top"
+                                Text="Markers"
+                                Foreground="White"
+                                FontFamily="Idea" FontWeight="SemiBold" FontSize="18"/>
+                            
+                            <ProgressBar
+                                Grid.Row="1"
+                                Value="50"
+                                x:Name="MarkerPorgress"
+                                BorderThickness="0"
+                                Height="5"
+                                Foreground="#ffb136"
+                                Background="{DynamicResource TextFieldBackground}"
+                                Margin="0, 5"
+                                VerticalAlignment="Bottom"/>
+                            
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Grid.Column="0"
+                                    Text="0"
+                                    x:Name="UsingMarkers"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"
+                                    Foreground="White"
+                                    FontFamily="Idea" FontWeight="SemiBold" FontSize="11"/>
+                                <TextBlock
+                                    VerticalAlignment="Bottom"
+                                    Grid.Column="1"
+                                    Text="6"
+                                    x:Name="MarkersCount"
+                                    HorizontalAlignment="Right"
+                                    Foreground="White"
+                                    FontFamily="Idea" FontWeight="SemiBold" FontSize="11"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card
+                    Grid.Column="1"
+                    Background="{DynamicResource CardBackground}"
+                    Margin="20,35"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                    UniformCornerRadius="10">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:Card
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            VerticalAlignment="Center"
+                            Width="50" Height="50"
+                            UniformCornerRadius="10"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                            Foreground="#ffb136"
+                            Background="{DynamicResource TextFieldBackground}">
+                            <Grid>
+                                <materialDesign:PackIcon
+                                    Kind="ChartTimelineVariant"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Width="30" Height="30"/>
+                            </Grid>
+                        </materialDesign:Card>
+
+                        <Grid 
+                            Grid.Row="1" 
+                            Margin="0, 0, 0, 20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Margin="0, 10, 0, 0"
+                                VerticalAlignment="Top"
+                                Text="Subtask Complete"
+                                Foreground="{DynamicResource Text}"
+                                FontFamily="Idea" FontWeight="SemiBold" FontSize="18"/>
+
+                            <ProgressBar
+                                Grid.Row="1"
+                                Value="50"
+                                x:Name="SubtaskProgress"
+                                BorderThickness="0"
+                                Height="5"
+                                Foreground="{DynamicResource Primary}"
+                                Background="{DynamicResource TextFieldBackground}"
+                                Margin="0, 5"
+                                VerticalAlignment="Bottom"/>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    x:Name="SubtaskComplete"
+                                    Grid.Column="0"
+                                    Text="0"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"
+                                    Foreground="{DynamicResource Text}"
+                                    FontFamily="Idea" FontWeight="SemiBold" FontSize="11"/>
+                                <TextBlock
+                                    x:Name="SubtaskTotal"
+                                    VerticalAlignment="Bottom"
+                                    Grid.Column="1"
+                                    Text="6"
+                                    HorizontalAlignment="Right"
+                                    Foreground="{DynamicResource Text}"
+                                    FontFamily="Idea" FontWeight="SemiBold" FontSize="11"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card
+                    Grid.Column="2"
+                    Background="{DynamicResource CardBackground}"
+                    Margin="20,35"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                    UniformCornerRadius="10">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:Card
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            VerticalAlignment="Center"
+                            Width="50" Height="50"
+                            UniformCornerRadius="10"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                            Foreground="#ffb136"
+                            Background="{DynamicResource TextFieldBackground}">
+                            <Grid>
+                                <materialDesign:PackIcon
+                                    Kind="ChartTimelineVariant"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Width="30" Height="30"/>
+                            </Grid>
+                        </materialDesign:Card>
+
+                        <Grid 
+                            Grid.Row="1" 
+                            Margin="0, 0, 0, 20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Margin="0, 10, 0, 0"
+                                VerticalAlignment="Top"
+                                Text="Tasks Count"
+                                Foreground="{DynamicResource Text}"
+                                FontFamily="Idea" FontWeight="SemiBold" FontSize="18"/>
+
+                            <ProgressBar
+                                Grid.Row="1"
+                                x:Name="TasksCount"
+                                Value="50"
+                                BorderThickness="0"
+                                Height="5"
+                                Foreground="{DynamicResource Primary}"
+                                Background="{DynamicResource TextFieldBackground}"
+                                Margin="0, 5"
+                                VerticalAlignment="Bottom"/>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    x:Name="TasksNow"
+                                    Grid.Column="0"
+                                    Text="3"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"
+                                    Foreground="{DynamicResource Text}"
+                                    FontFamily="Idea" FontWeight="SemiBold" FontSize="11"/>
+                                <TextBlock
+                                    VerticalAlignment="Bottom"
+                                    Grid.Column="1"
+                                    Text="6"
+                                    x:Name="MaxTasks"
+                                    HorizontalAlignment="Right"
+                                    Foreground="{DynamicResource Text}"
+                                    FontFamily="Idea" FontWeight="SemiBold" FontSize="11"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+            
+            <Grid Grid.Row="2" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Text="Recent Added"
+                    FontSize="20" FontFamily="Idea" FontWeight="SemiBold"
+                    Foreground="{DynamicResource Text}"/>
+
+                <Grid Grid.Row="1" Margin="0, 15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Text="Title"
+                            FontSize="16" FontFamily="Idea" FontWeight="Bold"
+                            Foreground="{DynamicResource Text}"
+                            Opacity="0.6"/>
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="Markers"
+                            HorizontalAlignment="Center"
+                            FontSize="16" FontFamily="Idea" FontWeight="Bold"
+                            Foreground="{DynamicResource Text}"
+                            Opacity="0.6"/>
+                        <TextBlock
+                            Grid.Column="2"
+                            HorizontalAlignment="Center"
+                            Text="Deadline"
+                            FontSize="16" FontFamily="Idea" FontWeight="Bold"
+                            Foreground="{DynamicResource Text}"
+                            Opacity="0.6"/>
+                    </Grid>
+                    <StackPanel
+                        Orientation="Vertical"
+                        Grid.Row="1"
+                        x:Name="ListBox"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <materialDesign:Card
+            Background="{DynamicResource CardBackground}"
+            materialDesign:ShadowAssist.ShadowDepth="Depth0"
+            Grid.Column="1">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel 
+                    Grid.Row="0"
+                    Orientation="Vertical">
+                    <Grid>
+                        <materialDesign:Card
+                            Height="110"
+                            VerticalAlignment="Top"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                            Background="{DynamicResource Primary}"/>
+                        <Border
+                            Margin="0,50, 0, 10"
+                            BorderThickness="7" BorderBrush="{DynamicResource CardBackground}" 
+                            Width="115" Height="115" CornerRadius="70">
+                            <Grid>
+                                <Button
+                                    Visibility="Visible"
+                                    HorizontalAlignment="Center"
+                                    x:Name="UserImage"
+                                    Width="100" Height="100"
+                                    Style="{StaticResource MaterialDesignIconButton}">
+                                </Button>
+                                <materialDesign:PackIcon
+                                    Visibility="Hidden"
+                                    x:Name="UserImageIcon"
+                                    Foreground="{DynamicResource Text}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Kind="AccountCircle"
+                                    Width="100" Height="100"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <TextBlock
+                        x:Name="Username"
+                        Text="Name Surname"
+                        HorizontalAlignment="Center"
+                        FontFamily="Idea" FontWeight="SemiBold" FontSize="18"
+                        Foreground="{DynamicResource Text}"/>
+                    <TextBlock
+                        x:Name="Email"
+                        Text="Email"
+                        HorizontalAlignment="Center"
+                        FontFamily="Idea" FontWeight="SemiBold" FontSize="13"
+                        Foreground="{DynamicResource Text}"
+                        Opacity="0.6"/>
+                </StackPanel>
+                
+                <Grid Grid.Row="1">
+                    <Calendar
+                        materialDesign:CalendarAssist.HeaderBackground="{DynamicResource Primary}"
+                        materialDesign:CalendarAssist.HeaderForeground="White"
+                        Background="{DynamicResource CardBackground}"
+                        Foreground="{DynamicResource Text}"/>
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Page>

@@ -29,7 +29,7 @@ namespace ProjectManager.View.Controls
             TaskDate.Content = task.EndTime.ToString();
             foreach (var marker in task.MarkersID)
             {
-                MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers.Find(x => x.UniqleID == marker));
+                MarkerBlock markerBlock = new MarkerBlock(model.CurentProject.Markers.Find(x => x.UniqleID == marker));
                 MarkerPanel.Children.Add(markerBlock);
             }
         }

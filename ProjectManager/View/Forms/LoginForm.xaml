@@ -91,7 +91,7 @@
                                 Foreground="{DynamicResource Primary}"/>
                         </StackPanel>
                         <TextBox 
-                            materialDesign:HintAssist.Hint="{DynamicResource Username}" 
+                            materialDesign:HintAssist.Hint="{DynamicResource Login}" 
                             x:Name="LoginBox"
                             Width="270"
                             BorderBrush="{DynamicResource TextFieldBackground}"
@@ -126,7 +126,7 @@
                             FontSize="14" FontFamily="Idea" FontWeight="SemiBold"
                             Foreground="White"
                             Background="{DynamicResource Primary}"
-                            BorderThickness="0" Cursor="Hand"/>
+                            BorderThickness="0"/>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>

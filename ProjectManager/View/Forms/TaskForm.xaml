@@ -150,7 +150,6 @@
                             materialDesign:HintAssist.Foreground="{DynamicResource Text}"
                             Background="{DynamicResource TextFieldBackground}"
                             BorderBrush="{DynamicResource TextFieldBackground}"
-                            Foreground="{DynamicResource Text}"
                             Style="{StaticResource MaterialDesignOutlinedComboBox}"
                             IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
                             ItemsSource="{Binding ShortStringList}"
@@ -175,6 +174,7 @@
                         <materialDesign:PackIcon 
                             Kind="Calendar"
                             Foreground="{DynamicResource Text}"
+                            Background="{DynamicResource CardBackground}"
                             VerticalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
@@ -247,7 +247,7 @@
                     Click="AddSubtask_Click"
                     Background="{DynamicResource Primary}"
                     Foreground="White"
-                    Width="150"
+                    HorizontalAlignment="Center"
                     BorderThickness="0"
                     materialDesign:ShadowAssist.ShadowDepth="Depth0"
                     VerticalAlignment="Bottom" Cursor="Hand">

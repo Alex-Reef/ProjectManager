@@ -27,6 +27,7 @@
                 <StackPanel Margin="0, 10, 0, 0">
                     <Image Source="{StaticResource Icon}" Height="30"/>
                     <ListBox
+                        x:Name="Menu"
                         HorizontalAlignment="Center"
                         Margin="0, 10, 0, 0"
                         SelectionMode="Extended">
@@ -34,6 +35,7 @@
                             Foreground="{DynamicResource Text}"
                             Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
                             Height="45" Width="45"
+                            Selected="dashboardBtn_Click"
                             HorizontalContentAlignment="Center"
                             ToolTip="{DynamicResource Dashboard}"
                             HorizontalAlignment="Center" BorderThickness="0" Cursor="Hand">
@@ -52,16 +54,7 @@
                                 Kind="CalendarTask" Height="20" Width="20"/>
                         </ListBoxItem>
                         <ListBoxItem
-                            Foreground="{DynamicResource Text}"
-                            Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
-                            Height="45" Width="45"
-                            HorizontalContentAlignment="Center"
-                            ToolTip="{DynamicResource Code}"
-                            HorizontalAlignment="Center" BorderThickness="0">
-                            <materialDesign:PackIcon 
-                                Kind="Xml" Height="20" Width="20"/>
-                        </ListBoxItem>
-                        <ListBoxItem
+                            Selected="archiveBtn_Click"
                             Foreground="{DynamicResource Text}"
                             Style="{StaticResource MaterialDesignNavigationPrimaryListBoxItem}"
                             Height="45" Width="45"

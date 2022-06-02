@@ -3,11 +3,94 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ProjectManager"
-        mc:Ignorable="d"
-        Title="CreateProject" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="prjNameBox" HorizontalAlignment="Left" Height="25" Margin="288,141,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="createProjectBtn" Click="createProjectBtn_Click" Content="Button" HorizontalAlignment="Left" Margin="288,280,0,0" VerticalAlignment="Top" Width="75"/>
+        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="CreateProject" Height="200" Width="400" ResizeMode="NoResize">
+    <Grid Background="{DynamicResource CardBackground}">
+        <materialDesign:DialogHost
+            CloseOnClickAway="True"
+            x:Name="Dialog">
+            <materialDesign:DialogHost.DialogContent>
+                <materialDesign:Card 
+                    Background="{DynamicResource CardBackground}">
+                    <StackPanel 
+                        Margin="10, 15" Orientation="Vertical"
+                        HorizontalAlignment="Center">
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Center"
+                            Text="{DynamicResource EnterProjectName}"
+                            FontFamily="Idea" FontSize="13" FontWeight="Bold"
+                            Foreground="{DynamicResource Text}"
+                            Margin="0, 10, 15, 0"/>
+                        <Button
+                            Margin="0, 20, 0, 0"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                            Background="{DynamicResource Primary}"
+                            Content="{DynamicResource OK}"
+                            Foreground="White"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            Width="100" Height="35"
+                            FontFamily="Idea" FontSize="13" FontWeight="SemiBold"/>
+                    </StackPanel>
+                </materialDesign:Card>
+            </materialDesign:DialogHost.DialogContent>
+            <Grid Margin="30, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Text="{DynamicResource EnterProjectName}"
+                        Foreground="{DynamicResource Text}"
+                        FontSize="14" FontFamily="Idea" FontWeight="SemiBold"
+                        VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Button
+                        x:Name="CloseBtn"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Foreground="{DynamicResource Text}"
+                        Click="CloseBtn_Click">
+                        <materialDesign:PackIcon Kind="Close"/>
+                    </Button>
+                </Grid>
+
+                <TextBox
+                    Grid.Row="1"
+                    x:Name="prjNameBox" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                    materialDesign:HintAssist.Hint="{DynamicResource ProjectName}"
+                    Background="{DynamicResource TextFieldBackground}"
+                    Foreground="{DynamicResource Text}"
+                    materialDesign:HintAssist.Background="Transparent"
+                    materialDesign:HintAssist.Foreground="{DynamicResource Text}"
+                    BorderBrush="{DynamicResource TextFieldBackground}"
+                    Padding="10" Width="300"
+                    TextWrapping="Wrap"/>
+                <Button 
+                    Grid.Row="2"
+                    x:Name="createProjectBtn" 
+                    Click="createProjectBtn_Click" 
+                    Content="{DynamicResource Create}"
+                    Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                    Background="{DynamicResource Primary}"
+                    Foreground="White"
+                    FontFamily="Idea" FontWeight="SemiBold" FontSize="15"
+                    HorizontalAlignment="Center"
+                    Width="140" Height="40"/>
+            </Grid>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>

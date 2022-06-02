@@ -11,7 +11,8 @@ namespace ProjectManager.View.Controls
         public MarkerBlock(Marker marker)
         {
             InitializeComponent();
-            MarkerCard.Background = new SolidColorBrush(marker.Color);
+            MarkerCard.Background = new SolidColorBrush(Color.FromArgb(50, marker.Color.R, marker.Color.G, marker.Color.B));
+            MarkerBorder.BorderBrush = new SolidColorBrush(marker.Color);
             MarkerText.Content = marker.Text;
             ID = marker.UniqleID;
             Tag = marker;

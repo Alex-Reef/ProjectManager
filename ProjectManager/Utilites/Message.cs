@@ -1,9 +1,9 @@
 ﻿using ProjectManager.View.Controls;
-namespace ProjectManager.Controllers
+namespace ProjectManager.Utilites
 {
     public static class Message
     {
-        public enum MessageIcon{
+        public enum MessageIcon {
             Success,
             Error,
             Info,

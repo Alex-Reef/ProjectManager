@@ -150,6 +150,7 @@
                             <Popup
                                 x:Name="Popup" StaysOpen="False" 
                                 Margin="20, 0"
+                                AllowsTransparency="True"
                                 HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <materialDesign:Card
                                     HorizontalAlignment="Center"
@@ -157,7 +158,6 @@
                                     Padding="20"
                                     Background="{DynamicResource CardBackground}">
                                     <ComboBox
-                                        Foreground="{DynamicResource Text}"
                                         Width="150"
                                         x:Name="MarkerBox" 
                                         SelectionChanged="MarkerBox_SelectionChanged"/>

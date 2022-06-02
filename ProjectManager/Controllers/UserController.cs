@@ -1,10 +1,5 @@
-﻿using Newtonsoft.Json;
-using ProjectManager.Models;
-using System;
-using System.IO;
+﻿using ProjectManager.Models;
 using ProjectManager.Utilites;
-using System.Net;
-using System.Net.Mail;
 
 namespace ProjectManager.Controllers
 {
@@ -16,25 +11,25 @@ namespace ProjectManager.Controllers
         }
 
         public void Create(User user) {
-            Model.GetUsers().Add(user);
+            Model.Users.Add(user);
             Model.SaveUserData();
         }
 
         public void Update(User user) {
-            var list = Model.GetUsers();
+            var list = Model.Users;
             var index = list.FindIndex(x => x.UniqleID == user.UniqleID);
             list[index] = user;
             Model.SaveUserData();
         }
         public void Delete(User user) {
-            var list = Model.GetUsers();
+            var list = Model.Users;
             list.RemoveAll(x => x.UniqleID == user.UniqleID);
             Model.SaveUserData();
         }
 
         public User Authorization(string login, string password)
         {
-            var list = Model.GetUsers();
+            var list = Model.Users;
             foreach (var user in list)
             {
                 if (user.Login == login && user.Password == DataSecurityService.CreateMD5(password))

@@ -10,7 +10,7 @@
     <md:Card Background="{StaticResource CardBackground}" UniformCornerRadius="5" x:Name="TaskCard" md:ShadowAssist.ShadowDepth="Depth1">
         <Grid Margin="5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="12"/>
                 <RowDefinition Height="Auto"/>

@@ -25,7 +25,7 @@ namespace ProjectManager
             model = md;
             controller = contr;
 
-            foreach(var col in model.GetCurentProject().Tasks)
+            foreach(var col in model.CurentProject.Tasks)
             {
                 task = col.Find(x => x.UniqleID == ts.UniqleID);
                 if (task != null)
@@ -40,7 +40,7 @@ namespace ProjectManager
             if(File.Exists(task.ImagePath))
                 ImageBox.Source = new BitmapImage(new Uri(task.ImagePath));
 
-            var list = model.GetCurentProject().Markers;
+            var list = model.CurentProject.Markers;
             foreach (var item in list)
             {
                 MarkerBox.Items.Add(item.Text);
@@ -50,7 +50,7 @@ namespace ProjectManager
             foreach (var item in lst)
             {
                 markersID.Add(item);
-                MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers.Find(x => x.UniqleID == item));
+                MarkerBlock markerBlock = new MarkerBlock(model.CurentProject.Markers.Find(x => x.UniqleID == item));
                 markerBlock.MouseDown += MarkerBlock_MouseDown;
                 markerPanel.Children.Add(markerBlock);
             }
@@ -63,10 +63,10 @@ namespace ProjectManager
             foreach (var item in task.Subtasks)
                 SubtaskPanel.Children.Add(new SubtaskListItem(item, task, controller, this));
 
-            foreach(var item in model.GetCurentProject().Headers)
+            foreach(var item in model.CurentProject.Headers)
                 categoryBox.Items.Add(item);
 
-            categoryBox.SelectedIndex = controller.GetTaskPosition(model, task).Item2;
+            categoryBox.SelectedIndex = controller.GetTaskPosition(task);
             DataPicker.Text = task.EndTime;
         }
 
@@ -105,8 +105,8 @@ namespace ProjectManager
 
         public void AddMarker(int ID)
         {
-            markersID.Add(model.GetCurentProject().Markers[ID].UniqleID);
-            MarkerBlock markerBlock = new MarkerBlock(model.GetCurentProject().Markers[ID]);
+            markersID.Add(model.CurentProject.Markers[ID].UniqleID);
+            MarkerBlock markerBlock = new MarkerBlock(model.CurentProject.Markers[ID]);
             markerBlock.MouseDown += MarkerBlock_MouseDown;
             markerPanel.Children.Add(markerBlock);
         }
@@ -119,13 +119,22 @@ namespace ProjectManager
 
         public void RemoveMarker(Marker marker)
         {
-            markersID.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
-            markerPanel.Children.RemoveAt(model.GetCurentProject().Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
+            markersID.RemoveAt(model.CurentProject.Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
+            markerPanel.Children.RemoveAt(model.CurentProject.Markers.FindIndex(x => x.UniqleID == marker.UniqleID));
         }
 
         private void AddSubtask_Click(object sender, RoutedEventArgs e)
         {
-            controller.taskController.Subtask_Create(new Subtask("Test", true, KeyGenerator.Generate(10)), task);
+            InputDialog inputDialog = new InputDialog("");
+            if (inputDialog.DialogResult == true)
+            {
+                controller.taskController.Subtask_Create(new Subtask
+                { 
+                    Name = inputDialog.GetString(), 
+                    Complete = false, 
+                    UniqleID = KeyGenerator.Generate(10) 
+                }, task);
+            }
             Update();
         }
 

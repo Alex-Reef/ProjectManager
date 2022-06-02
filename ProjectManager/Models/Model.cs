@@ -2,50 +2,44 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using ProjectManager.Models;
-using System.Windows;
 
 namespace ProjectManager
 {
     public class Model
     {
-        public Project project { get; set; }
-        public User user { get; set; }
-        public List<User> users { get; set; }
-        public List<Project> projects { get; set; }
-        public AppSettings appSettings { get; set; }
+        public Project CurentProject { get; set; }
+        public User CurentUser { get; set; }
+        public List<User> Users { get; set; }
+        public List<Project> Projects { get; set; }
+        public AppSettings AppSettings { get; set; }
         public List<Notification> Notifications { get; set; }
+
+        public int MaxMarkers = 15;
+        public int MaxTasks = 50;
 
         public Model()
         {
-            projects = new List<Project>();
-            appSettings = new AppSettings();
-            users = new List<User>();
+            Projects = new List<Project>();
+            AppSettings = new AppSettings();
+            Users = new List<User>();
             Notifications = new List<Notification>();
             Load();
             LoadAppData();
             LoadUserData();
         }
 
-        public void SetProject(Project _project) => project = projects.Find(x=>x.Equals(_project));
-        public void SetUser(User _user) => user = users.Find(x=>x.UniqleID == _user.UniqleID);
-
-        public User GetCurentUser() => user;
-        public List<User> GetUsers() => users;
-        public AppSettings GetAppSettings() => appSettings;
-
-        public Project GetCurentProject() => project;
-        public List<Project> GetProjects() => projects;
+        public void SetProject(Project _project) => CurentProject = Projects.Find(x=>x.Equals(_project));
+        public void SetUser(User _user) => CurentUser = Users.Find(x=>x.UniqleID == _user.UniqleID);
 
         public void Save() {
             var serializer = new JsonSerializer();
-            using (StreamWriter fs = new StreamWriter(Environment.CurrentDirectory + @"\Data\Projects\" + project.Name + ".json"))
+            using (StreamWriter fs = new StreamWriter(Environment.CurrentDirectory + @"\Data\Projects\" + CurentProject.Name + ".json"))
             {
                 using (var jsonTextWriter = new JsonTextWriter(fs))
                 {
                     jsonTextWriter.Formatting = Formatting.Indented;
-                    serializer.Serialize(fs, project);
+                    serializer.Serialize(fs, CurentProject);
                 }
                 fs.Close();
             }
@@ -62,8 +56,8 @@ namespace ProjectManager
             foreach (string file in projectArray)
             {
                 string data = File.ReadAllText(file);
-                project = JsonConvert.DeserializeObject<Project>(data);
-                projects.Add(project);
+                CurentProject = JsonConvert.DeserializeObject<Project>(data);
+                Projects.Add(CurentProject);
             }
         }
 
@@ -75,7 +69,7 @@ namespace ProjectManager
                 using (var jsonTextWriter = new JsonTextWriter(fs))
                 {
                     jsonTextWriter.Formatting = Formatting.Indented;
-                    serializer.Serialize(fs, users);
+                    serializer.Serialize(fs, Users);
                 }
                 fs.Close();
             }
@@ -86,7 +80,7 @@ namespace ProjectManager
             if (File.Exists(Environment.CurrentDirectory + @"\Data\Users.json"))
             {
                 string data = File.ReadAllText(Environment.CurrentDirectory + @"\Data\Users.json");
-                users = JsonConvert.DeserializeObject<List<User>>(data);
+                Users = JsonConvert.DeserializeObject<List<User>>(data);
             }
         }
 
@@ -95,11 +89,11 @@ namespace ProjectManager
             if (Directory.Exists(Environment.CurrentDirectory + @"\Data\"))
             {
                 string data = File.ReadAllText(Environment.CurrentDirectory + @"\Data\AppSettings.json");
-                appSettings = JsonConvert.DeserializeObject<AppSettings>(data);
+                AppSettings = JsonConvert.DeserializeObject<AppSettings>(data);
             }
             else
             {
-                appSettings = new AppSettings();
+                AppSettings = new AppSettings();
                 SaveAppData();
             }
         }
@@ -112,7 +106,7 @@ namespace ProjectManager
                 using (var jsonTextWriter = new JsonTextWriter(fs))
                 {
                     jsonTextWriter.Formatting = Formatting.Indented;
-                    serializer.Serialize(fs, appSettings);
+                    serializer.Serialize(fs, AppSettings);
                 }
                 fs.Close();
             }

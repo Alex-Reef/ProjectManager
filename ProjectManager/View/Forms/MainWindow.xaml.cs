@@ -8,19 +8,18 @@ namespace ProjectManager
     public partial class MainWindow : Window
     {
         private Model model { get; set; }
-        private Controller presenter { get; set; }
+        private Controller controller { get; set; }
 
         public MainWindow(Model Model, Controller Presenter, Project project)
         {
             InitializeComponent();
 
             model = Model;
-            presenter = Presenter;
-
+            controller = Presenter;
             model.SetProject(project);
-            TaskPage taskPage = new TaskPage(model, presenter);
+            model.CurentProject.LastOpened = project.LastOpened;
 
-            frame.Content = taskPage;
+            Menu.SelectedIndex = 0;
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -47,14 +46,24 @@ namespace ProjectManager
             this.DragMove();
         }
 
+        private void dashboardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = controller.OpenPage("Dashboard");
+        }
+
+        private void archiveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Content = controller.OpenPage("Archive");
+        }
+
         private void settingsBtn_Click(object sender, RoutedEventArgs e)
         {
-            frame.Content = presenter.OpenPage("Settings");
+            frame.Content = controller.OpenPage("Settings");
         }
 
         private void tasksBtn_Click(object sender, RoutedEventArgs e)
         {
-            frame.Content = presenter.OpenPage("Tasks");
+            frame.Content = controller.OpenPage("Tasks");
         }
     }
 }

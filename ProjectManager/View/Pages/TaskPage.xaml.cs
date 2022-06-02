@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using ProjectManager.Controllers;
 using ProjectManager.Models;
 using ProjectManager.View.Controls;
+using ProjectManager.Utilites;
 using System.Windows.Media.Imaging;
 
 namespace ProjectManager
@@ -26,21 +27,21 @@ namespace ProjectManager
             model = Model;
             this.controller = controller;
 
-            Tasks = model.GetCurentProject().Tasks;
+            Tasks = model.CurentProject.Tasks;
             Panels = new List<StackPanel>();
             Headers = new List<HeaderColumn>();
 
-            UserChip.Content = model.GetCurentUser().UserName;
+            UserChip.Content = model.CurentUser.UserName;
 
-            String stringPath = model.GetCurentUser().ImagePath;
+            String stringPath = model.CurentUser.ImagePath;
             Uri imageUri = new Uri(stringPath, UriKind.Relative);
             BitmapImage imageBitmap = new BitmapImage(imageUri);
             UserImage.Source = imageBitmap;
 
-            ProjectNameLabel.Content = model.GetCurentProject().Name;
-            ltsUserName.Content = model.GetCurentUser().UserName.Split(' ')[0];
+            ProjectNameLabel.Content = model.CurentProject.Name;
+            ltsUserName.Content = model.CurentUser.UserName.Split(' ')[0];
 
-            var list = model.GetCurentProject().Headers;
+            var list = model.CurentProject.Headers;
             for (int i = 0; i < list.Count; i++)
             {
                 Panels.Add(new StackPanel() { Width = 280, Margin = new Thickness(0, 0, 40, 0) });
@@ -49,8 +50,8 @@ namespace ProjectManager
                 HeaderPanel.Children.Add(Headers[i]);
             }
 
-            UserImage.Source = new BitmapImage(new Uri(model.GetCurentUser().ImagePath));
-            UserChip.Content = model.GetCurentUser().UserName;
+            UserImage.Source = new BitmapImage(new Uri(model.CurentUser.ImagePath));
+            UserChip.Content = model.CurentUser.UserName;
 
             Update();
         }
@@ -69,7 +70,7 @@ namespace ProjectManager
 
         private void addTaskBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (model.GetCurentProject().Markers.Count != 0)
+            if (model.CurentProject.Markers.Count != 0)
             {
                 createTaskForm = new CreateTaskForm(model);
                 createTaskForm.ShowDialog();
@@ -78,11 +79,12 @@ namespace ProjectManager
 
                     Task task = new Task()
                     {
-                        Name = createTaskForm.GetTaskName(),
-                        Description = createTaskForm.GetDesc(),
-                        UniqleID = createTaskForm.GetID(),
-                        MarkersID = createTaskForm.GetMarkers(),
-                        EndTime = createTaskForm.GetDate(),
+                        Name = createTaskForm.taskName,
+                        Description = createTaskForm.descTask,
+                        UniqleID = createTaskForm.uID,
+                        MarkersID = createTaskForm.markersID,
+                        EndTime = createTaskForm.Date,
+                        ImagePath = createTaskForm.ImagePath,
                         Subtasks = new List<Subtask>()
                     };
 
@@ -140,11 +142,11 @@ namespace ProjectManager
 
         private void Update()
         {
-            var list = model.GetCurentProject().Headers;
+            var list = model.CurentProject.Headers;
             for (int i = 0; i < list.Count; i++)
                 Panels[i].Children.Clear();
 
-            Tasks = model.GetCurentProject().Tasks;
+            Tasks = model.CurentProject.Tasks;
 
             for (int i = 0; i < list.Count; i++)
                 LoadTask(Tasks[i], Panels[i], Headers[i]);
